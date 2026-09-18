@@ -1,0 +1,160 @@
+000|A largish knife.
+001|A large all-purpose knife.{FC}Favored by many hunters.
+002|A weapon that is thrown.
+003|Leather armor made from{FC}tanned sand worm hide.
+004|A hat of sand worm hide{FC}boiled in wax.
+005|A woman's helmet of sand{FC}worm hide boiled in wax.
+006|A forehead guard of sand{FC}worm hide boiled in wax.
+007|A sword made of steel.
+008|A thrown weapon.{FC}It has a blade.
+009|A shield of sand worm hide{FC}on a wooden frame.
+010|Carbon fiber garb, often{FC}found in ancient ruins.
+011|A shield of carbon fiber{FC}on a steel frame.
+012|A helmet made of carbon{FC}fiber.
+013|A woman's helmet made of{FC}carbon fiber.
+014|A forehead guard made of{FC}carbon fiber.
+015|A cane carved from Laerma{FC}tree wood.
+016|A mantle imbued with{FC}defensive magic.
+017|A sword of titanium alloy.
+018|A dagger of titanium{FC}alloy.
+019|A slicer of titanium{FC}alloy.
+020|An axe of titanium alloy.
+021|A titanium alloy axe with{FC}a very large blade.
+022|Armor of titanium alloy.
+023|A shield of titanium{FC}alloy.
+024|A helmet of titanium{FC}alloy.
+025|A woman's helmet made of{FC}titanium alloy.
+026|
+027|Protective garb made of{FC}special graphite.
+028|A shield made of special{FC}graphite.
+029|A sword made of ceramic.
+030|A woman's helmet made of{FC}special graphite.
+031|A weapon shaped as hooked{FC}claws, of titanium alloy.
+032|A knife made of ceramic.
+033|A shield made of ceramic.
+034|A slicer with a built-in{FC}laser emitter.
+035|Claws of titanium alloy,{FC}longer and sharper.
+036|A large axe made for{FC}battle. Quite heavy.
+037|Ceramic armor. Strong{FC}against heat, but heavy.
+038|A ceramic helmet. It holds{FC}heat, so it gets stuffy.
+039|A sword with a large{FC}laser emitter.
+040|A claw with a built-in{FC}laser emitter.
+041|A shield formed from{FC}laser beams.
+042|A gun that hurls bursts of{FC}air. Its power is weak.
+043|Armor for androids, made{FC}of titanium alloy.
+044|Steel headgear worn by{FC}androids.
+045|A gun emitting a strange{FC}wave that numbs nerves.
+046|An axe with a built-in{FC}laser emitter.
+047|A knife with a small{FC}built-in laser emitter.
+048|Armor for androids, made{FC}of ceramic.
+049|Headgear for androids, of{FC}titanium alloy.
+050|Steel armor imbued with{FC}defensive magic.
+051|A steel shield imbued with{FC}defensive magic.
+052|A steel helmet imbued with{FC}defensive magic.
+053|A steel circlet imbued{FC}with defensive magic.
+054|A cane strengthened by{FC}magic.
+055|A magician's robe imbued{FC}with defensive magic.
+056|A cane with the power to{FC}undo all magic defense.
+057|????
+058|A vibration weapon that{FC}uses sound waves.
+059|Double armor with a space{FC}between. For androids.
+060|Headgear for androids,{FC}made of ceramic.
+061|A portable particle gun{FC}firing proton beams.
+062|A laser cannon that can{FC}fire in rapid bursts.
+063|A sword with a large{FC}plasma generator.
+064|A claw with a built-in{FC}plasma generator.
+065|A dagger with a small{FC}plasma generator.
+066|A shield formed from{FC}plasma.
+067|A cane made of{FC}low-purity Laconia.
+068|A mantle woven from{FC}low-purity Laconia fiber.
+069|A circlet made of{FC}low-purity Laconia.
+070|Armor made of{FC}low-purity Laconia.
+071|A shield made of{FC}low-purity Laconia.
+072|A helmet made of{FC}low-purity Laconia.
+073|A woman's helmet made of{FC}low-purity Laconia.
+074|Headgear for androids, of{FC}heat-resistant metal.
+075|An incendiary launcher.
+076|Armor for androids, of{FC}heat-resistant metal.
+077|A sword sealed with the{FC}power of Flaeli.
+078|A claw sealed with the{FC}power of Tonndre.
+079|A dagger sealed with the{FC}power of Hyune.
+080|A cane sealed with the{FC}power of Bindwa.
+081|A robe that casts an{FC}illusion of its wearer.
+082|A secret treasure of the{FC}musk cat clan.
+083|An electron beam weapon{FC}that fires in bursts.
+084|Composite armor, ceramic{FC}between titanium alloy.
+085|Composite headgear of{FC}ceramic and titanium.
+086|Armor that resists{FC}techniques and magic.
+087|A shield that resists{FC}techniques and magic.
+088|A robe that resists{FC}techniques and magic.
+089|A sword made of{FC}high-purity Laconia.
+090|A dagger made of{FC}high-purity Laconia.
+091|A claw made of{FC}high-purity Laconia.
+092|A slicer made of{FC}high-purity Laconia.
+093|????
+094|A large particle cannon.
+095|Armor for androids, made{FC}of highly elastic metal.
+096|Headgear for androids, of{FC}highly elastic metal.
+097|A high-purity Laconia cane{FC}sealed with Ephes.
+098|A claw sealed with the{FC}power of Deem.
+099|A helmet that quickens{FC}the wearer's reactions.
+100|A slicer holding the{FC}radiance of the moon.
+101|????
+102|Armor made of{FC}high-purity Laconia.
+103|A helmet made of{FC}high-purity Laconia.
+104|A woman's helmet made of{FC}high-purity Laconia.
+105|A forehead guard made of{FC}high-purity Laconia.
+106|A shield made of{FC}high-purity Laconia.
+107|A reinforced suit built{FC}with artificial muscle.
+108|????
+109|????
+110|Armor for androids, made{FC}of high-purity Laconia.
+111|Headgear for androids, of{FC}high-purity Laconia.
+112|A dagger Hahn made{FC}together with his father.
+113|????
+114|????
+115|????
+116|????
+117|????
+118|????
+119|An axe made of{FC}high-purity Laconia.
+120|A gun that destroys its{FC}target with ultrasound.
+121|????
+122|
+123|Armor Hahn made together{FC}with his father.
+124|A medicine that{FC}restores HP.
+125|A medicine that restores{FC}a good deal of HP.
+126|A medicine that restores{FC}a great deal of HP.
+127|A medicine that{FC}cures poison.
+128|A medicine that{FC}cures paralysis.
+129|A mysterious{FC}yellow perfume.
+130|A mysterious{FC}blue perfume.
+131|A strange instrument that{FC}flies to a visited town.
+132|A strange instrument that{FC}escapes any cave at once.
+133|A mysterious{FC}red perfume.
+134|????
+135|A shield Hahn made{FC}together with his father.
+136|????
+137|A legendary sword said to{FC}be an ancient heroine's.
+138|A powerful explosive made{FC}with nitroglycerin.
+139|An item that shows{FC}your current location.
+140|A miracle drug that turns{FC}stone back into flesh.
+141|????
+142|????
+143|A simple repair kit{FC}for androids.
+144|A cake sold at the{FC}cake shop in Aiedo.
+145|An item that can summon{FC}a Dezolis Penguin.
+146|A nostalgic cheap sweet.{FC}It is nourishing.
+147|A pennant embroidered with{FC}Termi's name and view.
+148|A sand worm doll{FC}carved from wood.
+149|An all-purpose armored car{FC}that crosses quicksand.
+150|An icebreaker for cold{FC}lands. It smashes ice.
+151|A hovercraft that can{FC}travel over the sea.
+152|The system startup key{FC}for the Machine Center.
+153|An all-purpose sensor that{FC}detects stealthed foes.
+154|????
+155|????
+156|????
+157|????
+158|????
+159|A ring Hahn made together{FC}with his father.

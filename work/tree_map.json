@@ -1,0 +1,31 @@
+{
+ "note": "JP LZSS stream -> first US dialogue tree in ps4disasm/script/. Derived from engine control-code fingerprints (layout codes FC/FD/F5 excluded: the localisers re-wrapped every line). Tree numbers are strictly increasing, so the US build split some JP streams across two trees - that is what the sub-100% scores are.",
+ "map": {
+  "1CC476": 1,
+  "1CD2E6": 4,
+  "1CE546": 5,
+  "1CF6D6": 7,
+  "1D02D6": 9,
+  "1D1256": 11,
+  "1D2426": 12,
+  "1D38E6": 14,
+  "1D4446": 15,
+  "1D4FB6": 17,
+  "1D5A26": 18,
+  "1D6816": 20,
+  "1D76C6": 23,
+  "1D85A6": 24,
+  "1D9436": 27,
+  "1DA026": 28,
+  "1DB036": 30,
+  "1DB6F6": 31,
+  "1DC4E6": 33,
+  "1DD086": 34,
+  "1DDD96": 35,
+  "1DEC96": 38,
+  "1DFCB6": 39,
+  "1E05B6": 41,
+  "1E1316": 42,
+  "1E1F06": 43
+ }
+}

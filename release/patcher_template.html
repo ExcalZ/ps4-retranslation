@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@TITLE@ - Patcher</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; max-width: 40rem;
+         margin: 3rem auto; padding: 0 1.25rem; color: #1b1b1b; background: #f6f5f1; }
+  @media (prefers-color-scheme: dark) { body { color: #e8e6df; background: #1e1f22; } .drop { background: #26272b; } .log { background: #16171a; } }
+  h1 { font-size: 1.4rem; margin: 0 0 .25rem; }
+  .sub { opacity: .7; margin: 0 0 1.5rem; }
+  .drop { display: block; border: 2px dashed #8a8a8a; border-radius: 10px; padding: 2.5rem 1.5rem; text-align: center;
+          background: #fff; cursor: pointer; transition: border-color .15s; }
+  .drop.over { border-color: #2f6fdd; }
+  .drop input { display: none; }
+  .drop strong { display: block; font-size: 1.1rem; margin-bottom: .25rem; }
+  .log { font: 14px/1.6 ui-monospace, Consolas, monospace; white-space: pre-wrap; background: #fff;
+         border-radius: 8px; padding: 1rem; margin-top: 1.25rem; min-height: 3rem; }
+  .log .ok { color: #1d7a3a; } .log .err { color: #c0392b; font-weight: 600; }
+  a.dl { display: inline-block; margin: 1.25rem .75rem 0 0; padding: .75rem 1.25rem; border-radius: 8px;
+         background: #2f6fdd; color: #fff; font-weight: 600; text-decoration: none; }
+  a.dl.alt { background: transparent; color: #2f6fdd; border: 2px solid #2f6fdd; padding: calc(.75rem - 2px) calc(1.25rem - 2px); }
+  .fine { font-size: .85rem; opacity: .65; margin-top: 2rem; }
+</style>
+</head>
+<body>
+<h1>@TITLE@</h1>
+<p class="sub">@SUBTITLE@ &mdash; offline patcher</p>
+
+<label class="drop" id="drop">
+  <input type="file" id="file">
+  <strong>Drop your @GAME@ ROM here</strong>
+  or click to choose a file &mdash; .bin, .md, .gen or .smd
+</label>
+
+<div class="log" id="log">Nothing is uploaded anywhere: the patch is applied inside this page, on your computer.</div>
+<div id="out"></div>
+
+<p class="fine">Expected ROM: @GAME@, @SRC_SIZE@ bytes, CRC32 @SRC_CRC32@ (as a plain binary).
+Interleaved .smd dumps are converted automatically, and the patched ROM can be saved either as a plain 4 MB .bin
+or as an interleaved .smd.
+If you prefer a conventional patcher, the same patch is in @PATCH@ next to this file.@README_NOTE@</p>
+
+<script>
+"use strict";
+const PATCH_B64 = "@PATCH_B64@";
+const OUT_NAME = "@OUT_NAME@";
+
+// --- CRC32 ------------------------------------------------------------
+const CRC_TABLE = (() => { const t = new Uint32Array(256);
+  for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; }
+  return t; })();
+function crc32(u8) { let c = 0xFFFFFFFF;
+  for (let i = 0; i < u8.length; i++) c = CRC_TABLE[(c ^ u8[i]) & 0xFF] ^ (c >>> 8);
+  return (c ^ 0xFFFFFFFF) >>> 0; }
+const hex8 = n => n.toString(16).toUpperCase().padStart(8, "0");
+
+// --- SMD (Super Magic Drive) container ----------------------------------
+// 512-byte header, then 16 KiB blocks; in each block the first 8 KiB holds the
+// odd-address bytes and the second 8 KiB the even-address bytes.  Detected by
+// size alone (header + whole blocks), so header variants between dumpers do
+// not matter; the AA BB 06 signature is only a confirmation.
+function isSmd(u8) { return u8.length > 512 && (u8.length - 512) % 16384 === 0 && (u8.length % 16384) === 512; }
+function smdToBin(u8) { const body = u8.subarray(512), out = new Uint8Array(body.length);
+  for (let base = 0; base < body.length; base += 16384) {
+    for (let i = 0; i < 8192; i++) { out[base + 2 * i + 1] = body[base + i]; out[base + 2 * i] = body[base + 8192 + i]; } }
+  return out; }
+// The inverse, with the header tools/bin2smd.py writes.  A 4 MB image has 256
+// blocks, which does not fit the count byte; emulators (BlastEm, Genesis Plus
+// GX) size the data from the file length instead, verified for this ROM.
+function binToSmd(u8) { const out = new Uint8Array(512 + u8.length), blocks = u8.length / 16384;
+  out[0] = blocks & 0xFF; out[1] = 0x03; out[8] = 0xAA; out[9] = 0xBB; out[10] = 0x06;
+  for (let base = 0; base < u8.length; base += 16384) { const o = 512 + base;
+    for (let i = 0; i < 8192; i++) { out[o + i] = u8[base + 2 * i + 1]; out[o + 8192 + i] = u8[base + 2 * i]; } }
+  return out; }
+
+// --- BPS ----------------------------------------------------------------
+function b64ToBytes(s) { const bin = atob(s), out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i); return out; }
+function bpsApply(patch, source) {
+  let pos = 0;
+  const num = () => { let v = 0, shift = 1; for (;;) { const x = patch[pos++]; v += (x & 0x7F) * shift;
+      if (x & 0x80) return v; shift *= 128; v += shift; } };
+  const signed = () => { const r = num(); return (r & 1) ? -(Math.floor(r / 2)) : Math.floor(r / 2); };
+  if (String.fromCharCode(...patch.subarray(0, 4)) !== "BPS1") throw new Error("embedded patch is not BPS");
+  pos = 4;
+  const ns = num(), nt = num(), nm = num(); pos += nm;
+  const dv = new DataView(patch.buffer, patch.byteOffset + patch.length - 12, 12);
+  const srcCrc = dv.getUint32(0, true), tgtCrc = dv.getUint32(4, true), patCrc = dv.getUint32(8, true);
+  if (crc32(patch.subarray(0, patch.length - 4)) !== patCrc) throw new Error("embedded patch is corrupt");
+  if (source.length !== ns) throw new Error("size " + source.length.toLocaleString() + " bytes, expected " + ns.toLocaleString());
+  const got = crc32(source);
+  if (got !== srcCrc) throw new Error("CRC32 " + hex8(got) + ", expected " + hex8(srcCrc));
+  const tgt = new Uint8Array(nt); let out = 0, sRel = 0, tRel = 0; const end = patch.length - 12;
+  while (pos < end) { const d = num(), cmd = d & 3, len = Math.floor(d / 4) + 1;
+    if (cmd === 0) { tgt.set(source.subarray(out, out + len), out); out += len; }
+    else if (cmd === 1) { tgt.set(patch.subarray(pos, pos + len), out); pos += len; out += len; }
+    else if (cmd === 2) { sRel += signed(); tgt.set(source.subarray(sRel, sRel + len), out); sRel += len; out += len; }
+    else { tRel += signed(); for (let i = 0; i < len; i++) tgt[out++] = tgt[tRel++]; } }
+  if (out !== nt) throw new Error("patch produced the wrong size");
+  if (crc32(tgt) !== tgtCrc) throw new Error("result failed its checksum");
+  return tgt; }
+
+// --- page ---------------------------------------------------------------
+const logEl = document.getElementById("log"), outEl = document.getElementById("out"), drop = document.getElementById("drop");
+function log(msg, cls) { const d = document.createElement("div"); if (cls) d.className = cls; d.textContent = msg; logEl.appendChild(d); }
+function reset() { logEl.textContent = ""; outEl.textContent = ""; }
+
+// Returns the patched plain binary plus whether the input was interleaved.
+function patchBuffer(buf, name) {
+  let rom = new Uint8Array(buf);
+  log("Loaded " + name + " (" + rom.length.toLocaleString() + " bytes)");
+  const smd = isSmd(rom);
+  if (smd) { rom = smdToBin(rom); log("Interleaved .smd detected - converted to a plain binary"); }
+  const patch = b64ToBytes(PATCH_B64);
+  const result = bpsApply(patch, rom);
+  log("Source ROM verified: CRC32 " + hex8(crc32(rom)), "ok");
+  log("Patched: " + result.length.toLocaleString() + " bytes, CRC32 " + hex8(crc32(result)), "ok");
+  return { bin: result, smd }; }
+
+function saveLink(bytes, name, primary) {
+  const url = URL.createObjectURL(new Blob([bytes], { type: "application/octet-stream" }));
+  const a = document.createElement("a"); a.className = "dl" + (primary ? "" : " alt");
+  a.href = url; a.download = name; a.textContent = "Save " + name;
+  return a; }
+
+function handle(file) { reset();
+  file.arrayBuffer().then(buf => { const { bin, smd } = patchBuffer(buf, file.name);
+      const links = [saveLink(bin, OUT_NAME + ".bin"), saveLink(binToSmd(bin), OUT_NAME + ".smd")];
+      if (smd) links.reverse();          // offer the format the player came in with first
+      links[0].classList.remove("alt"); links[1].classList.add("alt");
+      links.forEach(a => outEl.appendChild(a));
+      log("Save in whichever format your emulator or flash cart expects; both hold the same game."); })
+    .catch(e => { log("Could not patch this file: " + e.message, "err");
+      log("This patch needs the unmodified @GAME@ ROM.@HINT@"); }); }
+
+document.getElementById("file").addEventListener("change", e => { if (e.target.files[0]) handle(e.target.files[0]); });
+["dragenter", "dragover"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", e => { const f = e.dataTransfer.files[0]; if (f) handle(f); });
+window.__patchBuffer = patchBuffer; window.__binToSmd = binToSmd;   // for automated testing
+</script>
+</body>
+</html>

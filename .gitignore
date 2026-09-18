@@ -1,0 +1,77 @@
+# ---- Never commit game data ------------------------------------------
+# ROM images, in any wrapper. Note: *.md is Markdown here, so headerless
+# Mega Drive dumps must be named .bin or .gen to be caught.
+*.bin
+*.gen
+*.smd
+*.SMD
+*.32x
+*.bps
+*.ips
+*.xdelta
+
+# ...but the assembler needs the game's own data files, which the
+# disassembly stores as .bin. Those are part of the source tree.
+!ps4disasm/**/*.bin
+ps4disasm/ps4built.bin
+ps4disasm/ps4built.prev.bin
+
+# Generated font/table binaries are build products of tools/*.py, but the
+# assembler includes them and checkbuild.py compares them against a fresh
+# generation, so they are kept in the tree (covered by the rule above).
+
+# Emulator savestates and memory dumps contain the game's RAM/VRAM.
+# The three the test-suite needs are whitelisted below.
+*.state
+work/state/
+!work/compose-slot0.state
+!work/giresta-sealed-slot4.state
+!work/giresta-slot3.state
+
+# ---- Third-party binaries: link to them, do not vendor them ------------
+blastem-win32-*/
+Exodus_*/
+flips/
+# Exodus scratch directories
+Captures/
+Modules/
+PersistentState/
+Plugins/
+Savestates/
+Workspaces/
+# Other people's releases kept locally for reference
+PS4_German_*
+PSIV_Bugfix_Readme.txt
+readme.txt
+
+# ---- Build products ---------------------------------------------------
+ps4disasm/ps4.p
+ps4disasm/ps4.h
+ps4disasm/ps4.log
+ps4disasm/*.lst
+ps4disasm/build.bat.bak
+ps4disasm/vwf/*.rej
+*.lst
+*.exs
+work/playtest/
+release/PS4_Retranslation_v*/
+release/*.zip
+mdtools/
+
+# ---- Editor and interpreter litter ------------------------------------
+__pycache__/
+*.pyc
+*.bak
+*.bak.json
+*.bak-resume
+.user-path-backup-*
+Thumbs.db
+.DS_Store
+
+# Exodus RAM reference the BlastEm savestate reader locates work RAM with
+!work/rebuilt-status.exs
+
+# Claude Code preview config for the proofreader; local tooling
+.claude/
+# stray decompression scratch output
+ps4disasm/script/*.unc*

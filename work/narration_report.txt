@@ -1,0 +1,131 @@
+
+narration as it stands in the build
+  slot        line     px spare +chars  flag
+  attract     335145  157    99     15  
+  attract     335146  172    84     13  
+  attract     335147  130   126     20  
+  attract     335148  192    64     10  
+  attract     335149  105   151     24  
+  attract     335150  136   120     19  
+  attract     335151  147   109     17  
+  attract     335152  154   102     16  
+  attract     335157  137   119     19  
+  attract     335158  127   129     20  
+  attract     335160  163    93     14  
+  attract     335161   98   158     25  
+  attract     335162  200    56      9  
+  attract     335163  148   108     17  
+  attract     335164  146   110     17  
+  attract     335165   56   200     32  
+  attract     335167  162    94     15  
+  attract     335168   45   211     34  
+  attract     335169  174    82     13  
+  attract     335170  164    92     14  
+  attract     335171   66   190     30  
+  attract     335172  191    65     10  
+  attract     335173  156   100     16  
+  attract     335174  144   112     18  
+  attract     335175  192    64     10  
+  attract     335176   54   202     32  
+  attract     335178  102   154     24  
+  attract     335179  150   106     17  
+  attract     335180  176    80     12  
+  attract     335181  190    66     10  
+  attract     335182  146   110     17  
+  attract     335184  156   100     16  
+  attract     335186  163    93     14  
+  attract     335187  201    55      8  
+  attract     335188   46   210     33  
+  attract     335189  167    89     14  
+  attract     335190  162    94     15  
+  attract     335191  133   123     19  
+  attract     335192   84   172     27  
+  attract     335194  141   115     18  
+  attract     335195  176    80     12  
+  attract     335196  192    64     10  
+  attract     335197  148   108     17  
+  attract     335207  193    63     10  unmapped /
+  piata $3A   817     158    98     15  
+  piata $3B   821     198    58      9  
+  piata $3C   825     184    72     11  
+  piata $3D   829     198    58      9  
+  piata $3E   833     193    63     10  
+  piata $3F   837     187    69     11  
+  50 lines, widest 201 px of 256
+
+drafts: work/patch_narration.json
+  slot        line     px spare +chars  flag
+  dlg02       0008    165    91     14  
+  dlg02       0009    170    86     13  
+  dlg02       0010    126   130     20  
+  dlg02       0011    155   101     16  
+  dlg02       0012    186    70     11  
+  dlg02       0013    191    65     10  
+  dlg02       0014    188    68     10  
+  dlg02       0015    177    79     12  
+  dlg02       0016    147   109     17  
+  dlg02       0017    132   124     19  
+  dlg02       0018    165    91     14  
+  dlg02       0019    191    65     10  
+  dlg02       0020    169    87     14  
+  dlg02       0021     57   199     32  
+  dlg02       0022    187    69     11  
+  dlg02       0023    137   119     19  
+  dlg02       0024    174    82     13  
+  dlg02       0025    184    72     11  
+  dlg02       0026    143   113     18  
+  dlg02       0027    188    68     10  
+  dlg02       0028     95   161     25  
+  dlg02       0029    188    68     10  
+  dlg02       0030    165    91     14  
+  dlg02       0031    126   130     20  
+  dlg02       0032    176    80     12  
+  dlg02       0033    109   147     23  
+  dlg02       0034    186    70     11  
+  dlg02       0035    175    81     13  
+  dlg02       0036    194    62      9  
+  dlg02       0037    159    97     15  
+  dlg02       0038     92   164     26  
+  lz1D4FB6    0058     48   208     33  
+  lz1D4FB6    0059    204    52      8  
+  lz1D4FB6    0060    205    51      8  
+  lz1D4FB6    0061    174    82     13  
+  lz1D4FB6    0062    198    58      9  
+  lz1D4FB6    0063    184    72     11  
+  lz1D4FB6    0065    137   119     19  
+  38 lines, widest 205 px of 256
+
+drafts: work/patch_prologue.json
+  slot        line     px spare +chars  flag
+  dlg02       0008     87   169     27  
+  dlg02       0009     57   199     32  
+  dlg02       0010     59   197     31  
+  dlg02       0011     91   165     26  
+  dlg02       0012     83   173     27  
+  dlg02       0013     87   169     27  
+  dlg02       0014     92   164     26  
+  dlg02       0015     68   188     30  
+  dlg02       0016     90   166     26  
+  dlg02       0017     94   162     26  
+  dlg02       0018    103   153     24  
+  dlg02       0019     83   173     27  
+  dlg02       0020     31   225     36  
+  dlg02       0021     54   202     32  
+  dlg02       0022     90   166     26  
+  dlg02       0023     82   174     28  
+  dlg02       0024     71   185     29  
+  dlg02       0025     90   166     26  
+  dlg02       0026     85   171     27  
+  dlg02       0027     64   192     30  
+  dlg02       0028     61   195     31  
+  dlg02       0029     77   179     28  
+  dlg02       0030     89   167     26  
+  dlg02       0031     76   180     29  
+  dlg02       0032    107   149     24  
+  dlg02       0033     77   179     28  
+  dlg02       0034     92   164     26  
+  dlg02       0035     90   166     26  
+  dlg02       0036     89   167     26  
+  dlg02       0037     90   166     26  
+  dlg02       0038     61   195     31  
+  31 lines, widest 107 px of 256

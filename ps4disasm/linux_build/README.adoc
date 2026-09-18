@@ -1,0 +1,57 @@
+= Building Classic Phantasy Star Games on Linux
+
+This script makes it (super?!?) easy to build the
+assebly of https://en.wikipedia.org/wiki/Phantasy_Star[Phantasy Star
+games] for http://segaretro.org/Sega_Mega_Drive[Mega Drive / Genesis].
+The script is also able to create binary diffs (patches) too.
+http://www.daemonology.net/bsdiff/[BSDiff] and http://xdelta.org/[Xdelta] for example.
+So the goal is to be easy in terms of "run-one-command-and-be-done-with-it".
+The project is very young at the moment. It may eventually cover more games.
+
+The most recent (standalone) version can be found from
+https://github.com/Zuccace/mdps-asm-builder
+
+*Patches and issues should be targeted to the project above.*
+
+== Dependencies
+It should be pretty easy once you have all the dependencies installed in your $PATH.
+
+ * asl from http://john.ccac.rwth-aachen.de:8000/as/ - dev-lang/asl
+on Gentoo https://gitlab.com/roslin-uberlay/roslin[roslin overlay]
+ * gcc - for automatic compiling of p2bin
+ * gawk >= 4.1.1 - for assembly code "live" patching 
+ * Assembly sources of said games: https://github.com/lory90/ps2disasm[II] (most actively tested),
+https://github.com/lory90/ps3disasm[III] (tested once, works), and
+https://github.com/lory90/ps4disasm[IV] (tested once, works)
+
+== Usage
+
+Just make sure build.sh has executable bit, then you can run it.
+`some/path/to/build.sh <file.asm> <out.bin>`
+
+To learn more pass the `--help` -switch alone.
+Or alternatively see the source. ;)
+
+You can place the script wherever you want.
+It should work from anywhere in the filesystem.
+
+== Known limitations
+ * For now Linux users will miss the
+`https://raw.githubusercontent.com/sonicretro/s2disasm/ab771f939679b27398d3bd45c3c390508b0d0a33/build_source/fixheader.cpp[fixheader]`,
+Unless the executable is provided by `--fixheader` cli switch.
+Emulators shouldn't care about wrong header.
+But it's needed for creating binaries that can run on actual hardware.
+ * Won't magically re-compress parts that need
+http://segaretro.org/Kosinski_compression[Kosinski compression].
+It is totally unknown at the moment if the feature will ever
+be implemented into this project.
+
+== Also...
+ * This build script might work with some other disassemblies too.
+It's written that in mind, but *not* tested yet.
+Only Phantasy Star games are being tested.
+
+
+=== TODO / Milestones
+ * ??? (Suggest more features by https://github.com/Zuccace/mdps-asm-builder/issues/new[creating an issue]).
+ * Clean up the code and publish first release.

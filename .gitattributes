@@ -1,0 +1,12 @@
+# No line-ending conversion anywhere: the generators and checkers depend on
+# files being byte-exact (ps4.asm is LF, some tools are CRLF, and
+# examinecredits.py splits on the exact terminator). Binaries marked so diffs
+# stay readable.
+* -text
+*.bin binary
+*.state binary
+*.exs binary
+*.exe binary
+*.dll binary
+*.png binary
+*.nem binary

@@ -1,0 +1,27 @@
+{
+ "combo": {
+  "Astralflare": "AstrlFlare",
+  "Saintfire": "Saint Fire"
+ },
+ "abbr": {
+  "Swordcross": "SwdCross",
+  "Doubleattack": "DblSlash",
+  "Flareshot": "FlarShot",
+  "Burstrock": "BurstRoc",
+  "Positronbolt": "Positron",
+  "Phononmaser": "PhonMasr",
+  "Corrosion": "Corosion",
+  "Eliminate": "Elimnate",
+  "Deathscythe": "DthScyth",
+  "Deathspell": "DthSpell",
+  "Shadowbind": "ShdwBind",
+  "Earthbind": "ErthBind",
+  "Hyperjammer": "HyprJamr",
+  "Moonshade": "MoonShad",
+  "Stasisbeam": "StasisBm",
+  "Mindblast": "MindBlst",
+  "Barrierfield": "Barrier",
+  "Medicalpower": "MedicPwr",
+  "Ethervision": "EthrVisn"
+ }
+}

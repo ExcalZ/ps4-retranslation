@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PS4 Script Proofreader</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --panel:#fff; --ink:#14171a; --muted:#5b6570;
+    --line:#dfe3e8; --accent:#2f6feb; --ok:#1a7f4b; --warn:#9a6700; --bad:#b3261e;
+    --chip:#eef1f5;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#14171a; --panel:#1c2024; --ink:#e8eaed; --muted:#9aa4af;
+    --line:#2c3238; --accent:#7aa2f7; --ok:#5dd39e; --warn:#e3b341; --bad:#f2776a;
+    --chip:#252b31;
+  }}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{position:sticky;top:0;z-index:5;background:var(--panel);
+         border-bottom:1px solid var(--line);padding:10px 16px;
+         display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  h1{font-size:15px;margin:0 12px 0 0;font-weight:650;white-space:nowrap}
+  button,select,input[type=search]{font:inherit;color:var(--ink);background:var(--chip);
+    border:1px solid var(--line);border-radius:6px;padding:5px 10px}
+  button{cursor:pointer}
+  button.primary{background:var(--accent);color:#fff;border-color:transparent}
+  button:disabled{opacity:.5;cursor:default}
+  .grow{flex:1}
+  .stats{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+  main{padding:12px 16px 80px;max-width:1200px;margin:0 auto}
+  .row{background:var(--panel);border:1px solid var(--line);border-radius:8px;
+       padding:10px 12px;margin-bottom:8px}
+  .row.sel{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 25%,transparent)}
+  .meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+        color:var(--muted);font-size:12px;margin-bottom:6px}
+  .id{font-family:ui-monospace,Menlo,Consolas,monospace}
+  .jp{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;
+      background:var(--chip);border-radius:6px;padding:7px 9px;
+      white-space:pre-wrap;word-break:break-all;margin-bottom:7px}
+  textarea{width:100%;min-height:52px;resize:vertical;font:inherit;
+    color:var(--ink);background:transparent;border:1px solid var(--line);
+    border-radius:6px;padding:7px 9px}
+  textarea:focus{outline:2px solid var(--accent);outline-offset:-1px}
+  .bar{display:flex;gap:10px;align-items:center;margin-top:5px;font-size:12px}
+  .gauge{flex:1;height:5px;background:var(--chip);border-radius:3px;overflow:hidden;max-width:260px}
+  .gauge i{display:block;height:100%;background:var(--ok)}
+  .gauge.warn i{background:var(--warn)} .gauge.bad i{background:var(--bad)}
+  .cnt{font-variant-numeric:tabular-nums;color:var(--muted)}
+  .cnt.bad{color:var(--bad);font-weight:600}
+  .cnt.warn{color:var(--warn)}
+  .note{width:100%;margin-top:5px;font-size:12.5px}
+  .us{font-size:12.5px;margin-top:3px;padding-left:7px;font-style:italic;
+      color:var(--warn);border-left:2px solid var(--warn);opacity:.85}
+  .us::before{content:"US localization: ";font-style:normal;font-weight:650}
+  .tag.ours{background:var(--ok);color:#fff}
+  .tag.base{background:var(--warn);color:#fff}
+  canvas.cells{display:block;margin-top:6px;border:1px solid var(--line);
+    image-rendering:pixelated;max-width:100%}
+  .seghdr{margin:16px 0 8px;padding:7px 11px;border-radius:7px;
+    background:var(--chip);border:1px solid var(--line);font-size:12.5px;
+    display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+  .seghdr span{color:var(--muted);font-variant-numeric:tabular-nums}
+  .seghdr.bad{border-color:var(--bad)} .seghdr.bad span{color:var(--bad);font-weight:600}
+  .empty{padding:40px;text-align:center;color:var(--muted)}
+  kbd{background:var(--chip);border:1px solid var(--line);border-bottom-width:2px;
+      border-radius:4px;padding:0 5px;font:11px ui-monospace,monospace}
+  .tag{background:var(--chip);border-radius:99px;padding:1px 8px;font-size:11px}
+  .tag.done{color:var(--ok)} .tag.over{color:var(--bad)}
+  .controls{display:flex;gap:5px;flex-wrap:wrap;margin:5px 0;color:var(--muted);font-size:11px}
+  .controls .ctl{background:var(--chip);border:1px solid var(--line);border-radius:4px;padding:1px 6px}
+  .controls .event{color:var(--accent)}
+  .controls .cuelabel{font-weight:600;color:var(--muted);letter-spacing:.04em}
+  .dlgpreview{margin-top:7px;border:1px solid var(--line);border-radius:6px;
+    padding:7px 8px;background:var(--chip);overflow-x:auto}
+  .dlgpreview>.label{font-size:11px;color:var(--muted);margin-bottom:5px}
+  .dlgpage{display:inline-block;vertical-align:top;background:var(--panel);
+    border:1px solid var(--line);border-radius:5px;padding:5px;margin:0 7px 5px 0}
+  .dlgpage.bad{border-color:var(--bad);box-shadow:inset 0 0 0 1px var(--bad)}
+  .dlgrow{margin-bottom:3px}.dlgrow:last-child{margin-bottom:0}
+  .dlgmarkers{min-height:17px;display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+  .dlgmarkers span,.dlgfooter{font:11px ui-monospace,Menlo,Consolas,monospace;
+    color:var(--accent);background:var(--chip);border-radius:3px;padding:1px 5px}
+  .dlgfooter{display:inline-block;margin-top:4px;color:var(--warn)}
+</style>
+</head>
+<body>
+<header>
+  <h1>PS4 Script Proofreader</h1>
+  <button id="loadScript">Load script JSON</button>
+  <button id="loadTbl" title="Optional: override the embedded decoder table">Override .tbl</button>
+  <button id="save" class="primary" disabled>Save script.json</button>
+  <span class="grow"></span>
+  <input type="search" id="q" placeholder="search text / id...">
+  <select id="filter">
+    <option value="all">All</option>
+    <option value="todo">Untranslated</option>
+    <option value="done">Translated</option>
+    <option value="needs">Needs retranslation (US baseline)</option>
+    <option value="nowt">Nothing written</option>
+    <option value="mine">Our translations</option>
+    <option value="over">Over budget</option>
+    <option value="flag">Has note</option>
+  </select>
+  <span class="stats" id="stats">no file</span>
+</header>
+<main><div class="empty" id="list">
+  Load <code>script_translated.json</code> (menus) or <code>dialogue_full.json</code> (story).<br>
+  The required English fonts and metrics are embedded; no <code>.tbl</code> is needed.<br><br>
+  <kbd>Ctrl</kbd>+<kbd>Enter</kbd> next untranslated &nbsp;.&nbsp; <kbd>Ctrl</kbd>+<kbd>S</kbd> save
+</div></main>
+
+<script>
+"use strict";
+let entries = [], fileName = "script.json", sel = -1;
+/* Enough of the dialogue table is built in to understand every structural
+   token in the JSON.  Loading a .tbl is therefore an optional decoder
+   override, not a prerequisite for either project JSON. */
+const BUILTIN_CTRL = {240:"ctl.F0",241:"ctl.F1",242:"ctl.F2",243:"ctl.F3",
+  244:"ctl.F4",245:"ctl.F5",246:"ctl.F6",247:"ctl.F7",248:"ctl.F8",
+  249:"ctl.F9",250:"ctl.FA",251:"ctl.FB",252:"BR",253:"ctl.FD",
+  254:"ctl.FE",255:"END"};
+let tbl = { dec:{}, enc:{}, ctrl:{...BUILTIN_CTRL}, kanji:{}, kanjiRev:{} };
+
+/* ---------- table (mirrors table.py) ---------- */
+function parseTbl(text){
+  const t = { dec:{}, enc:{}, ctrl:{}, kanji:{}, kanjiRev:{} };
+  for (let ln of text.split(/\r?\n/)){
+    if (!ln.trim() || ln.trimStart().startsWith("#")) continue;
+    let ctrl = false;
+    if (ln.startsWith("*")){ ctrl = true; ln = ln.slice(1); }
+    const i = ln.indexOf("=");
+    if (i < 0) continue;
+    const key = ln.slice(0,i).trim();
+    const val = ln.slice(i+1);
+    if (key.length === 4 && (key[0] === "K" || key[0] === "k")){   // K1AB=<kanji>
+      const ki = parseInt(key.slice(1), 16);
+      if (Number.isNaN(ki)) continue;
+      t.kanji[ki] = val;
+      if (!(val in t.kanjiRev)) t.kanjiRev[val] = ki;
+      continue;
+    }
+    const code = parseInt(key, 16);
+    if (Number.isNaN(code)) continue;
+    if (ctrl) t.ctrl[code] = val;
+    else { t.dec[code] = val; if (!(val in t.enc)) t.enc[val] = code; }
+  }
+  return t;
+}
+/* ---------- GENERATED by tools/proofsync.py ---------- */
+const MENU_IDX = {" ": 0, "!": 50, "'": 84, ",": 85, "-": 49, ".": 83, "0": 27, "1": 28, "2": 29, "3": 30, "4": 31, "5": 32, "6": 33, "7": 34, "8": 35, "9": 36, ":": 52, "?": 51, "A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "H": 8, "I": 9, "J": 10, "K": 11, "L": 12, "M": 13, "N": 14, "O": 15, "P": 16, "Q": 17, "R": 18, "S": 19, "T": 20, "U": 21, "V": 22, "W": 23, "X": 24, "Y": 25, "Z": 26, "a": 57, "b": 58, "c": 59, "d": 60, "e": 61, "f": 62, "g": 63, "h": 64, "i": 65, "j": 66, "k": 67, "l": 68, "m": 69, "n": 70, "o": 71, "p": 72, "q": 73, "r": 74, "s": 75, "t": 76, "u": 77, "v": 78, "w": 79, "x": 80, "y": 81, "z": 82, "ü": 87};
+const MENU_W = [3, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 5, 5, 6, 6, 5, 5, 5, 5, 5, 4, 5, 6, 6, 6, 6, 5, 5, 4, 5, 5, 5, 5, 5, 5, 5, 5, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 2, 5, 2, 8, 8, 8, 8, 5, 5, 5, 5, 5, 4, 5, 5, 2, 3, 5, 3, 6, 5, 5, 5, 5, 4, 5, 4, 5, 4, 6, 5, 5, 5, 2, 2, 3, 8, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const MENU_FONT_B64 = "AAAAAAAAAABgkJDwkJCQAOCQkOCQkOAAYJCAgICQYADgkJCQkJDgAPCAgOCAgPAA8ICA4ICAgABgkICwkJBgAJCQkPCQkJAA4EBAQEBA4AAgICAgIKBAAJCQoMCgkJAAgICAgICA8ACI2KioiIiIAIjIyKiYmIgAYJCQkJCQYADgkJDggICAAGCQkJCQsHAA4JCQ4KCQkABgkIBgEJBgAOBAQEBAQEAAkJCQkJCQYACIiIiIiFAgAIiIiKioqFAAiIhQIFCIiACIiFAgICAgAPAQEGCAgPAAYJCQkJCQYABAwEBAQEDgAGCQECBAgPAA4BAQYBAQ4ACQkJDwEBAQAPCAgOAQEOAAYICA4JCQYADwEBAgQEBAAGCQkGCQkGAAYJCQcBAQYAAAPGZmZmY8AAAYOBgYGDwAADxmBhwwfgAAPGYMBmY8AAAMHCxMfgwAAH5gfAYGfAAAPGB8ZmY8AAB+ZmYMGBgAADxmPGZmPAAAPGZmPgY8AAAAAAAACgoAAAAAAA4KDgAAAADgAAAAAICAgICAAIAAYJAQIEAAQAAAAACAAIAAAAAAAABgkJBgAAAAAAAAgEAAb3c6HQ8HAACwcODAgAAAAABgEHCQcACAgOCQkJDgAAAAYJCAkGAAEBBwkJCQcAAAAGCQ8IBwAGCA4ICAgIAAAABwkJBwEGCAgOCQkJCQAIAAgICAgIAAQABAQEBAQICAgJCgwKCQAICAgICAgEAAAADQqKioqAAAAOCQkJCQAAAAYJCQkGAAAADgkJDggIAAAHCQkHAQEAAAoMCAgIAAAABwgGAQ4AAAgOCAgIBgAAAAkJCQkHAAAACgoKBAQAAAAKioqKhQAAAAkJBgkJAAAACQkJBwEGAAAPAQYIDwAAAAAAAAAIAAgIAAAAAAAAAAAAAAAABAgAAAABgYAAAAkACQkJCQcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==";
+const MENU_CELLS = {"00:001": [4, 7, 6, 8, 7, 8, 7, 7, 3, 8, 6, 8, 7, 8, 4, 6, 6, 8, 9, 8, 7, 6, 7, 8, 7, 8, 1, 7, 8, 8, 8, 3, 7, 8, 7, 6, 7, 7, 7, 7, 6, 7, 5, 8, 5, 6, 6, 6, 8, 7, 4, 5, 5, 4, 6, 5, 7, 7, 6, 8, 7, 7, 7, 8, 7, 8, 7, 6, 6, 7, 6, 7, 6, 7, 8, 7, 9, 7, 7, 9, 6, 8, 6, 7, 9, 8, 7, 8, 7, 8, 8, 7, 8, 7, 9, 8, 7, 7, 8, 6, 6, 7, 7, 7, 8, 8, 8, 6, 8, 8, 8, 7, 8, 8, 8, 8, 7, 1, 4, 7, 7, 6, 1, 6, 6, 4, 4, 5, 8, 8, 8, 8, 7, 7, 8, 8, 7, 7, 5, 1, 4, 7, 6, 5, 6, 7, 7, 8, 9, 7, 6, 6, 7, 9, 6, 7, 7, 8, 6, 7], "00:002": [3, 3, 4, 3, 4, 5, 4, 5, 5, 2, 3, 4, 3, 4, 4, 3, 5, 3, 4, 4, 3, 4, 4, 3, 4, 5, 5, 5, 6, 4, 5, 4, 3, 2, 4, 5, 5, 4, 4, 3], "00:003": [7, 5, 7, 3, 6, 4, 7, 5, 4, 4, 5, 4, 4, 6, 7, 5, 8, 5, 5, 5, 5, 3, 3, 7, 6, 6, 4, 4, 4, 7, 6, 8, 6, 3, 7, 4, 6, 7, 4, 5, 4, 5, 4, 4, 8, 5, 7, 5, 3, 4, 5, 3, 7, 5], "00:004": [3, 2, 3, 7, 5, 4, 3, 7, 3, 6, 3, 10, 3, 9, 4, 5, 4, 8, 4, 7, 3, 7, 3, 3, 7, 4, 3, 6, 3, 10, 9, 5, 4, 9, 8, 2, 7, 9, 6, 8, 6, 9, 2, 4, 8, 8, 10, 8, 9, 10, 6, 8, 4, 6]};
+const MENU_LIMITS = {"00:001": 10, "00:002": 7, "00:003": 8, "00:004": 10, "00:005": 10, "00:006": 8, "00:007": 16, "00:008": [[0, 1, 24], [1, 2, null], [2, 8, 7]], "02:000": [[0, 11, 4], [11, 19, 8], [19, 22, null]], "02:001": 10, "02:002": 10, "03:000": 4, "03:001": [[0, 8, 8], [8, 11, null]]};
+const EN_SLOTS = {" ": 0, "!": 171, "\"": 173, "'": 174, "(": 179, ")": 209, ",": 178, "-": 176, ".": 177, "0": 81, "1": 82, "2": 83, "3": 84, "4": 85, "5": 86, "6": 87, "7": 88, "8": 89, "9": 90, ":": 175, ";": 27, "?": 172, "A": 182, "B": 183, "C": 184, "D": 185, "E": 186, "F": 187, "G": 188, "H": 189, "I": 190, "J": 191, "K": 192, "L": 193, "M": 194, "N": 195, "O": 196, "P": 197, "Q": 198, "R": 199, "S": 200, "T": 201, "U": 202, "V": 203, "W": 204, "X": 205, "Y": 206, "Z": 207, "a": 1, "b": 2, "c": 3, "d": 4, "e": 5, "f": 6, "g": 7, "h": 8, "i": 9, "j": 10, "k": 11, "l": 12, "m": 13, "n": 14, "o": 15, "p": 16, "q": 17, "r": 18, "s": 19, "t": 20, "u": 21, "v": 22, "w": 23, "x": 24, "y": 25, "z": 26};
+const VWF_IDX = {" ": 0, "!": 58, "\"": 61, "%": 63, "'": 54, ",": 55, "-": 60, ".": 53, "0": 64, "1": 65, "2": 66, "3": 67, "4": 68, "5": 69, "6": 70, "7": 71, "8": 72, "9": 73, ":": 57, "?": 59, "A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "H": 8, "I": 9, "J": 10, "K": 11, "L": 12, "M": 13, "N": 14, "O": 15, "P": 16, "Q": 17, "R": 18, "S": 19, "T": 20, "U": 21, "V": 22, "W": 23, "X": 24, "Y": 25, "Z": 26, "a": 27, "b": 28, "c": 29, "d": 30, "e": 31, "f": 32, "g": 33, "h": 34, "i": 35, "j": 36, "k": 37, "l": 38, "m": 39, "n": 40, "o": 41, "p": 42, "q": 43, "r": 44, "s": 45, "t": 46, "u": 47, "v": 48, "w": 49, "x": 50, "y": 51, "z": 52, "·": 56};
+const VWF_W = [4, 8, 8, 8, 8, 8, 8, 8, 8, 5, 7, 8, 8, 8, 8, 8, 8, 9, 8, 8, 7, 8, 8, 8, 8, 9, 8, 7, 7, 7, 7, 7, 7, 7, 7, 3, 5, 7, 4, 8, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 7, 7, 3, 3, 3, 3, 3, 3, 9, 5, 6, 6, 8, 7, 5, 7, 7, 7, 7, 7, 7, 7, 7, 4, 4, 4, 4, 4, 4];
+const VWF_FONT_B64 = "AAAAAAAAAAAAAAAAAAAAAAAAABA4bMbGxv7GxsYAAAAAAAD8xsbG/MbGxsb8AAAAAAAAfMbGwMDGxsbGfAAAAAAAAPjMxsbGxsbGzPgAAAAAAAD+wMDA+MDAwMD+AAAAAAAA/sDAwPjAwMDAwAAAAAAAAHzGxsDexsbGxnwAAAAAAADGxsbG/sbGxsbGAAAAAAAA8GBgYGBgYGBg8AAAAAAAADwYGBgY2NjY2HAAAAAAAADGzNjw4ODw2MzGAAAAAAAAwMDAwMDAwMDA/gAAAAAAAILG7v7W1sbGxsYAAAAAAADG5ub29t7ezs7GAAAAAAAAfMbGxsbGxsbGfAAAAAAAAPzGxsb8wMDAwMAAAAAAAAB8xsbGxsb2zsZ/AAAAAAAA/MbGxvzYzMzGxgAAAAAAAHzGwMB8BgbGxnwAAAAAAAD8MDAwMDAwMDAwAAAAAAAAxsbGxsbGxsbGfAAAAAAAAMbGxsbGbGw4OBAAAAAAAADGxtbW1tbW/u5EAAAAAAAAxsZsbDg4bGzGxgAAAAAAAIHDZjwYGBgYGBgAAAAAAAD+DAwYGDAwYGD8AAAAAAAAAAAAAPgMfMzMfAAAAAAAAMDAwMD4zMzMzPgAAAAAAAAAAAAAeMzAwMx4AAAAAAAADAwMDHzMzMzMfAAAAAAAAAAAAAB4zPzAxHgAAAAAAAAYMDAw/DAwMDAwAAAAAAAAAAAAAHzMzMzMfAx4AAAAAMDAwMD4zMzMzMwAAAAAAAAAwMAAwMDAwMDAAAAAAAAAADAwADAwMDAwMDDgAAAAAMDAwMzY8ODw2MwAAAAAAADgYGBgYGBgYGBgAAAAAAAAAAAAAPzW1tbW1gAAAAAAAAAAAAD4zMzMzMwAAAAAAAAAAAAAeMzMzMx4AAAAAAAAAAAAAPjMzMzM+MDAAAAAAAAAAAB8zMzMzHwMDAAAAAAAAAAAzNzgwMDAAAAAAAAAAAAAAHjAeAzMeAAAAAAAAAAwMDD8MDAwMDAAAAAAAAAAAAAAzMzMzMx8AAAAAAAAAAAAAMbGbGw4EAAAAAAAAAAAAADW1tb+bEQAAAAAAAAAAAAAxmw4OGzGAAAAAAAAAAAAAMzMzMzMfAz4AAAAAAAAAAD8DBgwYPwAAAAAAAAAAAAAAAAAAMDAAAAAAADAwECAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwMBAgAAAAAAAAAAAwMAAAAAAAAAAAAAAAADAwAAAwMAAAAAAAAAAAMDAwMDAwMAAwMAAAAAAAAB+w8MOGBgYABgYAAAAAAAAAAAAAPAAAAAAAAAAAAAA2NiQSAAAAAAAAAAAAAAAANjYSJAAAAAAAAAAAAAAAAAAQqSkSBAQJEpKhAAAAAAAAHjMzMzMzMzMzHgAAAAAAABg4GBgYGBgYGDwAAAAAAAAeMzMzBgwYMDA/AAAAAAAAHjMzAw4DAzMzHgAAAAAAAAYGDg4WFjY/BgYAAAAAAAA/MDAwPjMDMzMeAAAAAAAAHjAwMD4zMzMzHgAAAAAAAD8zMzMGBgwMDAwAAAAAAAAeMzMzHjMzMzMeAAAAAAAAHjMzMzMfAwMDHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+const VWF_BPG = 16;
+const VWF_CELL = 8, VWF_LINE_PX = 256;
+/* ---------- end generated ---------- */
+/* Narration screens (attract-mode prologue, pre-Piata cutscene) render with a
+   VARIABLE-WIDTH font: one line per entry, no {BR}, and the budget is 256px
+   rather than a column count. The cap sits under 256 because the width model
+   is an estimate calibrated to a measured mean, not the renderer's own table. */
+const NARR_STREAM = 0x1D4FB6, NARR_LO = 58, NARR_HI = 65;
+const NARR_PX = VWF_LINE_PX;
+function isNarration(e){
+  // dialogue_full region 2 is the attract narration. script_translated also
+  // has a region 2, but those entries carry segment bounds and are menu text.
+  if (e.region === 2 && e.seg_start === undefined) return true;
+  if (e.stream !== NARR_STREAM) return false;
+  const m = /#(\d+)/.exec(e.id || "");
+  return !!m && +m[1] >= NARR_LO && +m[1] <= NARR_HI;
+}
+function isDialogue(e){
+  return !isMenu(e) && !isNarration(e) &&
+         (e.stream !== undefined || (e.region !== undefined && e.seg_start === undefined));
+}
+const stripTokens = s => s.replace(/\{[^}]*\}/g, "");
+function linePx(text){
+  // diawidth.bin advances already include the inter-character gap, so a
+  // line's width is simply the sum. Exact, not estimated.
+  let w = 0;
+  for (const ch of text){
+    const gi = VWF_IDX[ch];
+    if (gi !== undefined) w += VWF_W[gi];
+  }
+  return w;
+}
+/* Characters the EN font has no glyph for. It has no ';' and no brackets,
+   so text that scores fine on bytes can still be unrenderable. */
+function unsupported(text){
+  const bad = [];
+  for (const ch of text)
+    if (VWF_IDX[ch] === undefined && !bad.includes(ch)) bad.push(ch);
+  return bad;
+}
+/* ---- menu face: cells, not pixels ----------------------------------
+   Menu fields are charged per 8px cell, and the prerenderer composes with
+   a plain sum of menuwidth advances (no kerning), so this reproduces
+   tools/menustrip.py exactly. Verified 304/304 against the cell counts
+   already recorded in menustripidx.bin. */
+const isMenu = e => typeof e.segment === "string";
+let _rowIdx = null;
+function menuRow(e){
+  if (!_rowIdx){
+    _rowIdx = new Map(); const n = {};
+    for (const x of entries) if (isMenu(x)){
+      n[x.segment] = (n[x.segment] || 0); _rowIdx.set(x.id, n[x.segment]++);
+    }
+  }
+  return _rowIdx.get(e.id);
+}
+/* Which menu segments COMPOSE through the menu VWF, and the cell field each
+   is drawn in.  MENU_LIMITS is generated by tools/proofsync.py from the
+   build's own budgets (menustrip, combonames, guildnames, spacemenu and
+   trpatch8's index split), so the list cannot drift from what ships.  A limit
+   is a cell count, or [from, to, cells] index ranges where a segment mixes
+   roles (cells null = uncapped).  Every one of these is assembled from the
+   JSON text by the source build, so none keeps a fixed-bank byte budget. */
+const VWF_SEGS = Object.keys(MENU_LIMITS);
+/* Segments whose rows are several {FC}-separated lines, each composed with
+   the menu face into a window this many cells wide (tools/itemdesc.py). */
+const LINE_SEGS = {"01:003": 24};
+const SHOP_PX = 255;   // dialogue_reflow.LIMIT: the vendor's box in the dialogue face
+const menuLines = t => (t || "").split("{FC}").map(l => l.replace(/\{[^}]*\}/g, ""));
+function drawMenuLines(canvas, text, budget){
+  const S = 2, H = 8, lines = menuLines(text);
+  const W = (budget + 1) * 8;
+  canvas.width = W * S; canvas.height = H * S * lines.length;
+  canvas.style.width = (W * S) + "px";
+  const g = canvas.getContext("2d");
+  const cs = getComputedStyle(document.body);
+  g.fillStyle = (cs.getPropertyValue("--chip") || "#eee").trim();
+  g.fillRect(0, 0, W * S, H * S * lines.length);
+  g.fillStyle = "rgba(179,38,30,.18)";
+  g.fillRect(budget * 8 * S, 0, 8 * S, H * S * lines.length);
+  g.fillStyle = "rgba(128,128,128,.45)";
+  for (let x = 8; x < W; x += 8) g.fillRect(x * S, 0, 1, H * S * lines.length);
+  const f = menuBytes();
+  g.fillStyle = (cs.getPropertyValue("--ink") || "#111").trim();
+  lines.forEach((line, i) => {
+    let pen = 0;
+    for (const ch of line){
+      const c = MENU_IDX[ch];
+      if (c === undefined) continue;
+      for (let y = 0; y < 8; y++){
+        const b = f[c * 8 + y];
+        for (let x = 0; x < 8; x++)
+          if (b & (0x80 >> x)) g.fillRect((pen + x) * S, (i * H + y) * S, S, S);
+      }
+      pen += MENU_W[c];
+    }
+  });
+}
+function menuLimit(e){
+  const l = MENU_LIMITS[e.segment];
+  if (Array.isArray(l)){
+    const r = menuRow(e);
+    for (const [a, b, c] of l) if (r >= a && r < b) return c;
+    return null;
+  }
+  return l === undefined ? null : l;
+}
+function menuPx(text){
+  let w = 0;
+  for (const ch of text){
+    const c = MENU_IDX[ch];
+    if (c !== undefined) w += MENU_W[c];
+  }
+  return w;
+}
+const menuCells = text => Math.max(1, Math.ceil(menuPx(text) / 8));
+function menuMissing(text){
+  const bad = [];
+  for (const ch of text)
+    if (MENU_IDX[ch] === undefined && !bad.includes(ch)) bad.push(ch);
+  return bad;
+}
+let _menuCache = null;
+function menuBytes(){
+  if (_menuCache) return _menuCache;
+  const bin = atob(MENU_FONT_B64);
+  _menuCache = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) _menuCache[i] = bin.charCodeAt(i);
+  return _menuCache;
+}
+/* Draw a menu string at true size over its cell grid, so it is visible
+   which cell a name lands in and how much of the last one it wastes. */
+function drawMenu(canvas, text, budget){
+  const S = 3, H = 8;
+  const cells = Math.max(menuCells(text), budget || 1) + 1;
+  const W = cells * 8;
+  canvas.width = W * S; canvas.height = H * S;
+  canvas.style.width = (W * S) + "px";
+  const g = canvas.getContext("2d");
+  const cs = getComputedStyle(document.body);
+  g.fillStyle = (cs.getPropertyValue("--chip") || "#eee").trim();
+  g.fillRect(0, 0, W * S, H * S);
+  const used = menuCells(text);
+  if (budget){                       // shade anything past the recorded budget
+    g.fillStyle = "rgba(179,38,30,.18)";
+    g.fillRect(budget * 8 * S, 0, (W - budget * 8) * S, H * S);
+  }
+  g.fillStyle = "rgba(128,128,128,.45)";
+  for (let x = 8; x < W; x += 8) g.fillRect(x * S, 0, 1, H * S);
+  const f = menuBytes();
+  g.fillStyle = (cs.getPropertyValue("--ink") || "#111").trim();
+  let pen = 0;
+  for (const ch of text){
+    const c = MENU_IDX[ch];
+    if (c === undefined) continue;
+    for (let y = 0; y < 8; y++){
+      const b = f[c * 8 + y];
+      for (let x = 0; x < 8; x++)
+        if (b & (0x80 >> x)) g.fillRect((pen + x) * S, y * S, S, S);
+    }
+    pen += MENU_W[c];
+  }
+  return used;
+}
+
+let _fontCache = null;
+function fontBytes(){
+  if (_fontCache) return _fontCache;
+  const bin = atob(VWF_FONT_B64);
+  _fontCache = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) _fontCache[i] = bin.charCodeAt(i);
+  return _fontCache;
+}
+/* Draw one narration line at true size over the 8px cell grid, so it is
+   visible where each glyph lands and how many cells the line really costs. */
+function drawLine(canvas, text){
+  const S = 2, W = VWF_LINE_PX, H = 16;
+  canvas.width = W * S; canvas.height = H * S;
+  canvas.style.width = (W * S) + "px";
+  const g = canvas.getContext("2d");
+  const cs = getComputedStyle(document.body);
+  g.fillStyle = (cs.getPropertyValue("--chip") || "#eee").trim();
+  g.fillRect(0, 0, W * S, H * S);
+  g.fillStyle = "rgba(128,128,128,.30)";
+  for (let x = VWF_CELL; x < W; x += VWF_CELL) g.fillRect(x * S, 0, 1, H * S);
+  g.fillStyle = "rgba(128,128,128,.55)";
+  for (let x = VWF_CELL * 4; x < W; x += VWF_CELL * 4) g.fillRect(x * S, 0, 1, H * S);
+  const f = fontBytes();
+  const ink = (cs.getPropertyValue("--ink") || "#111").trim();
+  let pen = 0;
+  for (const ch of text){
+    const gi = VWF_IDX[ch];
+    if (gi === undefined) continue;
+    g.fillStyle = (pen + VWF_W[gi] > W) ? "#b3261e" : ink;
+    for (let y = 0; y < 16; y++){
+      const b = f[gi * VWF_BPG + y];
+      for (let x = 0; x < 8; x++)
+        if (b & (0x80 >> x) && pen + x < W) g.fillRect((pen + x) * S, y * S, S, S);
+    }
+    pen += VWF_W[gi];
+  }
+  return pen;
+}
+
+/* encode -> byte length, or {err} if a char has no mapping */
+function encodeLen(text){
+  let n = 0, i = 0;
+  const revCtrl = {};
+  for (const k in tbl.ctrl) revCtrl[tbl.ctrl[k]] = +k;
+  while (i < text.length){
+    if (text[i] === "{"){
+      const j = text.indexOf("}", i);
+      if (j < 0) return {err:"unclosed brace"};
+      let tok = text.slice(i+1, j);
+      // {K1AB} is an unidentified kanji and always costs two bytes
+      if (tok.length === 4 && (tok[0] === "K" || tok[0] === "k")){
+        if (Number.isNaN(parseInt(tok.slice(1),16))) return {err:"bad token " + tok};
+        n += 2; i = j+1; continue;
+      }
+      // Controls may carry operand bytes, written {ctl.F4:01} / {ctl.FA:DA02}.
+      // Those bytes are engine parameters, not text - they must survive
+      // editing untouched, and they count against the budget.
+      let extra = 0, c = tok.indexOf(":");
+      if (c >= 0){
+        const oh = tok.slice(c+1);
+        if (!/^([0-9a-fA-F]{2})+$/.test(oh)) return {err:"bad operand in " + tok};
+        extra = oh.length / 2;
+        tok = tok.slice(0, c);
+      }
+      const code = (tok in revCtrl) ? revCtrl[tok] : parseInt(tok,16);
+      if (Number.isNaN(code)) return {err:"bad token " + tok};
+      n += (code > 0xFF ? 2 : 1) + extra;
+      i = j+1; continue;
+    }
+    // English first. The .tbl is the Japanese DECODER - it carries the 26
+    // capitals but no lowercase, so scoring English against it failed on
+    // essentially every line. Every English slot is one byte.
+    if (text[i] in EN_SLOTS){ n += 1; i += 1; continue; }
+    if (text[i] in (tbl.kanjiRev||{})){ n += 2; i += 1; continue; } // two-byte kanji
+    let hit = false;
+    for (const L of [3,2,1]){
+      const frag = text.slice(i, i+L);
+      if (frag in tbl.enc){ n += tbl.enc[frag] > 0xFF ? 2 : 1; i += L; hit = true; break; }
+    }
+    if (!hit) return {err:"no mapping for " + JSON.stringify(text[i])};
+  }
+  return {n:n};
+}
+/* Which budget group an entry belongs to, and what its cap is.
+   8x8 script.json  -> segments bounded by hardcoded anchors (seg_start/seg_end)
+   dialogue.json    -> one group per LZSS stream or ROM region. A stream has no
+                       fixed per-message space; what matters is that the whole
+                       group still recompresses into the original span, so the
+                       cap is the group's original byte total. */
+function groupKey(e){
+  if (e.seg_start !== undefined) return "seg:" + e.segment;
+  if (e.stream !== undefined)    return "stream:" + e.stream.toString(16).toUpperCase();
+  if (e.region !== undefined)    return "region:" + e.region;
+  return "all";
+}
+function groupLabel(e){
+  if (e.seg_start !== undefined)
+    return "segment " + e.segment + "  0x" + e.seg_start.toString(16).toUpperCase()
+         + "–0x" + e.seg_end.toString(16).toUpperCase();
+  if (e.stream !== undefined) return "LZSS stream $" + e.stream.toString(16).toUpperCase();
+  if (e.region !== undefined) return "ROM region " + e.region;
+  return "all entries";
+}
+/* ---------- state ----------
+   Budgets are per SEGMENT, not per message: the game finds text by counting
+   $FE terminators from a hardcoded base, so a message may be any length as
+   long as its segment still fits between its anchors. */
+/* Provenance is carried by WHICH FIELD holds the text, so this is a fact
+   about the entry rather than a guess:
+     ours     - we wrote `en`
+     baseline - no `en`; the build will ship the official US line in `us`
+     empty    - nothing written for this line at all
+   Without this the US baseline reads as finished work, which is the one way
+   this port can quietly lose track of what still needs translating. */
+function provenance(e){
+  if ((e.en || "").trim()) return "ours";
+  return (e.us || "").trim() ? "baseline" : "empty";
+}
+function statusOf(e){
+  const en = (e.en||"").trim();
+  const term = e.tail ? 0 : 1;              // the tail entry has no terminator
+  if (!en) return {kind:"todo", n:e.raw_len};
+  const r = encodeLen(en);
+  if (r.err) return {kind:"err", err:r.err, n:e.raw_len};
+  return {kind:"done", n:r.n + term};
+}
+/* Original fixed-width footprint, retained only as a structural comparison. */
+function footprintJP(hex){
+  const b = []; for (let i = 0; i < hex.length; i += 2) b.push(parseInt(hex.substr(i,2),16));
+  let col = 0, row = 0, peak = 0, longest = 0, i = 0;
+  while (i < b.length){
+    const c = b[i];
+    if (c >= 0xF0){
+      let w = ({0xF2:1,0xF4:1,0xF9:1,0xFA:2})[c] || 0;
+      if (c === 0xF2 && i+1 < b.length && [3,4,11].includes(b[i+1])) w += 1;
+      if (c === 0xFC){ longest = Math.max(longest,col); col = 0; row += 1; }
+      else if (c === 0xFD || c === 0xF5){ longest = Math.max(longest,col); col = 0; row = 0; }
+      i += 1 + w;
+    } else {
+      col += 2; i += (c >= 0xE0 && c <= 0xEF) ? 2 : 1;
+      if (col >= 32){ longest = Math.max(longest,col); col = 0; row += 1; }
+    }
+    peak = Math.max(peak, row);
+  }
+  return {rows: peak+1, longest: Math.max(longest,col)};
+}
+/* English uses the dialogue VWF.  The renderer has 256 pixels = 32 cells.
+   Explicit {BR} starts a row; a run wider than 256px is an authored-line
+   overflow even though the engine will eventually wrap it automatically. */
+function footprintEN(text){
+  let px = 0, row = 0, peak = 0, longest = 0, authoredPeak = 0, i = 0;
+  while (i < text.length){
+    if (text[i] === "{"){
+      const j = text.indexOf("}", i);
+      if (j < 0) break;
+      const tok = text.slice(i+1, j).split(":")[0];
+      if (tok === "BR"){
+        longest = Math.max(longest, Math.min(px,VWF_LINE_PX)); authoredPeak=Math.max(authoredPeak,px); px=0; row+=1;
+      } else if (tok === "ctl.FD" || tok === "ctl.F5"){
+        longest = Math.max(longest, Math.min(px,VWF_LINE_PX)); authoredPeak=Math.max(authoredPeak,px); px=0; row=0;
+      }
+      i = j + 1;
+    } else {
+      const gi = VWF_IDX[text[i]];
+      px += gi === undefined ? 8 : VWF_W[gi]; i += 1;
+      if (px >= VWF_LINE_PX){ longest=Math.max(longest,VWF_LINE_PX); px-=VWF_LINE_PX; row+=1; }
+    }
+    peak = Math.max(peak, row);
+  }
+  authoredPeak=Math.max(authoredPeak,px); longest=Math.max(longest,px);
+  return {rows:peak+1, longestPx:longest, authoredPx:authoredPeak,
+          cells:Math.ceil(authoredPeak/VWF_CELL)};
+}
+
+function drawNarration(canvas, text){
+  const rows=(text||"").split(/\r?\n/), S=2, W=VWF_LINE_PX, H=16;
+  canvas.width=W*S; canvas.height=Math.max(1,rows.length)*H*S;
+  canvas.style.width=(W*S)+"px";
+  const g=canvas.getContext("2d"), cs=getComputedStyle(document.body);
+  g.fillStyle=(cs.getPropertyValue("--chip")||"#eee").trim(); g.fillRect(0,0,canvas.width,canvas.height);
+  for(let r=0;r<rows.length;r++){
+    const tmp=document.createElement("canvas"); drawLine(tmp,rows[r]);
+    g.drawImage(tmp,0,r*H*S);
+  }
+}
+
+const PORTRAITS = {
+  0:"Portrait off", 1:"Rudy", 2:"Laila", 3:"Hahn", 4:"Thray",
+  5:"Pyke", 6:"Fal", 7:"Frena", 8:"Forren", 9:"Raja",
+  10:"Shess", 11:"Siam", 12:"Saya", 13:"Holt", 14:"Principal",
+  15:"Dorin", 16:"Pana", 17:"Hunter Guild", 18:"Baker", 19:"Zio",
+  20:"Juza", 21:"Gyuna", 24:"Esper Chief", 26:"Gungbius Priest",
+  27:"Gungbius Bishop", 28:"Lashiec", 32:"Fortune Teller"
+};
+function ctlLabel(name, operand){
+  const op=operand||"";
+  if(name==="ctl.F4"){
+    const id=parseInt(op.slice(0,2),16);
+    return "["+(PORTRAITS[id] || ("Portrait $"+op.slice(0,2)))+"]";
+  }
+  if(name==="ctl.F2") return "[Action $"+op+"]";
+  if(name==="ctl.F9") return "[Delay $"+op+"]";
+  if(name==="ctl.FA") return "[Conditional $"+op+"]";
+  if(name==="ctl.F6") return "[Event marker]";
+  if(name==="ctl.F7" || name==="ctl.FE" || name==="END") return "[End]";
+  return "["+name+(op?" $"+op:"")+"]";
+}
+function dialoguePages(text){
+  const pages=[{rows:[{text:"",marks:[]}],footer:""}];
+  let page=pages[0], row=page.rows[0], px=0, pendingPortrait=null;
+  const nextRow=()=>{ row={text:"",marks:[]}; page.rows.push(row); px=0; };
+  const nextPage=footer=>{
+    page.footer=footer; page={rows:[{text:"",marks:[]}],footer:""};
+    pages.push(page); row=page.rows[0]; px=0;
+  };
+  const addText=s=>{ for(const ch of s){
+    // Portrait changes often sit immediately before $FD. They affect the
+    // speech after the wait, not the otherwise-finished row before it, so
+    // anchor the marker to the next visible character rather than the opcode.
+    const gi=VWF_IDX[ch], w=gi===undefined?8:VWF_W[gi];
+    if(px+w>VWF_LINE_PX) nextRow();
+    if(pendingPortrait!==null){ row.marks.push(pendingPortrait); pendingPortrait=null; }
+    row.text+=ch; px+=w;
+  }};
+  let pos=0,m; const re=/\{([^}:]+)(?::([^}]+))?\}/g;
+  while((m=re.exec(text||""))){
+    addText(text.slice(pos,m.index));
+    const name=m[1], op=m[2]||"";
+    if(name==="BR" || name==="ctl.FC") nextRow();
+    else if(name==="ctl.FD") nextPage("[A] Continue");
+    else if(name==="ctl.F5") nextPage("[Yes / No prompt]");
+    else if(name==="ctl.F4") pendingPortrait=ctlLabel(name,op);
+    else row.marks.push(ctlLabel(name,op));
+    pos=re.lastIndex;
+  }
+  addText((text||"").slice(pos));
+  if(pages.length>1){
+    const p=pages[pages.length-1];
+    if(p.rows.length===1 && !p.rows[0].text && !p.rows[0].marks.length && !p.footer) pages.pop();
+  }
+  return pages;
+}
+function drawDialoguePreview(host,text){
+  host.innerHTML='<div class="label">Working English VWF preview · 32 cells × 2 rows per page</div>';
+  for(const p of dialoguePages(text)){
+    const box=document.createElement("div");
+    box.className="dlgpage"+(p.rows.length>2?" bad":"");
+    for(const r of p.rows){
+      const rd=document.createElement("div"); rd.className="dlgrow";
+      const marks=document.createElement("div"); marks.className="dlgmarkers";
+      for(const label of r.marks){
+        const s=document.createElement("span"); s.textContent=label; marks.appendChild(s);
+      }
+      rd.appendChild(marks);
+      const cv=document.createElement("canvas"); cv.className="cells";
+      cv.title="Actual dialogue VWF at 2x scale; vertical rules are 8-pixel cells";
+      drawLine(cv,r.text); rd.appendChild(cv); box.appendChild(rd);
+    }
+    if(p.footer){
+      const f=document.createElement("div"); f.className="dlgfooter";
+      f.textContent=p.footer; box.appendChild(f);
+    }
+    host.appendChild(box);
+  }
+}
+
+const CONTROL_NAMES = {
+  "BR":"new row", "ctl.FC":"new row", "ctl.FD":"wait for button / next page",
+  "ctl.F5":"Yes/No prompt", "ctl.F4":"portrait", "ctl.F9":"timed delay",
+  "ctl.F2":"event action", "ctl.F6":"event marker", "ctl.F7":"terminate",
+  "ctl.FA":"conditional branch", "ctl.FE":"terminate", "ctl.FF":"terminate"
+};
+/* Rows and page breaks are already drawn, as rows and as separate pages, by
+   the preview immediately below this line - so naming them here too was 60%
+   of every cue run (216 chips on the worst entry) and buried the portrait
+   changes, which are the one thing the preview genuinely cannot show.  Cue
+   only what is not otherwise visible, and label the run once instead of once
+   per chip. */
+const CUE_SKIP = new Set(["BR","ctl.FC","ctl.FD"]);
+function controlCue(label,text){
+  const found=[]; let m; const re=/\{([^}:]+)(?::([^}]+))?\}/g;
+  while ((m=re.exec(text||""))){
+    const name=m[1];
+    if (CUE_SKIP.has(name)) continue;
+    const desc=name==="ctl.F4" ? ctlLabel(name,m[2]||"") : (CONTROL_NAMES[name] || name);
+    found.push('<span class="ctl event" title="'+escapeHtml(name+(m[2]?":"+m[2]:""))+'">'+escapeHtml(desc+(m[2]?' ['+m[2]+']':''))+'</span>');
+  }
+  if (!found.length) return "";
+  return '<span class="cuelabel">'+escapeHtml(label)+'</span>'+found.join("");
+}
+/* live per-group accounting over the whole entry list */
+function segTotals(){
+  const t = {};
+  for (const e of entries){
+    const k = groupKey(e);
+    const s = t[k] || (t[k] = {used:0, cap:0, count:0, budgeted:false, label:groupLabel(e)});
+    s.count += 1;
+    s.used += statusOf(e).n;
+    // 8x8 groups have a hard span; dialogue groups are capped by their own
+    // original size, since the rebuilt buffer must recompress into that space
+    // Region 2 outgrew its 538-byte span and is relocated wholesale into the
+    // $0E7600 arena, so its budget is the arena, not the original span.
+    // The newer EN build reads dialogue directly from ROM, so neither its old
+    // compressed stream size nor its JP byte count is a budget. The four menu
+    // strip groups are also generated separately and are constrained by their
+    // visible cell fields, not by the original text-bank span.
+    // script_translated rows are all assembled from this JSON by the source
+    // build (menustrip, enemynames, itemdesc, soundtest, ...), so the JP-ROM
+    // span a segment once occupied is no budget for any of them any more.
+    const fixedBank = e.seg_start !== undefined && !isMenu(e);
+    if(fixedBank){ s.budgeted=true; s.cap=e.seg_end-e.seg_start; }
+  }
+  return t;
+}
+let SEG = {};
+const segOf = e => SEG[groupKey(e)] || {used:0, cap:1, label:""};
+function visible(){
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const f = document.getElementById("filter").value;
+  return entries.filter(e=>{
+    const s = statusOf(e);
+    if (f==="todo" && s.kind!=="todo") return false;
+    if (f==="done" && s.kind!=="done") return false;
+    if (f==="over" && !(s.kind==="err" || (segOf(e).budgeted && segOf(e).used > segOf(e).cap))) return false;
+    if (f==="needs" && provenance(e)!=="baseline") return false;
+    if (f==="nowt"  && provenance(e)!=="empty") return false;
+    if (f==="mine"  && provenance(e)!=="ours") return false;
+    if (f==="flag" && !(e.note||"").trim()) return false;
+    if (q){
+      const hay = (e.id+" "+(e.jp||"")+" "+(e.en||"")+" "+(e.note||"")).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+function refreshStats(){
+  const done = entries.filter(e=>statusOf(e).kind==="done").length;
+  const errs = entries.filter(e=>statusOf(e).kind==="err").length;
+  const bad  = Object.values(SEG).filter(s=>s.budgeted && s.used>s.cap).length;
+  const ours = entries.filter(e=>provenance(e)==="ours").length;
+  const base = entries.filter(e=>provenance(e)==="baseline").length;
+  const bits = [ours+"/"+entries.length+" ours"];
+  if (base) bits.push(base+" on US baseline");
+  if (bad)  bits.push(bad+" group"+(bad>1?"s":"")+" over budget");
+  if (errs) bits.push(errs+" unmappable");
+  document.getElementById("stats").textContent = entries.length ? bits.join(" . ") : "no file";
+}
+
+/* ---------- render ---------- */
+function render(){
+  const list = document.getElementById("list");
+  SEG = segTotals();
+  const vis = visible();
+  if (!entries.length){ refreshStats(); return; }
+  list.className = "";
+  if (!vis.length){ list.className="empty"; list.textContent="No entries match."; refreshStats(); return; }
+  list.innerHTML = "";
+  const frag = document.createDocumentFragment();
+  let lastSeg = null;
+  for (const e of vis){
+    const gk = groupKey(e);
+    if (gk !== lastSeg){
+      lastSeg = gk;
+      const sg = segOf(e), hd = document.createElement("div");
+      const over = sg.budgeted && sg.used > sg.cap;
+      hd.className = "seghdr" + (over ? " bad" : "");
+      hd.innerHTML = "<b>"+escapeHtml(sg.label)+"</b>"
+        + (sg.budgeted
+          ? " <span>"+sg.used+" / "+sg.cap+" bytes"
+            + (over ? " — over by "+(sg.used-sg.cap) : " — "+(sg.cap-sg.used)+" free")+"</span>"
+          : " <span>"+sg.count+" entries · VWF limits are shown per row</span>");
+      frag.appendChild(hd);
+    }
+    const s = statusOf(e);
+    const row = document.createElement("div");
+    row.className = "row" + (entries.indexOf(e)===sel ? " sel":"");
+    const tag = s.kind==="done" ? '<span class="tag done">ok</span>'
+              : s.kind==="err"  ? '<span class="tag over">unmappable</span>'
+              : '<span class="tag">todo</span>';
+    const pv = provenance(e);
+    const pvTag = pv==="ours"     ? '<span class="tag ours">ours</span>'
+                : pv==="baseline" ? '<span class="tag base">US baseline</span>'
+                                  : '<span class="tag">not written</span>';
+    row.innerHTML =
+      '<div class="meta"><span class="id">'+e.id+'</span>'
+      + '<span>@0x'+e.offset.toString(16).toUpperCase()+'</span>'
+      + '<span>orig '+e.raw_len+'B</span>'+tag+pvTag+'</div>'
+      + '<div class="jp">'+escapeHtml(e.jp||"")+'</div>'
+      + ((e.us||"").trim()
+          ? '<div class="us" title="official US text - reference only, not ours">'
+            + escapeHtml(e.us) + '</div>' : '');
+    const ta = document.createElement("textarea");
+    ta.value = e.en || "";
+    ta.placeholder = "English...";
+    const bar = document.createElement("div");
+    bar.className = "bar";
+    bar.innerHTML = '<span class="gauge"><i></i></span><span class="cnt"></span>';
+    ta.addEventListener("input", ()=>{ e.en = ta.value; updateBar(e, bar); refreshStats(); markDirty(); });
+    ta.addEventListener("focus", ()=>{ sel = entries.indexOf(e); });
+    row.appendChild(ta);
+    row.appendChild(bar);
+    const cues = controlCue("JP",e.jp) + controlCue("EN",e.en);
+    if (cues){ const d=document.createElement("div"); d.className="controls"; d.innerHTML=cues; row.appendChild(d); }
+    if (isMenu(e) && LINE_SEGS[e.segment]){
+      const cv = document.createElement("canvas");
+      cv.className = "cells";
+      cv.title = "Each line in the menu VWF at 2x; the red cell is past the window's line width";
+      row.appendChild(cv);
+      const paint = () => drawMenuLines(cv, (e.en || "").trim(), LINE_SEGS[e.segment]);
+      ta.addEventListener("input", paint);
+      paint();
+    } else if (isMenu(e) && VWF_SEGS.includes(e.segment)){
+      const cv = document.createElement("canvas");
+      cv.className = "cells";
+      cv.title = "Actual menu VWF at 3x scale; vertical rules are 8-pixel cells and red shading is outside the field limit";
+      row.appendChild(cv);
+      const paint = () => drawMenu(cv, (e.en || "").trim(), menuLimit(e));
+      ta.addEventListener("input", paint);
+      paint();
+    } else if (isNarration(e)){
+      const cv = document.createElement("canvas");
+      cv.className = "cells";
+      cv.title = "true-size preview; light rules are 8px cells, dark are 32px";
+      row.appendChild(cv);
+      const paint = () => drawNarration(cv, stripTokens(e.en || ""));
+      ta.addEventListener("input", paint);
+      paint();
+    } else if (isDialogue(e)){
+      const pv=document.createElement("div"); pv.className="dlgpreview";
+      row.appendChild(pv);
+      const paint=()=>{
+        if((e.en||"").trim()) drawDialoguePreview(pv,e.en);
+        else pv.innerHTML='<div class="label">Working English VWF preview appears here after retranslation · source controls are identified above</div>';
+      };
+      ta.addEventListener("input",paint); paint();
+    }
+    updateBar(e, bar);
+    const note = document.createElement("input");
+    note.className = "note"; note.placeholder = "note / query for later...";
+    note.value = e.note || "";
+    note.addEventListener("input", ()=>{ e.note = note.value; markDirty(); });
+    row.appendChild(note);
+    frag.appendChild(row);
+  }
+  list.appendChild(frag);
+  refreshStats();
+}
+function updateBar(e, bar){
+  const s = statusOf(e), seg = segOf(e);
+  const g = bar.querySelector(".gauge"), i = bar.querySelector("i"), c = bar.querySelector(".cnt");
+  if (s.kind==="err"){
+    g.className="gauge bad"; i.style.width="100%";
+    c.className="cnt bad"; c.textContent=s.err; return;
+  }
+  const pct = seg.budgeted && seg.cap ? Math.min(100, seg.used/seg.cap*100) : 0;
+  const over = seg.budgeted && seg.used > seg.cap;
+  g.className = "gauge" + (over?" bad":(pct>95?" warn":""));
+  i.style.width = pct+"%";
+  c.className = "cnt" + (over?" bad":"");
+  const delta = s.n - e.raw_len;
+  const sign = delta>0 ? "+"+delta : (delta<0 ? ""+delta : "±0");
+  let txt = seg.budgeted
+    ? s.n+"B ("+sign+") . segment "+seg.used+"/"+seg.cap
+    : "VWF layout";
+  // 8x8 bank: one byte is one 8x8 cell, so the byte count IS the display
+  // width. The binding limit is the narrowest menu an entry appears in - the
+  // item menu spends cells on an icon and leaves 10. 22 of the original names
+  // are longer than that, so those evidently never appear there; for them the
+  // original length is the only evidence of what fits.
+  // ...but the four strip segments are VWF-composed now, so one byte is no
+  // longer one cell there and the VWF cue below supersedes this.
+  if (e.seg_start !== undefined && !isMenu(e)){
+    const cells = s.n - 1, was = e.raw_len - 1;
+    const limit = Math.max(10, was);
+    txt += " . " + cells + " cells (was " + was + ", limit " + limit + ")";
+    if (cells > limit) c.classList.add("bad");
+    else if (cells > 10 && was <= 10) c.classList.add("warn");
+  }
+  // line footprint: how many rows this needs against what the original used
+  const en = (e.en||"").trim();
+  if (en){
+    if (isMenu(e) && LINE_SEGS[e.segment]){
+      const lim = LINE_SEGS[e.segment];
+      const ls = menuLines(en);
+      const widest = Math.max(...ls.map(menuPx));
+      // shown twice in play: Item > Look composes with the menu face into
+      // the 24-cell window; shop vendors show the same line in the
+      // dialogue face (256px box), which is the wider of the two
+      const widestDia = Math.max(...ls.map(linePx));
+      txt += " . " + ls.length + " line" + (ls.length===1?"":"s") + " . Look "
+           + widest + "px of " + (lim * 8) + " . shop " + widestDia + "px of " + SHOP_PX;
+      if (widest > lim * 8){ txt += " — over the Look window"; c.classList.add("bad"); }
+      if (widestDia > SHOP_PX){ txt += " — over the shop box"; c.classList.add("bad"); }
+      if (ls.length > 2){ txt += " — a third line is dropped"; c.classList.add("bad"); }
+      const miss = menuMissing(ls.join(""));
+      if (miss.length){
+        txt += " . no menu glyph for " + miss.map(x=>JSON.stringify(x)).join(" ");
+        c.classList.add("bad");
+      }
+    } else if (isMenu(e)){
+      const t = (e.en || "").trim();
+      const used = menuCells(t), px = menuPx(t);
+      const rec = (MENU_CELLS[e.segment] || [])[menuRow(e)];
+      const lim = menuLimit(e);
+      txt += " . " + px + "px = " + used + " cell" + (used===1?"":"s");
+      if (lim !== null && lim !== undefined){
+        txt += " of " + lim;
+        if (used > lim){ txt += " — over the field"; c.classList.add("bad"); }
+      }
+      if (rec !== undefined){
+        txt += " . built table has " + rec;
+        // a name edited since the tables were generated reads as drift here
+        if (used > rec){ txt += " (needs regen, +" + (used-rec) + ")"; c.classList.add("bad"); }
+        else if (used < rec){ txt += " (regen would free " + (rec-used) + ")"; c.classList.add("warn"); }
+      }
+      const miss = menuMissing(t);
+      if (miss.length){
+        txt += " . no menu glyph for " + miss.map(x=>JSON.stringify(x)).join(" ");
+        c.classList.add("bad");
+      }
+    } else if (isNarration(e)){
+      const plains = stripTokens(en).split(/\r?\n/);
+      const px = Math.max(...plains.map(linePx));
+      txt += " . " + plains.length + " scroll row"+(plains.length===1?"":"s")
+           + " . widest " + px + "/" + NARR_PX + "px . "
+           + Math.ceil(px / VWF_CELL) + " cells";
+      if (px > NARR_PX) c.classList.add("bad");
+      const miss = unsupported(plains.join(""));
+      if (miss.length){
+        txt += " . no glyph for " + miss.map(x=>JSON.stringify(x)).join(" ");
+        c.classList.add("bad");
+      }
+      if (/\{BR\}/.test(en)){ txt += " . {BR} not allowed here"; c.classList.add("bad"); }
+    } else {
+      const a = footprintJP(e.hex), b = footprintEN(en);
+      txt += " . " + b.rows + " row" + (b.rows===1?"":"s") +
+             " (was " + a.rows + ") . widest " + b.cells + "/32 cells ("+b.authoredPx+"/256px)";
+      if (b.authoredPx > VWF_LINE_PX){ c.classList.add("bad"); txt += " — line over budget"; }
+      if (b.rows > a.rows) c.classList.add("warn");
+    }
+  }
+  c.textContent = txt;
+}
+const escapeHtml = s => s.replace(/[&<>]/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m]));
+
+/* ---------- io ---------- */
+let dirty = false;
+function markDirty(){ dirty = true; document.getElementById("save").disabled = false; }
+function pick(accept, cb){
+  const inp = document.createElement("input");
+  inp.type = "file"; inp.accept = accept; inp.hidden = true;
+  document.body.appendChild(inp);
+  inp.onchange = () => { const f = inp.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = () => { inp.remove(); cb(r.result, f.name); };
+    r.onerror = () => inp.remove();
+    r.readAsText(f, "utf-8"); };
+  inp.click();
+}
+document.getElementById("loadScript").onclick = ()=> pick(".json", (txt,name)=>{
+  const j = JSON.parse(txt);
+  entries = j.entries || j; fileName = name; sel = -1; dirty = false;
+  document.getElementById("save").disabled = true;
+  render();
+});
+document.getElementById("loadTbl").onclick = ()=> pick(".tbl,.txt", txt=>{ tbl = parseTbl(txt); render(); });
+document.getElementById("save").onclick = ()=>{
+  const blob = new Blob([JSON.stringify({version:1, entries:entries}, null, 2)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = fileName;
+  a.click(); URL.revokeObjectURL(a.href);
+  dirty = false; document.getElementById("save").disabled = true;
+};
+document.getElementById("q").oninput = render;
+document.getElementById("filter").onchange = render;
+addEventListener("keydown", ev=>{
+  if (ev.ctrlKey && ev.key === "s"){ ev.preventDefault();
+    if(!document.getElementById("save").disabled) document.getElementById("save").click(); }
+  if (ev.ctrlKey && ev.key === "Enter"){
+    ev.preventDefault();
+    const next = entries.find((e,i)=> i>sel && statusOf(e).kind==="todo");
+    if (next){ sel = entries.indexOf(next); render();
+      const el = [...document.querySelectorAll(".row")].find(r=>r.classList.contains("sel"));
+      if (el){ el.scrollIntoView({block:"center"}); el.querySelector("textarea").focus(); } }
+  }
+});
+addEventListener("beforeunload", e=>{ if(dirty){ e.preventDefault(); e.returnValue=""; } });
+</script>
+</body>
+</html>

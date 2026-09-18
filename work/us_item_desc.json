@@ -1,0 +1,642 @@
+[
+ {
+  "label": "DAGGER",
+  "text": "A knife with a small{FC}blade."
+ },
+ {
+  "label": "HUNT-KNIFE",
+  "text": "A large multi-purpose{FC}knife."
+ },
+ {
+  "label": "BOOMERANG",
+  "text": "A thrown weapon."
+ },
+ {
+  "label": "LTHR-CLOTH",
+  "text": "Leather armor made of{FC}tanned sand worm skins."
+ },
+ {
+  "label": "LTHR-HELM",
+  "text": "A hat made of sand worm{FC}skin boiled in wax."
+ },
+ {
+  "label": "LTHR-CROWN",
+  "text": "A woman's helmet made of{FC}sand worm skin."
+ },
+ {
+  "label": "LTHR-BAND",
+  "text": "A forehead patch made of{FC}sand worm skin."
+ },
+ {
+  "label": "STEL-SWORD",
+  "text": "A sword made of steel."
+ },
+ {
+  "label": "SLASHER",
+  "text": "A blade weapon that is{FC}thrown."
+ },
+ {
+  "label": "LTHRSHIELD",
+  "text": "A shield made of sand{FC}worm skin."
+ },
+ {
+  "label": "CRBN-SUIT",
+  "text": "Protective garb made of{FC}special carbon fibers."
+ },
+ {
+  "label": "CRBNSHIELD",
+  "text": "A shield made of carbon{FC}fibers on a steel frame."
+ },
+ {
+  "label": "CRBN-HELM",
+  "text": "A helmet made of{FC}a carbon-based fiber."
+ },
+ {
+  "label": "CRBN-CROWN",
+  "text": "A woman's helmet made{FC}of a carbon-based fiber."
+ },
+ {
+  "label": "CIRCLET",
+  "text": "A forehead patch made{FC}of a carbon-based fiber."
+ },
+ {
+  "label": "WOOD-CANE",
+  "text": "A cane made from the{FC}wood of a Laerumatree."
+ },
+ {
+  "label": "WHITEMANTL",
+  "text": "A mantle that is imbued{FC}with defensive magic."
+ },
+ {
+  "label": "TITN-SWORD",
+  "text": "A sword made of a{FC}titanium alloy."
+ },
+ {
+  "label": "TITNDAGGER",
+  "text": "A dagger made of a{FC}titanium alloy."
+ },
+ {
+  "label": "TITNSLASHR",
+  "text": "A slasher made of a{FC}titanium alloy."
+ },
+ {
+  "label": "TITN-AXE",
+  "text": "An axe made of a{FC}titanium alloy."
+ },
+ {
+  "label": "BROAD-AXE",
+  "text": "A large axe, made of a{FC}titanium alloy."
+ },
+ {
+  "label": "TITN-MAIL",
+  "text": "Armor made of a{FC}titanium alloy."
+ },
+ {
+  "label": "TITNSHIELD",
+  "text": "A shield made of a{FC}titanium alloy."
+ },
+ {
+  "label": "TITN-HELM",
+  "text": "A helmet made of a{FC}titanium alloy."
+ },
+ {
+  "label": "TITN-CROWN",
+  "text": "A woman's helmet made of{FC}a titanium alloy."
+ },
+ {
+  "label": "NOTHING",
+  "text": ""
+ },
+ {
+  "label": "GRPT-SUIT",
+  "text": "Protective garb made of{FC}special graphite fibers."
+ },
+ {
+  "label": "GRPTSHIELD",
+  "text": "A shield made of special{FC}graphite fibers."
+ },
+ {
+  "label": "CRMC-SWORD",
+  "text": "A sword made of ceramic."
+ },
+ {
+  "label": "GRPT-CROWN",
+  "text": "A woman's helmet made of{FC}a special graphite."
+ },
+ {
+  "label": "CLAW",
+  "text": "A set of hooked claws,{FC}made of a titanium alloy"
+ },
+ {
+  "label": "CRMC-KNIFE",
+  "text": "A knife made of ceramic."
+ },
+ {
+  "label": "CRMCSHIELD",
+  "text": "A shield made of{FC}ceramic."
+ },
+ {
+  "label": "LASRSLASHR",
+  "text": "A slicer with a built-in{FC}laser emitting device."
+ },
+ {
+  "label": "SABER-CLAW",
+  "text": "A sharper claw-weapon,{FC}made of a titan alloy."
+ },
+ {
+  "label": "STRUGGL-AX",
+  "text": "A large and heavy axe{FC}made for use in battles."
+ },
+ {
+  "label": "CRMC-MAIL",
+  "text": "Armor made of ceramic,{FC}anti-heat,but heavy."
+ },
+ {
+  "label": "CRMC-HELM",
+  "text": "A helmet made of{FC}ceramic."
+ },
+ {
+  "label": "LASR-SWORD",
+  "text": "A sword with a powerful{FC}laser emitting device."
+ },
+ {
+  "label": "LASR-CLAW",
+  "text": "A claw with an internal{FC}laser emitting device."
+ },
+ {
+  "label": "LASRBARRIR",
+  "text": "A shield constructed{FC}of laser rays."
+ },
+ {
+  "label": "IMPACTER",
+  "text": "A gun that shoots{FC}compact bursts of air."
+ },
+ {
+  "label": "TITN-ARMOR",
+  "text": "Armor for androids.{FC}Made of a titan alloy."
+ },
+ {
+  "label": "HEAD-GEAR",
+  "text": "A helmet for androids{FC}made of steel."
+ },
+ {
+  "label": "STUN-SHOT",
+  "text": "A gun that emits a high{FC}freqency sound wave."
+ },
+ {
+  "label": "LASR-AXE",
+  "text": "An axe with an internal{FC}laser emitting device."
+ },
+ {
+  "label": "LASR-KNIFE",
+  "text": "A knife with a small{FC}built-in laser device."
+ },
+ {
+  "label": "CRMC-ARMOR",
+  "text": "Armor for androids{FC}made of ceramic."
+ },
+ {
+  "label": "TITN-GEAR",
+  "text": "A helmet for androids{FC}made of a titan alloy."
+ },
+ {
+  "label": "PSY-MAIL",
+  "text": "Steel armor imbued with{FC}defensive magic."
+ },
+ {
+  "label": "PSY-SHIELD",
+  "text": "A steel shield imbued{FC}with defensive magic."
+ },
+ {
+  "label": "PSY-CROWN",
+  "text": "A steel helmet imbued{FC}with defensive magic."
+ },
+ {
+  "label": "PSY-CIRCLT",
+  "text": "A steel forehead patch{FC}imbued with dfs-magic."
+ },
+ {
+  "label": "FORCE-CANE",
+  "text": "A cane that has been{FC}strengthened by magic."
+ },
+ {
+  "label": "PSY-ROBE",
+  "text": "A magician's robe imbued{FC}with defensive magic."
+ },
+ {
+  "label": "PSYCO-WAND",
+  "text": "A wand that can nullify{FC}various magical-dfs."
+ },
+ {
+  "label": "FRADEMANTL",
+  "text": "Nothing is known{FC}about this item."
+ },
+ {
+  "label": "WAVE-SHOT",
+  "text": "A weapon that emits{FC}destructive sound waves."
+ },
+ {
+  "label": "SPACEDARMR",
+  "text": "Double-plated armor{FC}for androids."
+ },
+ {
+  "label": "CRMC-GEAR",
+  "text": "A helmet for androids{FC}made of ceramic."
+ },
+ {
+  "label": "PLSM-RIFLE",
+  "text": "A portable particle gun{FC}that emits proton beams."
+ },
+ {
+  "label": "PULSE-LASR",
+  "text": "A gun that fires quick-{FC}short laser puleses."
+ },
+ {
+  "label": "PLSM-SWORD",
+  "text": "A sword with a large{FC}built-in plasma unit."
+ },
+ {
+  "label": "PLSM-CLAW",
+  "text": "A claw with a built-in{FC}plasma production unit."
+ },
+ {
+  "label": "PLSMDAGGER",
+  "text": "A dagger with a small{FC}built-in plasma unit."
+ },
+ {
+  "label": "PLSM-FIELD",
+  "text": "A shield that is made{FC}from plasma."
+ },
+ {
+  "label": "SILV-ROD",
+  "text": "A rod made of{FC}low purity Laconia."
+ },
+ {
+  "label": "SILV-MANTL",
+  "text": "A mantle woven from low-{FC}purity Laconia fibers."
+ },
+ {
+  "label": "SILVCIRCLT",
+  "text": "A circlet made of{FC}low purity Laconia."
+ },
+ {
+  "label": "SILV-MAIL",
+  "text": "Armor made of{FC}low purity Laconia."
+ },
+ {
+  "label": "SILVSHIELD",
+  "text": "A shield made of{FC}low purity Laconia."
+ },
+ {
+  "label": "SILV-HELM",
+  "text": "A helmet made of{FC}low purity Laconia."
+ },
+ {
+  "label": "SILV-CROWN",
+  "text": "A woman's helmet made of{FC}low purity Laconia."
+ },
+ {
+  "label": "ZIRC-GEAR",
+  "text": "Headgear for androids{FC}made of anti-heat-metal."
+ },
+ {
+  "label": "NAPALMSHOT",
+  "text": "An incendiary{FC}bomb launcher."
+ },
+ {
+  "label": "ZIRCOARMER",
+  "text": "Armor for androids made{FC}of anti-heat-metal."
+ },
+ {
+  "label": "FLAMESWORD",
+  "text": "A sword that has the{FC}power of FLAELI magic."
+ },
+ {
+  "label": "THUNDRCLAW",
+  "text": "A claw that has the{FC}power of TANDLE magic."
+ },
+ {
+  "label": "TORNDDAGGR",
+  "text": "A dagger that has the{FC}power of HEWN magic."
+ },
+ {
+  "label": "DREAM-ROD",
+  "text": "A rod that has the{FC}power of BINDWA magic."
+ },
+ {
+  "label": "PHANTAROBE",
+  "text": "A robe that creates an{FC}illusion of the wearer."
+ },
+ {
+  "label": "SILVR-TUSK",
+  "text": "A secret treasure{FC}of the musk cats."
+ },
+ {
+  "label": "PULSEVULCN",
+  "text": "A weapon that fires{FC}electronic beams."
+ },
+ {
+  "label": "COMPO-ARMR",
+  "text": "Compound armor of sheet{FC}of ceramic between titan."
+ },
+ {
+  "label": "COMPO-GEAR",
+  "text": "Compound headgear of{FC}ceramic and titan."
+ },
+ {
+  "label": "RFLC-MAIL",
+  "text": "Armor with a high resist{FC}to techniques and magic."
+ },
+ {
+  "label": "RFLCSHIELD",
+  "text": "A shield with hi-resist{FC}to techniques and magic."
+ },
+ {
+  "label": "RFLC-ROBE",
+  "text": "A robe with hi-resist{FC}to techniques and magic."
+ },
+ {
+  "label": "LACO-SWORD",
+  "text": "A sword made of{FC}high grade Laconia."
+ },
+ {
+  "label": "LACODAGGER",
+  "text": "A dagger made of{FC}high grade Laconia."
+ },
+ {
+  "label": "LACO-CLAW",
+  "text": "A claw made of{FC}high grade Laconia."
+ },
+ {
+  "label": "LACOSLASHR",
+  "text": "A slicer made of{FC}high grade Laconia."
+ },
+ {
+  "label": "GUARD-ROD",
+  "text": "Nothing is known{FC}about this item."
+ },
+ {
+  "label": "PLSMLAUNCH",
+  "text": "A large particle gun."
+ },
+ {
+  "label": "ELST-ARMOR",
+  "text": "Armor for androids that{FC}has high elasticity."
+ },
+ {
+  "label": "ELST-GEAR",
+  "text": "A headgear for androids{FC}that has hi-elasticity."
+ },
+ {
+  "label": "LACO-ROD",
+  "text": "Rod made of hi-Laconia.{FC}Has a power of'EFESS'."
+ },
+ {
+  "label": "GENOCYCLAW",
+  "text": "A claw that has a power{FC}of 'DIEM' magic."
+ },
+ {
+  "label": "SWIFT-HELM",
+  "text": "Helmet that increases{FC}the wearers reactions."
+ },
+ {
+  "label": "MOONSLASHR",
+  "text": "A slicer that contains{FC}light from the moon."
+ },
+ {
+  "label": "POW-SHIELD",
+  "text": "Nothing is know{FC}about this item."
+ },
+ {
+  "label": "LACO-MAIL",
+  "text": "An armor made of{FC}high grade Laconia."
+ },
+ {
+  "label": "LACO-HELM",
+  "text": "A helmet made of{FC}high grade Laconia."
+ },
+ {
+  "label": "LACO-CROWN",
+  "text": "A woman's helmet made{FC}of high grade Laconia."
+ },
+ {
+  "label": "LACOCIRCLT",
+  "text": "A forehead patch made of{FC}high grade Laconia."
+ },
+ {
+  "label": "LACOSHIELD",
+  "text": "A shield made of{FC}high grade Laconia."
+ },
+ {
+  "label": "CYBER-SUIT",
+  "text": "A reinforced suit that{FC}enhances strength."
+ },
+ {
+  "label": "GUARDSWORD",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "PHOTNERASR",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "LACO-ARMOR",
+  "text": "Armor for androids made{FC}of high grade Laconia."
+ },
+ {
+  "label": "LACO-GEAR",
+  "text": "A headgear for androids{FC}made of hi-Laconia."
+ },
+ {
+  "label": "MAHLAYDGGR",
+  "text": "Dagger that Hahn created{FC}with his father."
+ },
+ {
+  "label": "GUARD-CLAW",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "GUARDARMOR",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "GUARD-ROBE",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "GUARD-MAIL",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "NOTHING",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "ELSYDEON",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "LACO-AXE",
+  "text": "An axe made of{FC}high grade Laconia."
+ },
+ {
+  "label": "SONICBUSTR",
+  "text": "A gun that bursts target{FC}with ultra sound waves."
+ },
+ {
+  "label": "DEFEAT-AXE",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "NOTHING",
+  "text": ""
+ },
+ {
+  "label": "MAHLAYMAIL",
+  "text": "Armor that Hahn created{FC}with his father."
+ },
+ {
+  "label": "MONOMATE",
+  "text": "A weak medicine that{FC}restores HP."
+ },
+ {
+  "label": "DIMATE",
+  "text": "A medicine that{FC}restores HP."
+ },
+ {
+  "label": "TRIMATE",
+  "text": "A strong medicine{FC}that recovers HP."
+ },
+ {
+  "label": "ANTIDOTE",
+  "text": "A medicine that{FC}cures poison."
+ },
+ {
+  "label": "CURE-PARAL",
+  "text": "A medicine that{FC}cures paralysis."
+ },
+ {
+  "label": "MOON-DEW",
+  "text": "A mysterious{FC}yellow perfume."
+ },
+ {
+  "label": "STAR-DEW",
+  "text": "A mysterious{FC}blue perfume."
+ },
+ {
+  "label": "TELEPIPE",
+  "text": "A magic item that can{FC}use 'RYUKA' power."
+ },
+ {
+  "label": "ESCAPIPE",
+  "text": "A magic item that can{FC}use HINAS power."
+ },
+ {
+  "label": "SOL-DEW",
+  "text": "A mysterious{FC}red perfume."
+ },
+ {
+  "label": "GUARDSHILD",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "MAHLAYSHLD",
+  "text": "Shield that Hahn created{FC}with his his father."
+ },
+ {
+  "label": "SHADWBLADE",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "ALIS-SWORD",
+  "text": "A legendary sword used{FC}by a heroine of yore."
+ },
+ {
+  "label": "DYNAMITE",
+  "text": "An highly explosive{FC}material."
+ },
+ {
+  "label": "NOTHING",
+  "text": "An item that allows one{FC}to check location."
+ },
+ {
+  "label": "ALSHLINE",
+  "text": "Medicine that turned{FC}stone back to flesh."
+ },
+ {
+  "label": "ECLPSTORCH",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "AERO-PRISM",
+  "text": "Nothing is known{FC}about this weapon."
+ },
+ {
+  "label": "REPAIR-KIT",
+  "text": "A simple repair kit{FC}for androids."
+ },
+ {
+  "label": "SHORTCAKE",
+  "text": "A cake that is{FC}sold in an Aiedo bakery."
+ },
+ {
+  "label": "PENGU-FEED",
+  "text": "Article that can summon{FC}the Dezolis Penguin."
+ },
+ {
+  "label": "PEROLYMATE",
+  "text": "Simple cakes that have{FC}some nutritional value."
+ },
+ {
+  "label": "PENNANT",
+  "text": "A pennant embroidered{FC}with the name Termi."
+ },
+ {
+  "label": "WOODCARVIN",
+  "text": "A sand worm{FC}doll made of wood."
+ },
+ {
+  "label": "LAND-ROVER",
+  "text": "Armored vehicle that can{FC}drive over quick sand."
+ },
+ {
+  "label": "ICE-DIGGER",
+  "text": "Vehicle that can pass{FC}through walls of ice."
+ },
+ {
+  "label": "HYDROFOIL",
+  "text": "A hover craft that can{FC}be driven over oceans."
+ },
+ {
+  "label": "CONTROLKEY",
+  "text": "The system start up key{FC}for the Machine Center."
+ },
+ {
+  "label": "CANCELLER",
+  "text": "All-purpose sensor with{FC}stealth capabilities."
+ },
+ {
+  "label": "PALMA-RING",
+  "text": "Nothing is known{FC}about this item."
+ },
+ {
+  "label": "MOTA-RING",
+  "text": "Nothing is known{FC}about this item."
+ },
+ {
+  "label": "DEZO-RING",
+  "text": "Nothing is known{FC}about this item."
+ },
+ {
+  "label": "RYKR-RING",
+  "text": "Nothing is known{FC}about this item."
+ },
+ {
+  "label": "ALGO-RING",
+  "text": "Nothing is known{FC}about this item."
+ },
+ {
+  "label": "MAHLAYRING",
+  "text": "A ring that Hahn created{FC}with his father."
+ }
+]

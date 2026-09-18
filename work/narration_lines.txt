@@ -1,0 +1,197 @@
+Narration, side by side.  Limit 256 px.
+BUILD = what ps4disasm ships.  DRAFT = your retranslation.
+SOURCE = the extraction's jp field, where the id matches.
+
+== in the build ==
+attract     335145  157px (+15 chars)  The long, long struggle of
+attract     335146  172px (+13 chars)  ancient times finally ended...
+attract     335147  130px (+20 chars)  The victor sacrificed
+attract     335148  192px (+10 chars)  the vanquished to the heavens.
+attract     335149  105px (+24 chars)  Four bells tolled.
+attract     335150  136px (+19 chars)  Four torches were lit.
+attract     335151  147px (+17 chars)  And the world continued
+attract     335152  154px (+16 chars)  for thousands of years...
+attract     335157  137px (+19 chars)  The Algo solar system,
+attract     335158  127px (+20 chars)  somewhere in space...
+attract     335160  163px (+14 chars)  Once a brilliant civilization
+attract     335161   98px (+25 chars)  flourished here.
+attract     335162  200px (+ 9 chars)  The citizens devoted themselves
+attract     335163  148px (+17 chars)  to art and the sciences,
+attract     335164  146px (+17 chars)  and life was prosperous
+attract     335165   56px (+32 chars)  and good.
+attract     335167  162px (+15 chars)  Then a series of disasters
+attract     335168   45px (+34 chars)  struck.
+attract     335169  174px (+13 chars)  The system-wide management
+attract     335170  164px (+14 chars)  system, 'Mother Brain,' was
+attract     335171   66px (+30 chars)  destroyed.
+attract     335172  191px (+10 chars)  So was the first planet, Parma.
+attract     335173  156px (+16 chars)  Over 90% of the system's
+attract     335174  144px (+18 chars)  population died, and the
+attract     335175  192px (+10 chars)  advanced technological culture
+attract     335176   54px (+32 chars)  was lost.
+attract     335178  102px (+24 chars)  Society declined,
+attract     335179  150px (+17 chars)  spiralling downward until
+attract     335180  176px (+12 chars)  at last only a few scattered
+attract     335181  190px (+10 chars)  groups even remembered there
+attract     335182  146px (+17 chars)  once were better times.
+attract     335184  156px (+16 chars)  A thousand years passed.
+attract     335186  163px (+14 chars)  At last, civilization is once
+attract     335187  201px (+ 8 chars)  more on the rise across the Algo
+attract     335188   46px (+33 chars)  system.
+attract     335189  167px (+14 chars)  People are again turning to
+attract     335190  162px (+15 chars)  thoughts of an easier life.
+attract     335191  133px (+19 chars)  Old knowledge is being
+attract     335192   84px (+27 chars)  rediscovered.
+attract     335194  141px (+18 chars)  But just as things look
+attract     335195  176px (+12 chars)  brighter, beyond a threshold
+attract     335196  192px (+10 chars)  long thought closed, a dark and
+attract     335197  148px (+17 chars)  very ancient evil stirs...
+attract     335207  193px (+10 chars)  general/tables/wincharset.asm
+piata $3A   817     158px (+15 chars)  AW 2284. Monster attacks
+piata $3B   821     198px (+ 9 chars)  have swelled the ranks of those
+piata $3C   825     184px (+11 chars)  who call themselves 'Hunters.'
+piata $3D   829     198px (+ 9 chars)  But as the attacks become ever
+piata $3E   833     193px (+10 chars)  more frequent and powerful, an
+piata $3F   837     187px (+11 chars)  elite few begin to wonder what
+
+== work/patch_narration.json ==
+dlg02#0008     165px (+14 chars)  Spun from far beyond time,
+               SOURCE:  {K4A4}けき時の彼方より つむぎし
+dlg02#0009     170px (+13 chars)  the rite of souls at its end,
+               SOURCE: 魂の祭 果て
+dlg02#0010     126px (+20 chars)  those who once were
+               SOURCE: 在りし者
+dlg02#0011     155px (+16 chars)  raise it into the heavens.
+               SOURCE: {K4A5}を天空に{K4A6}ぐ
+dlg02#0012     186px (+11 chars)  What it works: the death knell.
+               SOURCE: 成すは死の点{K4A7}
+dlg02#0013     191px (+10 chars)  What it works: the violet flame.
+               SOURCE: 成すは{K4A8}{K4A9}の{K4AA}火
+dlg02#0014     188px (+10 chars)  What it works: an endless age...
+               SOURCE: 成すは 絶え無き千年紀・・・
+dlg02#0015     177px (+12 chars)  Shaping being in the heavens:
+               SOURCE: 天空に在を成す
+dlg02#0016     147px (+17 chars)  the Algol solar system...
+               SOURCE: アルゴル太陽系・・・
+dlg02#0017     132px (+19 chars)  Upon its worlds, once,
+               SOURCE: その星々には かつて
+dlg02#0018     165px (+14 chars)  a brilliant civilization rose,
+               SOURCE: {K4AB}やかな文明が栄え、
+dlg02#0019     191px (+10 chars)  and its people gave themselves
+               SOURCE: 人々は繁栄と{K4AC}楽に
+dlg02#0020     169px (+14 chars)  to prosperity and pleasure.
+               SOURCE: その身をゆだねていた。
+dlg02#0021      57px (+32 chars)  But then,
+               SOURCE: しかし、
+dlg02#0022     187px (+11 chars)  the planet management system
+               SOURCE: 惑星管理システム
+dlg02#0023     137px (+19 chars)  known as Mother Brain
+               SOURCE: 「マザーブレイン」の
+dlg02#0024     174px (+13 chars)  was destroyed. That turmoil,
+               SOURCE: 破壊による混乱と、
+dlg02#0025     184px (+11 chars)  and the blast that annihilated
+               SOURCE: 第一惑星「パルマ」の
+dlg02#0026     143px (+18 chars)  Palma, the first planet,
+               SOURCE: 爆発・消滅による影響は
+dlg02#0027     188px (+10 chars)  took more than ninety percent
+               SOURCE: その総人口の
+dlg02#0028      95px (+25 chars)  of all who lived.
+               SOURCE: 90％以上を奪い、
+dlg02#0029     188px (+10 chars)  The old scientific age was lost,
+               SOURCE: 以前の科学文明は失われ、
+dlg02#0030     165px (+14 chars)  and the lives of the people
+               SOURCE: 人々の生活は
+dlg02#0031     126px (+20 chars)  fell into destitution.
+               SOURCE: 困{K4AD}に{K4AE}した。
+dlg02#0032     176px (+12 chars)  And then, a thousand years...
+               SOURCE: そして千年・・・
+dlg02#0033     109px (+23 chars)  The circling years
+               SOURCE: めぐる年月は
+dlg02#0034     186px (+11 chars)  gave the people new strength,
+               SOURCE: 新たな生きる力を民に与え
+dlg02#0035     175px (+13 chars)  and Algol tried once again to
+               SOURCE: 再びアルゴルに繁栄の{K4AF}を
+dlg02#0036     194px (+ 9 chars)  root the bud of prosperity, but
+               SOURCE: 根付かせようとしたが
+dlg02#0037     159px (+15 chars)  the harsh world would not
+               SOURCE: 過{K4B0}な環境は 容{K36B}に
+dlg02#0038      92px (+26 chars)  easily allow it...
+               SOURCE: それを許さなかった・・・
+lz1D4FB6#0058   48px (+33 chars)  AW 2284
+               SOURCE: AW 2284
+lz1D4FB6#0059  204px (+ 8 chars)  Monsters on the prowl, and those
+               SOURCE: 出没するモンスター そして
+lz1D4FB6#0060  205px (+ 8 chars)  who take the work of facing them
+               SOURCE: 依頼を受け、その対処にあたる
+lz1D4FB6#0061  174px (+13 chars)  are the ones called hunters.
+               SOURCE: ハンターと呼ばれる者たち
+lz1D4FB6#0062  198px (+ 9 chars)  On this planet Motavia, that was
+               SOURCE: それは この惑星モタビアにおいて
+lz1D4FB6#0063  184px (+11 chars)  an altogether everyday sight.
+               SOURCE: ごく日常的な光景であった。
+lz1D4FB6#0065  137px (+19 chars)  Yes... this time as well.
+               SOURCE: そう、このときも…
+
+== work/patch_prologue.json ==
+dlg02#0008      87px (+27 chars)  Spun from far
+               SOURCE:  {K4A4}けき時の彼方より つむぎし
+dlg02#0009      57px (+32 chars)  lost time,
+               SOURCE: 魂の祭 果て
+dlg02#0010      59px (+31 chars)  rite done,
+               SOURCE: 在りし者
+dlg02#0011      91px (+26 chars)  the past rises.
+               SOURCE: {K4A5}を天空に{K4A6}ぐ
+dlg02#0012      83px (+27 chars)  A death knell,
+               SOURCE: 成すは死の点{K4A7}
+dlg02#0013      87px (+27 chars)  a violet flame,
+               SOURCE: 成すは{K4A8}{K4A9}の{K4AA}火
+dlg02#0014      92px (+26 chars)  an endless age.
+               SOURCE: 成すは 絶え無き千年紀・・・
+dlg02#0015      68px (+30 chars)  High above,
+               SOURCE: 天空に在を成す
+dlg02#0016      90px (+26 chars)  Algol's system.
+               SOURCE: アルゴル太陽系・・・
+dlg02#0017      94px (+26 chars)  Once its worlds
+               SOURCE: その星々には かつて
+dlg02#0018     103px (+24 chars)  knew bright days
+               SOURCE: {K4AB}やかな文明が栄え、
+dlg02#0019      83px (+27 chars)  of wealth and
+               SOURCE: 人々は繁栄と{K4AC}楽に
+dlg02#0020      31px (+36 chars)  ease.
+               SOURCE: その身をゆだねていた。
+dlg02#0021      54px (+32 chars)  But then
+               SOURCE: しかし、
+dlg02#0022      90px (+26 chars)  the world mind,
+               SOURCE: 惑星管理システム
+dlg02#0023      82px (+28 chars)  Mother Brain,
+               SOURCE: 「マザーブレイン」の
+dlg02#0024      71px (+29 chars)  was broken.
+               SOURCE: 破壊による混乱と、
+dlg02#0025      90px (+26 chars)  Palma, first of
+               SOURCE: 第一惑星「パルマ」の
+dlg02#0026      85px (+27 chars)  worlds, burst.
+               SOURCE: 爆発・消滅による影響は
+dlg02#0027      64px (+30 chars)  Nine in ten
+               SOURCE: その総人口の
+dlg02#0028      61px (+31 chars)  were lost.
+               SOURCE: 90％以上を奪い、
+dlg02#0029      77px (+28 chars)  Science died,
+               SOURCE: 以前の科学文明は失われ、
+dlg02#0030      89px (+26 chars)  and the people
+               SOURCE: 人々の生活は
+dlg02#0031      76px (+29 chars)  fell to want.
+               SOURCE: 困{K4AD}に{K4AE}した。
+dlg02#0032     107px (+24 chars)  A thousand years
+               SOURCE: そして千年・・・
+dlg02#0033      77px (+28 chars)  turned. They
+               SOURCE: めぐる年月は
+dlg02#0034      92px (+26 chars)  gave strength,
+               SOURCE: 新たな生きる力を民に与え
+dlg02#0035      90px (+26 chars)  and Algol tried
+               SOURCE: 再びアルゴルに繁栄の{K4AF}を
+dlg02#0036      89px (+26 chars)  to bloom again.
+               SOURCE: 根付かせようとしたが
+dlg02#0037      90px (+26 chars)  But harsh land
+               SOURCE: 過{K4B0}な環境は 容{K36B}に
+dlg02#0038      61px (+31 chars)  would not.
+               SOURCE: それを許さなかった・・・

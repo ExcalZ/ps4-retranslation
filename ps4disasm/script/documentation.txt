@@ -1,0 +1,202 @@
+; =================================================================
+; Control Codes
+; $F2 = Determines actions during dialogues. The byte after this has the following values:
+		0 = Loads Panel; the word after this is the Panel index
+		1 = Destroys panel loaded last
+		2 = Destroys all panels
+		3 = Loads sound; the byte after this is the Sound index
+		4 = Loads sound; the byte after this is the Sound index
+		6 = Updates palettes
+		7 = Zio's eyes turn red in one of his panels (before the battle)
+		8 = Pauses music
+		9 = Resumes music
+		$A = For the spaceship sabotage, plays alarm sound and turns the screen red
+		$B = Sets event flag
+		$C = After the Profound Darkness battle, it updates stuff when Elsydeon breaks
+; $F3 = NPC keeps its original facing direction
+; $F4 = Loads portrait right above the dialogue window; the byte after this holds the portrait index.
+		For the Talk option, there's an extra byte to account for which is the portrait location. Values are as follows:
+			0 = left
+			1 = center
+			2 = right
+; $F5 = Brings up the Yes/No window; the 2 bytes after this hold the index of dialogue to load next;
+		if $00, then it stays in the current dialogue
+; $F6 = Loads event; the word after this holds the Event index
+; $F7 = Closes window and resumes dialogue; this is handled externally, mainly in the event section
+; $F9 = Pauses dialogue processing; the byte after this holds the number of frames to pause it for
+; $FA = Event check; the 2 bytes after this determine the following:
+		byte 1 = event flag: if this is set, then it loads a new dialogue whose index is in the next byte
+		byte 2 = index of new dialogue to load; index is relative to the current dialogue
+; $FC = Newline
+; $FD = Loads the arrow cursor in the bottom right corner of the dialogue window
+; $FE = Same as $F7
+; $FF = Terminates dialogue
+; =================================================================
+;
+;
+; Compression
+; -----------
+; 
+; To ease work for translators, a script is provided to repackage the
+; dialogue from asm files (such as from the ps4disasm-uncomp project)
+; and compress it using the Koshinski algorithm. Run the
+; compress_script.py file using Python 3.
+;
+; The script works as follows:
+;
+; 1. Define your character set in charset.asm. Normally you won't 
+;    remove what's there. Note one oddity: « and » are actually mapped
+;    to smart open doublequote and smart close doublequote. However,
+;    those English quotes don't exist in ISO-8859-1 so I had to
+;    use the French ones (given I also work on the French translation,
+;    it's actually not a bad idea!)
+;
+;    Please only use the forms shown in the current charset.asm file,
+;    and don't use if statements or anything. The script doesn't
+;    recognize anything else.
+;
+;    The values on the right of the charset instruction are offsets
+;    in the font file. Multiply that value by $10 (16) to get the
+;    actual byte offset inside the font file (since chars are 8x16,
+;    multiply by 16 to get the byte offset; simple)
+;
+; 2. Edit the "dialogue nn.asm" files. Please stick to using dc.b
+;    with any mix of strings, decimal or hex codes. Surround strings
+;    with double quotes. Double the double quote character to have it
+;    in the output string. Not sure that works in AS but I read
+;    that syntax in asm68k.
+;
+; 3. There's a koscmp executable in the 'compressors' folder; if you
+;    decide to move it, make sure you update its path referenced in
+;    the 'compress_script.py' file.
+;
+; 4. Run the compress_script.py script using Python 3.6+. Again I
+;    may supply a Windows executable using pyInstaller at one point.
+;
+; 5. This will back up the existing .bin file to .bin.0 (if there
+;    aren't any) or to .bin.1 if .bin.0 exists, and so on. If you
+;    want to overwrite the existing .bin files and not keep them
+;    around, just delete them prior to running.
+;
+; 6. The script also creates .bin.unc files. You can delete those,
+;    they're mostly there so you can verify that the char mapping
+;    part of the script works, and you can also use it to cross-check
+;    the result decompressing the newly compressed data.
+;
+; 7. The script pads the .bin files to 16 bytes. mziab says it's
+;    necessary and I don't want to break stuff needlessly...
+;
+; 8. The script has limited conditional support, of the form
+;
+;    if flag = 1
+;    ...
+;    else
+;    ...
+;    endif
+;
+;    Those let you provide alternate text. Pass the flag value on
+;    the scripts command line; for instance, if you want to activate
+;    the above, call
+;
+;    python3 compress_script.py flag=1
+;
+;    if you don't, just don't specify anything.
+;
+;    This is used in the French translation to provide alternate
+;    text for Gyuna (Raja's friend).
+;
+; 9. If you pass --debug on command line, the script will output a
+;    massive amount of junk on stdout. Basically it outputs
+;    the binary offset of each source line, as well as some
+;    informative messages. Once the output file created, it
+;    dumps a reverse-translation of the output file, and if
+;    a .unc file was existing prior to the run, it outputs
+;    a reverse translation of the old .unc file as well.
+;    This is useful if you want to debug some odd problem,
+;    like possibly a missing character in the charset.asm file,
+;    or something that was incorrectly extracted.
+;
+;10. If you pass one or more filenames as a parameter to the
+;    script, it will process only those files, in which case
+;    the files don't have to be colocated with the script
+;    (charset.asm still does though). This is useful with
+;    --debug because otherwise the debug file will be huuuge.
+;
+;
+; CAVEAT
+;
+; koscmp is actually better at compression than whatever the PSIV
+; dev team used. So you end up saving some space in theory. In
+; practice because of padding you end up with the same size.
+;
+; However, this does mean that if you start from uncompressed
+; data, you don't get the same resulting .bin even if the
+; uncompressed data is EXACTLY the same.
+;
+; Hence, the .bin files in the project are the original ones
+; extracted from the ROM. If you run the script you'll get a
+; set of .bin files that are functionally the same except they
+; are smaller. But they do appear to work properly (I still have
+; to QA the whole thing, probably I'll take each text block
+; and duplicate it at every position, and make sure the game
+; doesn't crash)
+;
+;
+; VERY IMPORTANT! CHECK THE SIZE OF THE UNCOMPRESSED DATA!
+;
+; Under normal circumstances, the maximum text size per block,
+; uncompressed, should not exceed 7887 bytes, as per lory1990.
+; For your information, no text block in the original PSIV US
+; ROM exceeds 7220 bytes. By default, the compression script
+; will warn you if any file exceeds 7887 bytes. You can edit
+; the script if you want to be extra careful and use 7220.
+;
+; For localization, you're likely to exceed this size. This means
+; you will have three choices:
+;
+; 1. Work off the "uncompressed" tree, ps4disam-uncomp. Be warned
+;    that it may lag in terms of bugfixes, but it was used for the
+;    French translation's first release, as well as the English
+;    PSIV Generations relocalization, so it remains perfectly
+;    serviceable. Note however that it produces a larger ROM image.
+;
+; 2. Shorten your text until it fits. I believe this is the approach 
+;    taken by mziab for the Polish translation for a particular text 
+;    block.
+;
+; 3. Make room for the uncompressed RAM buffer to be located lower
+;    in memory.  A good candidate is moving Battle_Palette_Objects
+;    to $FF2000, and moving Dialogue_Trees to $FF2A90 (the former
+;    location of Battle_Palette_Objects). This appears to work OK,
+;    but this isn't fully tested it yet. BGE or galletteuh will need
+;    to go through the whole game set up that way to verify whether
+;    it works. From looking at the constants asm file there's a large
+;    area of RAM before $FF2A90 which is just unused in the original
+;    ROM but don't quote me on that.
+;
+;
+; CHECKING THE COMPRESSION
+;
+; To verify that whatever you are doing to the compression (using
+; an alternate Kosinsky implementation for instance), the source
+; tree contains a special program, koschk.asm, which assembles
+; to a ROM runnable on the Genesis (or, more realistically, an
+; emulator) which includes all compressed data, all uncompressed
+; data (as generated by compress_script.py), decompresses the
+; compressed data using the PSIV Genesis compression routine, and
+; checks whether the result matches. BGE makes no claims that it
+; checks 100% properly (it may be off by one at the end) but it
+; should be good enough to verify for big problems.
+;
+; Assembling koschk.asm yields a .bin file you can just run on
+; your emulator. It will print 43 numbers, followed by GOOD in
+; green if everything is OK, or BAD in red if there's a problem
+; with that text block. To find the problem you'll have to use
+; the debugger; but in any case it means your Kosinsky compression
+; routine is unusable for PSIV even though it might be correct
+; for whatever implementation of the decompression you're using.
+;
+; Note that this is mostly paranoia and you should be fine
+; overall. The code archive contains a Linux 64 bit static compressor
+; and a Windows version of same which is known to work on the
+; original PSIV text, although it yields a different
