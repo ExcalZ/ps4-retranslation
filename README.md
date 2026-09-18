@@ -57,8 +57,8 @@ release/             release templates: readme_template.txt, patcher_template.ht
   Python tooling itself is portable.
 * **Python 3.10 or newer.** No packages to install.
 * Optional: [BlastEm 0.6.2](https://www.retrodev.com/blastem/) unpacked as
-  `blastem-win32-0.6.2/` beside the repository (the emulator harness and three
-  tests drive it through its GDB stub); [Flips](https://github.com/Alcaro/Flips)
+  `blastem-win32-0.6.2/` in the repository root - it is git-ignored - (the
+  emulator harness and three tests drive it through its GDB stub); [Flips](https://github.com/Alcaro/Flips)
   as `flips/flips.exe` (smaller patches; `tools/bps.py` is the fallback);
   BizHawk 2.11 for `tools/playtest.py`.
 * To **package a release** you need the stock US ROM as a plain binary at

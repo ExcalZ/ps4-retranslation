@@ -13,7 +13,7 @@
 
 Not included, but used by the build and test tooling - install them yourself:
 
-* **BlastEm 0.6.2** (GPL) - `tools/blastem_drive.py` expects `blastem-win32-0.6.2/blastem.exe` beside the repository.
+* **BlastEm 0.6.2** (GPL) - `tools/blastem_drive.py` expects `blastem-win32-0.6.2/blastem.exe` in the repository root (git-ignored).
 * **Floating IPS (Flips)** (GPL) - `tools/release.py` uses `flips/flips.exe` when present and falls back to `tools/bps.py`.
 * **BizHawk 2.11** - `tools/playtest.py` looks for `EmuHawk.exe`.
 * **Exodus 2.1** - some measurement scripts read its savestates.

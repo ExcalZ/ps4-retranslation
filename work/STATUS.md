@@ -3567,3 +3567,24 @@ stock US ROM is `work/ps4us_stock.bin` (CRC32 FE236442, identical to the
 user's `P-STAR4.SMD` deinterleaved).  Note for the pipeline: `checkbuild.py`
 reads the *previous* listing, so after a build that broke an anchor, assemble
 once with `build.bat` before `sourcebuild.py` will pass again.
+
+## 2026-09-18: repository packaged for release
+
+`git init` at the project root; two commits.  `.gitignore` keeps every ROM,
+build product, savestate (except the three BlastEm states and, in
+`work/fixtures/`, the five Exodus states the tests replay), emulator and
+Flips binary out; `.gitattributes` disables line-ending conversion because
+the generators are byte-exact.  `README.md` is now the user guide (the dev
+log moved to `docs/devlog.md`), `docs/pipeline.md` documents the build and
+retargeting, `LICENSE` is MIT, `NOTICE.md` lists third-party terms.
+`tools/export_mdtools.py` lifts the 20 game-independent tools into
+`mdtools/` with a generated README and an isolation smoke test;
+`tools/webpatch.py` renders the offline patcher for any BPS.  Fixed in
+passing: `decomp.py` read one byte past a Nemesis blob that ends exactly
+at the stream's end (7 of the 12 art blobs); `sourcebuild.py` assembles
+once first when `ps4built.bin`/`ps4.lst` are missing.
+
+Verified from a fresh clone: `sourcebuild.py` reproduces SHA-256
+`01ED8D91...` byte for byte, all 13 tests pass, `git status` is clean after
+a build, `export_mdtools.py` and `release.py` (bps.py fallback) both run.
+Commit author is a placeholder noreply address until the user sets one.
