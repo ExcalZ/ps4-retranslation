@@ -1,5 +1,9 @@
 # Phantasy Star IV: English Retranslation — source and tools
 
+[![Latest release](https://img.shields.io/github/v/release/ExcalZ/ps4-retranslation?label=Download%20the%20patch)](https://github.com/ExcalZ/ps4-retranslation/releases/latest)
+
+**Players:** get the patch from the [Releases page](https://github.com/ExcalZ/ps4-retranslation/releases/latest) — the zip has an offline patcher (`Patcher.html`), the BPS and the readme. Nothing else on this page is needed to play.
+
 A new English translation of *Phantasy Star IV: The End of the Millennium*
 (Mega Drive / Genesis), made from the Japanese script, built as a **source
 patch on top of the game's disassembly** rather than by editing the ROM. Along
@@ -21,9 +25,9 @@ to adapt the work to another language or another project:
   and interpreter, BlastEm harness, offline web patcher) — see
   [Generic tools](#generic-mega-drive-tools).
 
-**Just want to play?** Download the release zip (patch + offline patcher +
-readme); nothing in this repository is needed. No ROM is included here or
-there.
+**Just want to play?** Download the [release zip](https://github.com/ExcalZ/ps4-retranslation/releases/latest)
+(patch + offline patcher + readme); nothing in this repository is needed.
+No ROM is included here or there.
 
 ## Repository map
 
