@@ -75,3 +75,6 @@ Thumbs.db
 .claude/
 # stray decompression scratch output
 ps4disasm/script/*.unc*
+
+# Exodus savestates the interpreter-backed tests replay (~60 KB each)
+!work/fixtures/*.exs

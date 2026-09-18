@@ -6,7 +6,8 @@ import menuharness as H
 
 
 sym = H.Symbols()
-STATE = "Exodus_2.1/Savestates/loctest1-status.exs"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATE = os.path.join(ROOT, "work", "fixtures", "loctest1-status.exs")
 BASE = 0x5400                    # offset inside the savestate's 64K RAM image
 
 
@@ -112,7 +113,7 @@ for label, good, detail in checks:
 # HUNTER KNIFE.  Every party tile returned from that exact state must now be a
 # compositor-owned slots ($FFFE), never item/Technique/Skill strip slots.
 from buildflags import strips_built, skipped
-shop_path = "Exodus_2.1/Savestates/ps4en-weaponshop.exs"
+shop_path = os.path.join(ROOT, "work", "fixtures", "ps4en-weaponshop.exs")
 if os.path.exists(shop_path) and not strips_built(sym.text):
     skipped("weapon-shop party tiles are composer-owned slots",
             "no strip slots exist in the composed-name build")

@@ -228,7 +228,7 @@ def render(m, base, rows=28, cols=64, width=40):
 if __name__ == "__main__":
     sym = Symbols()
     path = sys.argv[1] if len(sys.argv) > 1 else \
-        "Exodus_2.1/Savestates/vwfmenu10-techmenu.exs"
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "work", "fixtures", "vwfmenu10-techmenu.exs")
     st = load_state(path)
     print("state %s" % os.path.basename(path))
     print("  pc $%06X  sp $%08X  autoinc %d" % (st["pc"], st["sp"], st["autoinc"]))

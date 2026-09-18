@@ -13,7 +13,8 @@ import menuharness as H
 
 sym = H.Symbols()
 rom = open(H.ROM, "rb").read()
-STATE = "Exodus_2.1/Savestates/vwfmenu11-status.exs"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATE = os.path.join(ROOT, "work", "fixtures", "vwfmenu11-status.exs")
 BASE = 0xFF5400
 POOLTOP = BASE + 0x100
 ok = True

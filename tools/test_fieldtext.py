@@ -9,7 +9,7 @@ import menuharness as H
 
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATE = os.path.join(ROOT, "Exodus_2.1", "Savestates", "ps4en-fieldtech.exs")
+STATE = os.path.join(ROOT, "work", "fixtures", "ps4en-fieldtech.exs")
 ROM = os.environ.get("PS4_ROM", os.path.join(ROOT, "ps4disasm", "ps4built.bin"))  # paired with PS4_LST via menuharness
 VWF = os.path.join(ROOT, "ps4disasm", "vwf")
 
