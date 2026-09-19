@@ -325,6 +325,12 @@ if CHROME:
     ok &= good
     print("  %s RAM-built Save and money-chest messages force the VWF" %
           ("ok  " if good else "FAIL"))
+    # The chest amount is ConvertToDec3Digits' big fixed digits ($9A-$A3);
+    # the appended hundreds must use the same digit code, not the charset 0.
+    tail = rom[sym("loc_2AAACA"):sym("loc_2AAACA") + 24]
+    good = tail[:2] == bytes([0x9A, 0x9A]) and text_of(tail[2:tail.index(0xFF)]) == " meseta procured!"
+    ok &= good
+    print("  %s money-chest hundreds use the fixed digit tiles" % ("ok  " if good else "FAIL"))
 
     order_return = rom[sym("loc_5E650"):sym("loc_5E6DE")]
     constants = open("ps4disasm/ps4.constants.asm", encoding="utf-8").read()

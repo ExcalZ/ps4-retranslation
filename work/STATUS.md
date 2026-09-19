@@ -3573,7 +3573,8 @@ once with `build.bat` before `sourcebuild.py` will pass again.
 `PARA`/`POIS` are now `PARALYZED`/`POISONED`.  The party-bar field was the
 five cells of `Level NN` (X+6..10, 40 px); PARALYZED is 46 px in the menu
 face, POISONED exactly 40.  The pad cell before `Level` (X+5) is always
-blank - the widest party name, Forren, is 28 px and ends in X+4 - so the
+blank - the widest name that can carry an ailment, Shess, is 25 px (Forren
+and Frena are androids, immune; a name would need 33 px to reach X+5) - so the
 status field is now X+5..10 (48 px): `VWFMenu_StatusLevelClear` is six
 blanks, the draw starts at X+5 (`addq.w #5,d0`, same size), and the words
 live in the extension (`VWFMenu_ParalyzedStr`/`PoisonedStr`, own chrome-
@@ -3600,8 +3601,16 @@ listing - a plain assemble is needed before `sourcebuild` after any build
 that broke an anchor.  Also: `subprocess.run(['cmd','/c','build.bat'],
 cwd=...)` does not run ("not recognized"); pass build.bat's full path.
 
+Also: the money chest's "<n>00 meseta procured!" mixed faces - the
+amount's digits come from `ConvertToDec3Digits` as the big fixed tiles
+(`$9A`-`$A3`) while the literal `"00"` in `loc_2AAACA` went through the
+window charset as the VWF `0`.  The two zeros are now `$9A, $9A`, so the
+whole number is the fixed digits and only " meseta procured!" composes
+(`test_paths.py` checks the bytes; emu68k confirms the head flushes as
+tile `$7DA` and the tail composes).
+
 `checkbuild.py` and all 13 tests pass.  `work/ps4en_compose.bin` SHA-256
-`B24A00331445CE1106061294B9053906574ECE2A1D1688531C485F38ED6B9CFF`.
+`1654688EEB2B06A58D6CF0FA68A41F32EC1D3689A620BB9F8CDC35F152414C96`.
 
 ## 2026-09-18: enemy-name box after a mid-battle merge ("ND MACRO")
 

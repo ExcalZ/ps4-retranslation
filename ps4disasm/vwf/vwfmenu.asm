@@ -2761,9 +2761,11 @@ VWFMenu_LoadSaveSlotLevel:
 
 ; Kept outside the chrome ranges so the fixed fallback writes every blank
 ; cell.  The party-bar status field is six cells, X+5..10: the pad cell
-; before "Level" (the widest party name, Forren, is 28 px and ends in X+4),
-; the three composed cells of "Level" at X+6..8 and the two fixed cells of
-; its number at X+9..10.  Composing spaces emits no cells; clearing more
+; before "Level" (the widest name that can carry an ailment, Shess, is 25 px
+; - Forren and Frena are androids and immune - and a name would need 33 px
+; to reach X+5), the three composed cells of "Level" at X+6..8 and the two
+; fixed cells of its number at X+9..10.  Composing spaces emits no cells;
+; clearing more
 ; than six crosses the window boundary.  Six cells is 48 px, which is what
 ; lets the status words be whole: PARALYZED is 46 px, POISONED 40, DYING
 ; 26.  The normal "     Level" redraw writes blank tiles through the pad

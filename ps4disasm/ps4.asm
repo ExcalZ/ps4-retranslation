@@ -335864,7 +335864,10 @@ SpaceMenuText_End:	; VWFMENU_SPACE_HI: the strings above compose
 	even
 
 loc_2AAACA:
-	dc.b	"00 meseta procured!"
+	; The hundreds are appended to ConvertToDec3Digits' output, whose digits
+	; are the big fixed tiles ($9A-$A3, d1=0); write the two zeros with the
+	; same code so the whole amount is one face, not "5" fixed + "00" VWF.
+	dc.b	$9A, $9A, " meseta procured!"
 	dc.b	$FF
 
 
