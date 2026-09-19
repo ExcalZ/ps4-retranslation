@@ -385,6 +385,15 @@ if CHROME:
     ok &= good
     print("  %s battle MACRO/options/Defend surfaces mark and rewind the pool%s"
           % ("ok  " if good else "FAIL", "" if good else " (missing %s)" % missing))
+    # The mid-battle enemy rebuild (Zol Slug Fusion, the Life Deleter and
+    # Twin Arms combines) recomposes both group-name boxes through the
+    # wrapper that then lifts every battle mark above them; the stock jsr
+    # must not survive there.
+    rebuild = rom[sym("loc_14D46"):sym("loc_14D46") + 0xA0]
+    good = (rebuild.count(bytes.fromhex("4EB9") + sym("VWFMenu_BattleRebuildNames").to_bytes(4, "big")) == 2
+            and bytes.fromhex("4EB9") + sym("EnemyGroup_SetupNames").to_bytes(4, "big") not in rebuild)
+    ok &= good
+    print("  %s enemy rebuild recomposes the name boxes and lifts the marks above them" % ("ok  " if good else "FAIL"))
     overview = rom[sym("Win_CharStatsOverview_Main"):sym("Win_CharStatsOverview_Main") + 0x400]
     good = bytes.fromhex("5C40") in overview
     ok &= good

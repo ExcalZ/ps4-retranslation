@@ -1,6 +1,6 @@
 # PS4 Translation — Current Handoff
 
-Updated: 2026-09-15
+Updated: 2026-09-18
 
 ## Nested-status restore and final chrome corrections (2026-09-15)
 
@@ -3567,6 +3567,39 @@ stock US ROM is `work/ps4us_stock.bin` (CRC32 FE236442, identical to the
 user's `P-STAR4.SMD` deinterleaved).  Note for the pipeline: `checkbuild.py`
 reads the *previous* listing, so after a build that broke an anchor, assemble
 once with `build.bat` before `sourcebuild.py` will pass again.
+
+## 2026-09-18: enemy-name box after a mid-battle merge ("ND MACRO")
+
+Mark's `slot_2.state` (now `work/compose9-metaslug.state`): two Zol Slugs
+fused into a Meta Slug and its name box then showed the tail of `COMMAND`
+and `MACRO`.  Replayed in the harness: every mid-battle enemy rebuild goes
+through `loc_14D46`, which recomposes both group-name boxes while the
+acting enemy's action-name window ("Fusion") is still open.  The new name
+landed above `VWFMenu_BattleEnemyMark` (slots 22-26 over the mark at 18);
+`loc_B59A` rewound to 18 when that window closed, and the next turn's
+options labels took 18-29.  The state has exactly that layout.
+
+Fix: `VWFMenu_BattleRebuildNames` (vwfmenu.asm), a six-byte jsr replacing
+each of the two `jsr EnemyGroup_SetupNames` in `loc_14D46`, composes the
+name and then lifts every battle mark (base, action, enemy, result, effect,
+macro, options) that is nonzero and below the new PoolTop up to it - the
+boxes live for the rest of the battle, so nothing may rewind under them
+again.  The label open at the time stays pinned beneath (four cells, once
+per battle: the merges are one-way).  No battle address moves; the state
+replays on the new build.
+
+Verified on each pair's own AI with `tools/enemy_rebuild_trace.py` (the
+state's Meta Slug is forced to its split object and the spawned formation
+rewritten to the pair; the party then only defends): the last two Zol
+Slugs' Fusion -> Meta Slug, ArthroPod + Wiredine's Combine -> Life Deleter,
+Blade Right + Haken Left's Combine -> Twin Arms.  In all three the rebuild's
+slots are still the box's slots rounds later and the marks sit above them
+(e.g. names 25-29, marks 30, labels 30-41).  The other two `loc_14D46`
+callers (Sand Worm spawn, the Jr. Ooze split object) take the same path.
+`test_paths.py` checks both wrapped call sites.  `checkbuild.py` and all
+13 tests pass.  `work/ps4en_compose.bin` SHA-256
+`7A90CB96DF6F0E7BB2D9DA407235F48EAAB5491363F06DE1C960E6B26A93FCE1`,
+listing `work/ps4en_compose.lst`.
 
 ## 2026-09-18: repository packaged for release
 

@@ -29751,11 +29751,19 @@ loc_14D46:
 	jsr	(Battle_UpdateFighters).l
 	lea	(Fighter_Enemy_Group_1).l, a4
 	_move.w	#6, 0(a4)
+	if vwf_menu=1
+	jsr	(VWFMenu_BattleRebuildNames).l	; the names, then every battle mark lifted above them
+	else
 	jsr	(EnemyGroup_SetupNames).l
+	endif
 	move.w	#5, $2(a4)
 	lea	(Fighter_Enemy_Group_2).l, a4
 	_move.w	#7, 0(a4)
+	if vwf_menu=1
+	jsr	(VWFMenu_BattleRebuildNames).l
+	else
 	jsr	(EnemyGroup_SetupNames).l
+	endif
 	move.w	#5, $2(a4)
 	move.l	#$C0003, ($FFFF46C0).l
 	jsr	(DMA_PlaneA).l

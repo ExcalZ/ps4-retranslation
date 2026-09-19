@@ -416,9 +416,9 @@
 	dc.b	$FC
 	dc.b	"suppress the emergence of monsters..."
 	dc.b	$FD
-	dc.b	"Now that the fruits of a thousand years"
+	dc.b	"Now that the fruit of a thousand years"
 	dc.b	$FC
-	dc.b	"of research has been unleashed to the"
+	dc.b	"of research has been unleashed unto the"
 	dc.b	$FD
 	dc.b	"world, nothing stands in the way"
 	dc.b	$FC

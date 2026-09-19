@@ -3324,6 +3324,46 @@ VWFMenu_BattleDefendClosed:
 	move.w	#$12, (Battle_Routine).l
 	rts
 
+; Mid-battle enemy rebuilds - the last two Zol Slugs' Fusion into a Meta
+; Slug, ArthroPod + Wiredine's Combine into a Life Deleter, Blade Right +
+; Haken Left's into Twin Arms, and the Sand Worm / Jr. Ooze spawns, all
+; through loc_14D46 - recompose the enemy group name boxes while the acting
+; enemy's action-name window ("Fusion") is still open, so the new names
+; landed above VWFMenu_BattleEnemyMark; the window's close (loc_B59A) then
+; rewound the pool beneath them and the next turn's COMMAND/MACRO/RUN labels
+; took their cells (the Meta Slug's box read "ND MACRO").  A name box lives
+; for the rest of the battle, so after each recompose lift every battle mark
+; that sits under the new pool level up to it: nothing may rewind beneath
+; the names again.  The label that was open at the time stays pinned under
+; them (four cells, once per battle - the merges are one-way).  A mark that
+; was never taken (zero) is left alone.  Six-byte jsr standing in for the
+; six-byte jsr to EnemyGroup_SetupNames.
+VWFMenu_BattleRebuildNames:
+	jsr	(EnemyGroup_SetupNames).l
+	move.w	(VWFMenu_PoolTop).l, d0
+	lea	VWFMenu_BattleMarkList(pc), a0
+	moveq	#(VWFMenu_BattleMarkList_End-VWFMenu_BattleMarkList)/4-1, d1
+VWFMenu_BattleRebuildNames_Loop:
+	movea.l	(a0)+, a1
+	tst.w	(a1)
+	beq.s	VWFMenu_BattleRebuildNames_Next
+	cmp.w	(a1), d0
+	bls.s	VWFMenu_BattleRebuildNames_Next	; mark already at or above the names
+	move.w	d0, (a1)
+VWFMenu_BattleRebuildNames_Next:
+	dbf	d1, VWFMenu_BattleRebuildNames_Loop
+	rts
+
+VWFMenu_BattleMarkList:
+	dc.l	VWFMenu_BattleBase
+	dc.l	VWFMenu_BattleActionMark
+	dc.l	VWFMenu_BattleEnemyMark
+	dc.l	VWFMenu_BattleResultMark
+	dc.l	VWFMenu_BattleEffectMark
+	dc.l	VWFMenu_BattleMacroMark
+	dc.l	VWFMenu_BattleOptionsMark
+VWFMenu_BattleMarkList_End:
+
 ; Publish a newly composed battle-results panel before measuring Plane A.
 ; This lives in the VWF extension so the original battle-code addresses stay
 ; fixed and native savestates from the preceding build remain replayable.

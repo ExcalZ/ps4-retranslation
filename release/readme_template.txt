@@ -279,7 +279,9 @@ supply your own copy of the game.
   10. CHANGELOG
 --------------------------------------------------------------------------------
 
-  v@VERSION@  -  @DATE@  -  Initial release
+  v@VERSION@  -  @DATE@  -  Fixed an instance of tile recycling for enemies
+                             that summon, combine, or split.
+  v1.0   -  18.09.2026  -  Initial release
 
 
 ================================================================================
