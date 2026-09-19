@@ -36,7 +36,6 @@ the Japanese script in full.
   Item descriptions ... translated
   Location banners .... translated
   Menus / system text . retranslated where the Japanese differs
-  Staff credits ....... left exactly as the US release has them
 
   NAMES
 
@@ -49,20 +48,17 @@ letters. Some of the changes players will notice first:
   Party:       Chaz -> Rudy          Alys -> Laila Brangwen
                Rika -> Fal           Wren -> Forren
                Demi -> Frena         Gryz -> Pyke
-               Kyra -> Shess         Seth -> Thray
-               Hahn, Rune, Raja and Zio keep their names.
+               Kyra -> Shess         Seth -> Siam
+               Hahn, Raja and Zio keep their names.
 
   Techniques:  Foi/Gifoi/Nafoi -> Foie/Gifoie/Rafoie
                Wat/Giwat/Nawat -> Barta/Gibarta/Rabarta
                Gra/Nagra/Gigra -> Grants/Gigrants/Ragrants
                Rever -> Reverser, Ryuka -> Ryuker, Gelun -> Jellen,
-               Res -> Resta, and so on. Megid, Hinas and Zan are as
-               before. Nothing is truncated any more.
+               Res -> Resta, and so on.
 
   Items and enemies follow the same rule (Alshline -> Alshlin,
-  Perolymate -> PelorieMate, Lassic -> LaSheek, ...). Long-established
-  series terms keep their familiar spelling where the Japanese supports it:
-  Algol, Motavia, Dezolis, meseta, Laconia, Elsydeon.
+  Perolymate -> PelorieMate, Lassic -> LaSheek, ...).
 
   WHAT CHANGED UNDER THE HOOD
 
@@ -85,19 +81,19 @@ letters. Some of the changes players will notice first:
     shipped it in those respects: Igglanova status immunities, Psy-Robe
     psychic protection, Raja being unable to equip the Psycho Wand, and
     the reduced Shadow Blade stat penalty.
-  - The two enemies left unused in the original game (Acacia and Shadow
+  - The two enemies left unused in the original game (Arcacia and Shadow
     Mirage) are restored to their encounter tables.
 
   HOW IT WAS MADE
 
 This translation was produced by a single author working with the AI
-assistant Claude (Anthropic), which was used both for the translation from
-Japanese and as technical support for script extraction, the disassembly
-work, the variable-width font engines and the tooling around them. Every
-line of the translation was reviewed by the author. The build was
-exercised in an emulator through a library of saved states covering field,
-shop, battle, status and equipment screens across the game, backed by
-automated regression tests over the menu engine.
+assistant Claude (Anthropic), which was used for script extraction, 
+the disassembly work, the variable-width font engines and the tooling
+around them. Every line of the translation was reviewed by the author. The
+build was exercised in an emulator through a library of saved states
+covering field, shop, battle, status and equipment screens across the game,
+backed by automated regression tests over the menu engine and manually
+verified over a full playthrough.
 
 
 --------------------------------------------------------------------------------
@@ -241,7 +237,7 @@ supply your own copy of the game.
   Translation and technical support ..... Claude (Anthropic)
 
   Built on the Phantasy Star IV disassembly (ps4disasm) and its bug-fix
-  patch by lory90, without which none of the engine work would have
+  patch by lory1990, without which none of the engine work would have
   been practical. The bug fixes listed in section 1 are that project's.
 
   Tools ................................. AS macro assembler,
