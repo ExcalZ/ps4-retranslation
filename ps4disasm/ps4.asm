@@ -116671,7 +116671,7 @@ loc_582E4:
 	move.b	$2(a0), d0
 	move.b	$3(a0), d1
 	if vwf_menu_chrome=1
-	addq.w	#6, d0		; replace all of "Level", not only its last 3 cells
+	addq.w	#5, d0		; the pad cell before "Level" too: six cells, room for PARALYZED
 	else
 	addq.w	#7, d0
 	endif
@@ -116770,10 +116770,18 @@ loc_58404:
 	move.l	#DyingString, (a2)+
 	bra.s	loc_5841A
 loc_5840C:
+	if vwf_menu_chrome=1
+	move.l	#VWFMenu_ParalyzedStr, (a2)+	; whole words fit the six-cell field
+	else
 	move.l	#ParalyzedString, (a2)+
+	endif
 	bra.s	loc_5841A
 loc_58414:
+	if vwf_menu_chrome=1
+	move.l	#VWFMenu_PoisonedStr, (a2)+
+	else
 	move.l	#PoisonedString, (a2)+
+	endif
 loc_5841A:
 	rts
 

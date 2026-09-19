@@ -3568,6 +3568,41 @@ user's `P-STAR4.SMD` deinterleaved).  Note for the pipeline: `checkbuild.py`
 reads the *previous* listing, so after a build that broke an anchor, assemble
 once with `build.bat` before `sourcebuild.py` will pass again.
 
+## 2026-09-18: whole status words on the party bar; v1.01 source mismatch
+
+`PARA`/`POIS` are now `PARALYZED`/`POISONED`.  The party-bar field was the
+five cells of `Level NN` (X+6..10, 40 px); PARALYZED is 46 px in the menu
+face, POISONED exactly 40.  The pad cell before `Level` (X+5) is always
+blank - the widest party name, Forren, is 28 px and ends in X+4 - so the
+status field is now X+5..10 (48 px): `VWFMenu_StatusLevelClear` is six
+blanks, the draw starts at X+5 (`addq.w #5,d0`, same size), and the words
+live in the extension (`VWFMenu_ParalyzedStr`/`PoisonedStr`, own chrome-
+table entry) so nothing in ps4.asm moves; the fixed build keeps the stock
+strings.  The wipe is free: the normal `"     Level"` redraw emits blank
+tiles through the pad cell, and `Win_CharStatsOverview_Main` is the only
+consumer of the `$FFFFE3C0` status table.  Verified on Mark's
+`compose10-para.state` (`work/status_words.png`: PARALYZED / POISONED /
+DYING / POISONED on one bar; a cured reopen shows five clean `Level NN`).
+`test_paths.py` checks the words, their widths against 48 px, the six-cell
+clear and the X+5 draw.
+
+Found on the way: the v1.01 tag does not reproduce the v1.01 ROM.  Mark's
+`dialogue_full.json` was saved at 17:59, after the 17:36 build and before
+the 19:31 commit, so the ROM carries only the "fruit of a thousand years
+... unto the" edit while the tag's JSON also has six "Okay then!"-class
+edits - and those overflow the `$21A000` anchor by 13 bytes (loc_200000
+would move to `$21B000` and every field/battle address with it).  Resolved
+with Mark: the three `Okay then!` and Shess's `All right then! Leave it
+all` go back to `Right!`; `Okay! Then let's go`, `Y-yeah!` and the fruit
+line stay.  Block now ends at `$219FFB`.  Lesson: always `sourcebuild`
+immediately before `release.py`, and `checkbuild` reads the PREVIOUS
+listing - a plain assemble is needed before `sourcebuild` after any build
+that broke an anchor.  Also: `subprocess.run(['cmd','/c','build.bat'],
+cwd=...)` does not run ("not recognized"); pass build.bat's full path.
+
+`checkbuild.py` and all 13 tests pass.  `work/ps4en_compose.bin` SHA-256
+`B24A00331445CE1106061294B9053906574ECE2A1D1688531C485F38ED6B9CFF`.
+
 ## 2026-09-18: enemy-name box after a mid-battle merge ("ND MACRO")
 
 Mark's `slot_2.state` (now `work/compose9-metaslug.state`): two Zol Slugs

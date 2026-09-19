@@ -572,7 +572,7 @@
 	dc.b	$01
 	dc.b	$F4
 	dc.b	$03
-	dc.b	"Right! Then let's go right away!!"
+	dc.b	"Okay! Then let's go right away!!"
 	dc.b	$FD
 	dc.b	$F2
 	dc.b	$00, $00, $0E

@@ -395,9 +395,23 @@ if CHROME:
     ok &= good
     print("  %s enemy rebuild recomposes the name boxes and lifts the marks above them" % ("ok  " if good else "FAIL"))
     overview = rom[sym("Win_CharStatsOverview_Main"):sym("Win_CharStatsOverview_Main") + 0x400]
-    good = bytes.fromhex("5C40") in overview
+    good = bytes.fromhex("5A40") in overview and bytes.fromhex("5C40") not in overview
     ok &= good
-    print("  %s status text replaces the complete Level label" % ("ok  " if good else "FAIL"))
+    print("  %s status text replaces the pad cell and the complete Level label" % ("ok  " if good else "FAIL"))
+    # The whole status words live in the extension and must fit the six-cell
+    # (48 px) field they are drawn in; the clear string must cover it.
+    def menu_px(text):
+        return sum(widths[1 + ord(c) - ord("A")] for c in text)
+    widths = open("ps4disasm/vwf/menuwidth.bin", "rb").read()
+    par, poi = rom[sym("VWFMenu_ParalyzedStr"):sym("VWFMenu_ParalyzedStr") + 10], rom[sym("VWFMenu_PoisonedStr"):sym("VWFMenu_PoisonedStr") + 9]
+    words = ["".join(chr(ord("A") + b - 1) for b in x[:-1]) for x in (par, poi)]
+    clear = rom[sym("VWFMenu_StatusLevelClear"):sym("VWFMenu_StatusLevelClear") + 8]
+    good = (words == ["PARALYZED", "POISONED"] and par[-1] == 0xFE and poi[-1] == 0xFE
+            and all(menu_px(w) <= 48 for w in words + ["DYING"])
+            and clear[:7] == bytes(6) + bytes([0xFE])
+            and bytes.fromhex("24FC") + sym("VWFMenu_ParalyzedStr").to_bytes(4, "big") in overview + rom[sym("loc_583BE"):sym("loc_583BE") + 0x80])
+    ok &= good
+    print("  %s status words are whole (%s) and fit the six-cell field" % ("ok  " if good else "FAIL", ", ".join("%s %dpx" % (w, menu_px(w)) for w in words)))
 
     miracle = string_at("VWFMenu_AllAlliesRecoveredStr")
     left, right = miracle[1:].split(bytes([0x78, 0x79]), 1)
@@ -448,12 +462,13 @@ if CHROME:
     print("  %s ailments clear the entire old Level field before drawing" %
           ("ok  " if good else "FAIL"))
     clear_kind, clear_tiles = run(sym("VWFMenu_StatusLevelClear"))
-    # The field starts at window X+6: Level composes into three cells and its
-    # two-digit value occupies X+9..10.  A longer physical clear crosses the
-    # party window's right edge and paints blank tiles over the field map.
-    good = clear_kind == "fixed" and len(clear_tiles) == 5 and all((t & 0x7FF) == 0x680 for t in clear_tiles)
+    # The field starts at window X+5, the pad cell before Level: Level composes
+    # into three cells at X+6..8 and its two-digit value occupies X+9..10.  A
+    # longer physical clear crosses the party window's right edge and paints
+    # blank tiles over the field map.
+    good = clear_kind == "fixed" and len(clear_tiles) == 6 and all((t & 0x7FF) == 0x680 for t in clear_tiles)
     ok &= good
-    print("  %s the ailment clear emits exactly five physical blank cells" %
+    print("  %s the ailment clear emits exactly six physical blank cells" %
           ("ok  " if good else "FAIL"))
 
     command = string_at("loc_27E6E8")[1:]

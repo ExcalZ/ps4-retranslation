@@ -303,7 +303,7 @@
 ; $4
 	dc.b	$F4
 	dc.b	$03
-	dc.b	"R-right!"
+	dc.b	"Y-yeah!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01

@@ -1039,6 +1039,8 @@ VWFMenu_ChromeTable:
 	dc.w	0				; Technique / Skill ... has been mastered!
 	dc.l	VWFMenu_AllAlliesRecoveredStr, VWFMenu_AllAlliesRecoveredStr_End
 	dc.w	0				; field/battle Miracle result
+	dc.l	VWFMenu_ParalyzedStr, VWFMenu_PoisonedStr_End
+	dc.w	0				; PARALYZED / POISONED party-status labels
 	dc.l	0, 0
 	dc.w	0
 
@@ -2758,11 +2760,27 @@ VWFMenu_LoadSaveSlotLevel:
 	even
 
 ; Kept outside the chrome ranges so the fixed fallback writes every blank
-; cell.  The party-bar field is exactly five cells: three composed cells for
-; "Level" at X+6..8 and two fixed cells for its number at X+9..10.  Composing
-; spaces emits no cells; clearing more than five crosses the window boundary.
+; cell.  The party-bar status field is six cells, X+5..10: the pad cell
+; before "Level" (the widest party name, Forren, is 28 px and ends in X+4),
+; the three composed cells of "Level" at X+6..8 and the two fixed cells of
+; its number at X+9..10.  Composing spaces emits no cells; clearing more
+; than six crosses the window boundary.  Six cells is 48 px, which is what
+; lets the status words be whole: PARALYZED is 46 px, POISONED 40, DYING
+; 26.  The normal "     Level" redraw writes blank tiles through the pad
+; cell (an ink-less composed cell gets the blank), so a cured status is
+; wiped by the same draw that brings "Level" back.
 VWFMenu_StatusLevelClear:
-	dc.b	0,0,0,0,0,$FE
+	dc.b	0,0,0,0,0,0,$FE
+	even
+
+; The whole words for the party-bar status field (vwf_menu_chrome=1; the
+; fixed build keeps the stock five-cell "PARA "/"POIS " strings in ps4.asm).
+; Extension source is outside ps4.asm's game-character mapping: A=1..Z=26.
+VWFMenu_ParalyzedStr:
+	dc.b	$10, $01, $12, $01, $0C, $19, $1A, $05, $04, $FE	; PARALYZED
+VWFMenu_PoisonedStr:
+	dc.b	$10, $0F, $09, $13, $0F, $0E, $05, $04, $FE	; POISONED
+VWFMenu_PoisonedStr_End:
 	even
 
 	if vwf_menu_strips=1
