@@ -3568,6 +3568,16 @@ user's `P-STAR4.SMD` deinterleaved).  Note for the pipeline: `checkbuild.py`
 reads the *previous* listing, so after a build that broke an anchor, assemble
 once with `build.bat` before `sourcebuild.py` will pass again.
 
+## 2026-09-18: v1.02 packaged
+
+Built immediately before packaging from a clean tree: SHA-256
+`1654688EEB2B06A58D6CF0FA68A41F32EC1D3689A620BB9F8CDC35F152414C96`,
+CRC32 `1F69C8AD`; the tag reproduces it.  Changelog: "Chests which
+contain meseta use a consistent numeric font. Status ailments are no
+longer abbreviated on the Party screen."  The script reconciliation from
+the v1.01 mismatch ships here too (three `Right!`, Shess's `Right! Leave
+it all`).  `release/PS4_Retranslation_v1.02.zip`.
+
 ## 2026-09-18: whole status words on the party bar; v1.01 source mismatch
 
 `PARA`/`POIS` are now `PARALYZED`/`POISONED`.  The party-bar field was the
