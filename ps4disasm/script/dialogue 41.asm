@@ -24,7 +24,7 @@
 ; $3
 	dc.b	"So you've come at last!"
 	dc.b	$FD
-	dc.b	"They come and come, and every one a"
+	dc.b	"They come and come, every one a"
 	dc.b	$FC
 	dc.b	"pushover. I was growing bored!"
 	dc.b	$FD

@@ -196,7 +196,7 @@ the blue one additionally poisons, but no poison word reaches ガイス -- Germa
 | ファルス | Falz (Dark Falz = ダーク・ファルス) |
 | エスパー | esper |
 | メセタ | meseta (currency) |
-| ラシーク | LaSheek | PS1 tyrant of the Air Castle; capitalised as a noble's name, not the US "Lassic" |
+| ラシーク | LaShiec | PS1 tyrant of the Air Castle; capitalised as a noble's name, not the US "Lassic" |
 | ガイラ | Gaira | the satellite whose impact destroyed Palma, AW 1284 |
 | 勇気の塔 / 力の塔 | Tower of Courage / Tower of Strength |
 | 大僧正 | High Priest | of the Gungbius Grand Temple |
@@ -209,7 +209,7 @@ the blue one additionally poisons, but no poison word reaches ガイス -- Germa
 | JP | EN | note |
 |---|---|---|
 | シェス・ティアニー | Shess Tierney | Shess's full name, given when she is rescued |
-| ルディ・アシュレ | Rudy Ashley | Rudy gives his full name to the High Priest |
+| ルディ・アシュレ | Rudy Ashleigh | Rudy gives his full name to the High Priest |
 | アイリーン | Eileen | the Hunters Guild receptionist |
 | ギュナ | Gyuna | Ryuon's innkeeper. Ends every sentence in ズラ, a broad rustic
 tic; a passer-by says outright that his old country accent is thick, so it has
@@ -348,7 +348,7 @@ Use ", huh." or drop it: "An altar?"
 
 Kept on purpose, so they are not "fixed" later by mistake:
 
-- **"shall"** for Frena, Forren, Daughter, Le Roof, Zio, LaSheek and the
+- **"shall"** for Frena, Forren, Daughter, Le Roof, Zio, LaShiec and the
   priests. It is register, the same licence the Zema elder has for "indeed".
   Party members in casual speech get "will" / "should" / "let's".
 - **Gyuna's dialect** -- `ye`, `summat`, `I reckon`. He is described in the

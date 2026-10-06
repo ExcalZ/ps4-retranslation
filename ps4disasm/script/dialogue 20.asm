@@ -650,7 +650,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$00
-	dc.b	"Welcome, Rudy Ashley..."
+	dc.b	"Welcome, Rudy Ashleigh..."
 	dc.b	$FD
 	dc.b	"This is where the souls of those"
 	dc.b	$FC

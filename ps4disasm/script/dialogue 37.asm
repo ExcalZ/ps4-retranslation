@@ -169,7 +169,7 @@
 	dc.b	$0A
 	dc.b	"I thought I could manage..."
 	dc.b	$FC
-	dc.b	"No, I had to manage!"
+	dc.b	"No, I had to!"
 	dc.b	$FD
 	dc.b	"When I saw those people"
 	dc.b	$FC
@@ -309,7 +309,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Right!"
+	dc.b	"Okay then!"
 	dc.b	$FC
 	dc.b	"Into Gallberg Tower!"
 	dc.b	$FF
@@ -357,7 +357,7 @@
 	dc.b	$F3
 	dc.b	$F4
 	dc.b	$1B
-	dc.b	"I leave it to you, Rudy Ashley..."
+	dc.b	"I leave it to you, Rudy Ashleigh..."
 	dc.b	$FC
 	dc.b	"Look after Algol."
 	dc.b	$FF
@@ -544,7 +544,7 @@
 	dc.b	$FC
 	dc.b	"and his companions fought a man..."
 	dc.b	$FD
-	dc.b	"His name was LaSheek!"
+	dc.b	"His name was LaShiec!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
@@ -552,7 +552,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$04
-	dc.b	"But LaSheek was surely struck"
+	dc.b	"But LaShiec was surely struck"
 	dc.b	$FC
 	dc.b	"down by the first Lutz!"
 	dc.b	$FD
@@ -756,13 +756,13 @@
 	dc.b	$01
 	dc.b	"Rudy."
 	dc.b	$FC
-	dc.b	"Rudy Ashley."
+	dc.b	"Rudy Ashleigh."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$1B
 	dc.b	"I see... I leave it to you,"
 	dc.b	$FC
-	dc.b	"Rudy Ashley..."
+	dc.b	"Rudy Ashleigh..."
 	dc.b	$FF
 ; $34
 	dc.b	$F4

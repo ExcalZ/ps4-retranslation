@@ -312456,7 +312456,7 @@ EnemyNames:
 	dc.b	"Gi-Le-Farg", $FF
 	dc.b	"Laila", $FF
 	dc.b	"Re-Phase", $FF
-	dc.b	"LaSheek", $FF
+	dc.b	"LaShiec", $FF
 	dc.b	"Forest of Devils", $FF	; Carnivorous Tree
 	dc.b	"Cyber Falz", $FF	; Dark Force (1)
 	dc.b	"Bio Falz", $FF	; Dark Force (2)

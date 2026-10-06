@@ -401,7 +401,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
-	dc.b	"Right!"
+	dc.b	"Okay then!"
 	dc.b	$FC
 	dc.b	"We're off to Zio's Fort!"
 	dc.b	$FD
@@ -462,7 +462,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
-	dc.b	"Fal, you are the one who's going to"
+	dc.b	"Fal, you're the one who's going to"
 	dc.b	$FC
 	dc.b	"carry on Seed's legacy from here!"
 	dc.b	$FD
@@ -731,9 +731,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"That's beyond anything we"
-	dc.b	$FC
-	dc.b	"can handle."
+	dc.b	"That's beyond anything we can handle."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$05
@@ -774,9 +772,9 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
-	dc.b	"Stop acting like a flustered child!"
+	dc.b	"Stop acting like flustered children!"
 	dc.b	$FC
-	dc.b	"You're a grown man... It's nothing at all!"
+	dc.b	"You're grown men... It's nothing at all!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01

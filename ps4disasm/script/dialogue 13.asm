@@ -533,7 +533,7 @@
 	dc.b	$13
 	dc.b	"My god will permit no life"
 	dc.b	$FC
-	dc.b	"whatever to exist in Algol!"
+	dc.b	"whatsoever to exist in Algol!"
 	dc.b	$FD
 	dc.b	"All shall return to nothingness. And I,"
 	dc.b	$FC

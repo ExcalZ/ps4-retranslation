@@ -345,7 +345,7 @@
 ; $1E
 	dc.b	$F4
 	dc.b	$11
-	dc.b	"Well done. Neatly settled!"
+	dc.b	"Well done. Nicely settled!"
 	dc.b	$FD
 	dc.b	"The fee is 2000 meseta."
 	dc.b	$FC

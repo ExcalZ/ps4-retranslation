@@ -210,7 +210,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$04
-	dc.b	"LaSheek... as I thought!"
+	dc.b	"LaShiec... as I thought!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$1C
@@ -220,7 +220,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$04
-	dc.b	"LaSheek! Resurrected in such"
+	dc.b	"LaShiec! Resurrected in such"
 	dc.b	$FC
 	dc.b	"a form, what have you become..."
 	dc.b	$FD
@@ -375,7 +375,7 @@
 	dc.b	$04
 	dc.b	$F2
 	dc.b	$00, $01, $0B
-	dc.b	"LaSheek..."
+	dc.b	"LaShiec..."
 	dc.b	$FC
 	dc.b	"A pitiful soul, in the end..."
 	dc.b	$FD
@@ -391,7 +391,7 @@
 	dc.b	$3D
 	dc.b	"Him''"
 	dc.b	$FC
-	dc.b	"that LaSheek spoke of!?"
+	dc.b	"that LaShiec spoke of!?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$06
@@ -611,7 +611,7 @@
 	dc.b	$04
 	dc.b	$F2
 	dc.b	$00, $01, $15
-	dc.b	"Do you want to get punched again?"
+	dc.b	"You want to get punched again?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$06

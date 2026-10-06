@@ -110,7 +110,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"But that's... past the sky itself?"
+	dc.b	"But that's... beyond the sky?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$08
@@ -211,7 +211,7 @@
 	dc.b	$01
 	dc.b	"Which means it's something we"
 	dc.b	$FC
-	dc.b	"absolutely have to have..."
+	dc.b	"absolutely need to have..."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$06
@@ -505,7 +505,7 @@
 	dc.b	$FD
 	dc.b	"no longer needed by Algol."
 	dc.b	$FD
-	dc.b	"But until that time,D I shall work,"
+	dc.b	"But until that time, I shall work,"
 	dc.b	$FC
 	dc.b	"and see my duty through."
 	dc.b	$FD

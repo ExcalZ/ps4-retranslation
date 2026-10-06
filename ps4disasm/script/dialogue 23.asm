@@ -110,9 +110,7 @@
 	dc.b	"ground! What was that...??"
 	dc.b	$FF
 ; $10
-	dc.b	"The Laconia equipment came in from"
-	dc.b	$FC
-	dc.b	"Richelle."
+	dc.b	"Laconia equipment came in from Richelle."
 	dc.b	$FD
 	dc.b	"So what's on the shelf is all there"
 	dc.b	$FC
@@ -364,9 +362,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"You think? Seems a little creepy"
-	dc.b	$FC
-	dc.b	"to me."
+	dc.b	"You think? Seems a little creepy to me."
 	dc.b	$FF
 ; $29
 	dc.b	"I wonder if the sacred flame"
@@ -441,7 +437,7 @@
 	dc.b	$FD
 	dc.b	"No, surely, it can't be."
 	dc.b	$FC
-	dc.b	"Waaaaaah."
+	dc.b	"Waaaah."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01

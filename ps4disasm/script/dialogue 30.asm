@@ -235,7 +235,7 @@
 ; $20
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"The sad remains of the shuttle ship."
+	dc.b	"The sad remains of the shuttle."
 	dc.b	$FC
 	dc.b	"It'll never fly again..."
 	dc.b	$FD

@@ -181,7 +181,7 @@
 	dc.b	"from such a close distance!"
 	dc.b	$FF
 ; $19
-	dc.b	"Aaaaaaaaaaaaaaah."
+	dc.b	"Aaaaaaaah."
 	dc.b	$FF
 ; $1A
 	dc.b	"You brought the Eclipse Torch"

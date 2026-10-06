@@ -136,7 +136,7 @@
 	dc.b	$35, $01
 	dc.b	"This is the village of Mile. And this"
 	dc.b	$FC
-	dc.b	"here is my sand worm ranch, newly built!"
+	dc.b	"here is my brand new sand worm ranch!"
 	dc.b	$FD
 	dc.b	"Well? Aren't they charming?"
 	dc.b	$FC
@@ -254,9 +254,9 @@
 	dc.b	$FC
 	dc.b	"something again..."
 	dc.b	$FD
-	dc.b	"He can chase his whims because Mother"
+	dc.b	"He can chase whims because Mother"
 	dc.b	$FC
-	dc.b	"keeps the inn together so soundly."
+	dc.b	"keeps the inn together so well."
 	dc.b	$FD
 	dc.b	"I love them both. Mother for that, and"
 	dc.b	$FC
@@ -507,7 +507,7 @@
 	dc.b	$F3
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"He's turned to stone..."
+	dc.b	"Turned to stone..."
 	dc.b	$FF
 ; $66
 	dc.b	$F2

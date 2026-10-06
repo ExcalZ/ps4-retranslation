@@ -701,7 +701,7 @@
 	dc.b	$F7
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Right! We're moving out too!"
+	dc.b	"Okay then! We're moving out too!"
 	dc.b	$FF
 ; $2F
 	dc.b	$FA

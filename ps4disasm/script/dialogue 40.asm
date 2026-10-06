@@ -216,7 +216,7 @@
 	dc.b	$FD
 	dc.b	"The victor sealed the spirit of its foe"
 	dc.b	$FC
-	dc.b	"in the rift between dimensions."
+	dc.b	"in a rift between dimensions."
 	dc.b	$FD
 	dc.b	$F2
 	dc.b	$00, $01, $1C
@@ -504,7 +504,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$00
-	dc.b	"Rudy Ashley..."
+	dc.b	"Rudy Ashleigh..."
 	dc.b	$FC
 	dc.b	"you who have tread upon Ryucross..."
 	dc.b	$FD

@@ -609,7 +609,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
-	dc.b	"That would be you, wouldn't it?"
+	dc.b	"That'd be you, right?"
 	dc.b	$FF
 ; $A0
 	dc.b	$F4
@@ -1124,7 +1124,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"But a door like this is of no help at all..."
+	dc.b	"But a door like this is no help at all..."
 	dc.b	$FF
 ; $E4
 	dc.b	$FA

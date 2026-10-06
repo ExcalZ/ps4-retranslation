@@ -321,7 +321,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Right, here we go!!"
+	dc.b	"Okay, here goes!!"
 	dc.b	$FF
 ; $37
 	dc.b	$F4

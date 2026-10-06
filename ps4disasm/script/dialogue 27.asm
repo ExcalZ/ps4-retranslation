@@ -321,9 +321,9 @@
 	dc.b	$FC
 	dc.b	"Uzo and hear the details directly."
 	dc.b	$FD
-	dc.b	"Uzo is a village on a lonely island"
+	dc.b	"Uzo is a village on a solitary island"
 	dc.b	$FC
-	dc.b	"to the south of here."
+	dc.b	"south of here."
 	dc.b	$FF
 ; $2A
 	dc.b	$FA

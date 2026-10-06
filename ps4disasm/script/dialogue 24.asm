@@ -234,7 +234,7 @@
 	dc.b	$FD
 	dc.b	"But seeing the crops grow lush and green"
 	dc.b	$FC
-	dc.b	"makes all that fatigue disappear"
+	dc.b	"makes all that fatigue disappear!"
 	dc.b	$FF
 ; $1C
 	dc.b	"What's the "
@@ -288,9 +288,9 @@
 ; $21
 	dc.b	"The man in that house has put in for"
 	dc.b	$FC
-	dc.b	"the field-birds to be killed?"
+	dc.b	"those birds to be killed?"
 	dc.b	$FD
-	dc.b	"Nonsense! He doted on those strange"
+	dc.b	"Nonsense! He doted on those weird"
 	dc.b	$FC
 	dc.b	"birds so much"
 	dc.b	$FD
@@ -533,7 +533,7 @@
 	dc.b	$FC
 	dc.b	"My name is Culvers."
 	dc.b	$FD
-	dc.b	"My son fell ill... and he has got it"
+	dc.b	"My son fell ill... and he's got it"
 	dc.b	$FC
 	dc.b	"into his head that he won't recover."
 	dc.b	$FD
@@ -588,9 +588,9 @@
 	dc.b	$FC
 	dc.b	"I'm Sekreas."
 	dc.b	$FD
-	dc.b	"You'll have heard the odd birds are"
+	dc.b	"You've heard of odd birds"
 	dc.b	$FC
-	dc.b	"tearing up these terraced fields?"
+	dc.b	"tearing up the terraced fields?"
 	dc.b	$FD
 	dc.b	"Well, I happen to know where the"
 	dc.b	$FC

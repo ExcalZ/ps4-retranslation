@@ -73,7 +73,7 @@
 ; $A
 	dc.b	"You put the monsters down!?"
 	dc.b	$FC
-	dc.b	"A girl and a kid, the pair of you...?"
+	dc.b	"A girl and a kid, the two of you...?"
 	dc.b	$FD
 	dc.b	"...Ah -- no, I said nothing!"
 	dc.b	$FC
@@ -269,7 +269,7 @@
 	dc.b	"is keeping up appearances."
 	dc.b	$FF
 ; $1A
-	dc.b	"You beat the monsters? Well, what a"
+	dc.b	"You beat the monsters? Oh, what a"
 	dc.b	$FC
 	dc.b	"relief."
 	dc.b	$FF
@@ -438,7 +438,7 @@
 	dc.b	"night with those monsters around..."
 	dc.b	$FF
 ; $2D
-	dc.b	"Now I can let the children out to play"
+	dc.b	"Now I can let the kids out to play"
 	dc.b	$FC
 	dc.b	"again."
 	dc.b	$FF

@@ -129,7 +129,7 @@
 	dc.b	$FC
 	dc.b	"training in secret ever since we parted!"
 	dc.b	$FD
-	dc.b	"So that I could be more use to all of you!"
+	dc.b	"So I could be of more use to you all!"
 	dc.b	$FD
 	dc.b	"Please!"
 	dc.b	$FC
@@ -306,7 +306,7 @@
 	dc.b	$00, $01
 	dc.b	$F4
 	dc.b	$0A
-	dc.b	"Right! Leave it all to your"
+	dc.b	"All right then! Leave it all to your"
 	dc.b	$FC
 	dc.b	"big sister Shess!"
 	dc.b	$FF
@@ -479,9 +479,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$07
-	dc.b	"I'm sorry. I can't be of help"
-	dc.b	$FC
-	dc.b	"to you yet."
+	dc.b	"I'm sorry. I can't be of help to you yet."
 	dc.b	$FD
 	dc.b	"Stabilizing every system on Motavia"
 	dc.b	$FC

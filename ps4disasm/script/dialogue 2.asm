@@ -436,7 +436,7 @@
 	dc.b	$2A, $02
 	dc.b	$FA
 	dc.b	$26, $01
-	dc.b	"Lazing about here is a great deal more"
+	dc.b	"Lounging here is a lot more"
 	dc.b	$FC
 	dc.b	"fun than going to the Academy!"
 	dc.b	$FF

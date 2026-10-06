@@ -278,7 +278,7 @@
 	dc.b	$04
 	dc.b	"Shut it! You were the one flailing"
 	dc.b	$FC
-	dc.b	"around with no thought for anything!!"
+	dc.b	"around carelessly!!"
 	dc.b	$FD
 	dc.b	$F2
 	dc.b	$00, $00, $82

@@ -152,7 +152,7 @@
 	dc.b	$01
 	dc.b	"Glad you're impressed, Thray."
 	dc.b	$FC
-	dc.b	"What did we come here for, again?!"
+	dc.b	"Why did we come here, again?!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$08
@@ -441,7 +441,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$08
-	dc.b	"Quite so, but... surely not..."
+	dc.b	"Correct, but... surely not..."
 	dc.b	$FC
 	dc.b	"A Positron Bolt unit...?"
 	dc.b	$FD
@@ -509,7 +509,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Then hadn't we better shut this"
+	dc.b	"Then shouldn't we shut this"
 	dc.b	$FC
 	dc.b	"place down too?"
 	dc.b	$FD

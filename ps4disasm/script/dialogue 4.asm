@@ -341,7 +341,7 @@
 	dc.b	"counting on you!"
 	dc.b	$FF
 ; $30
-	dc.b	"You guys are pretty good, aren't you?"
+	dc.b	"You guys are pretty good, huh?"
 	dc.b	$FF
 ; $31
 	dc.b	"And I thought the machines had"
@@ -369,7 +369,7 @@
 	dc.b	"Mmmnnnngh, I have had enough of it!!"
 	dc.b	$FF
 ; $34
-	dc.b	"Mmmmnnngh. Nothing else is going to come"
+	dc.b	"Mmnngh. Nothing else is going to come"
 	dc.b	$FC
 	dc.b	"crawling out now, right?"
 	dc.b	$FF
@@ -707,7 +707,7 @@
 	dc.b	$FC
 	dc.b	"everything before my eyes went black."
 	dc.b	$FD
-	dc.b	"The next thing I knew, there"
+	dc.b	"Next thing I knew, there"
 	dc.b	$FC
 	dc.b	"you all were, standing over me."
 	dc.b	$FF
@@ -731,7 +731,7 @@
 	dc.b	$F3
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"He's turned to stone..."
+	dc.b	"Turned to stone..."
 	dc.b	$FF
 ; $66
 	dc.b	$FF

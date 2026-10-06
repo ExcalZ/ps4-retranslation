@@ -354,7 +354,7 @@
 ; $27
 	dc.b	$F4
 	dc.b	$06, $02
-	dc.b	"Siam did something like that..."
+	dc.b	"For Siam to have been... like that..."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$04, $01

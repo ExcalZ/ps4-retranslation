@@ -58,7 +58,7 @@ letters. Some of the changes players will notice first:
                Res -> Resta, and so on.
 
   Items and enemies follow the same rule (Alshline -> Alshlin,
-  Perolymate -> PelorieMate, Lassic -> LaSheek, ...).
+  Perolymate -> PelorieMate, Lassic -> LaShiec, ...).
 
   WHAT CHANGED UNDER THE HOOD
 
