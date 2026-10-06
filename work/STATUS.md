@@ -3675,3 +3675,34 @@ Verified from a fresh clone: `sourcebuild.py` reproduces SHA-256
 `01ED8D91...` byte for byte, all 13 tests pass, `git status` is clean after
 a build, `export_mdtools.py` and `release.py` (bps.py fallback) both run.
 Commit author is a placeholder noreply address until the user sets one.
+
+## 2026-10-05: critical-hit flash fades instead of strobing
+
+A critical on an enemy set palette line 0 colours 1-13 - the whole battle
+background - to solid white on alternate two-frame steps of the palette
+object's timer: three hard 15 Hz flashes in a fifth of a second.  A
+critical on the party did the same in red (`loc_35CB0`, from
+`Character_DamageAnimation`).  `CritFlash_Taper` (end of vwfmenu.asm),
+entered by an 8-byte `jmp`/`nop` in place of the `btst #1,$2(a4) /
+beq.s loc_35CEA` at `loc_35CCE`, moves each saved colour towards the flash
+colour by `CritFlash_Table[timer]`/8 instead: half on timer 11 (the
+stock first flash's frame), stepping back to the saved palette by timer 1.
+The stock fill loop below the stub is dead but keeps its bytes.
+
+The game creates **two** crit palette objects a frame apart for an enemy
+critical (the setup in `Enemy_DamageAnimation` runs on consecutive
+frames; one on the party side).  Each saves line 0 on its first update, so
+the first must leave the palette clean for two frames or the second saves
+a tinted copy and restores it for good - a single-flash prototype with the
+timer set to 5 locked the background white exactly that way.  Timer 12 and
+up therefore restores, as the stock steps did.
+
+Checked in the BlastEm harness from Mark's `ps4en_compose/slot_0.state`
+(Rudy's crit on a Mini Worm, copied to `work/critflash/precrit.state`):
+the background peaks at about 178 average brightness instead of 247 and is
+back by timer 1; all four crits in the round leave line 0 identical to its
+start; a forced party-side crit (`work/critflash/redcheck.py`) tints half
+way to red and restores.  The six variants compared (strobe, one white
+flash, half blend, blend once, taper from white, taper from half) and their
+capture/GIF scripts are in `work/critflash/`.  13/13 tests pass; the slot 0
+state still loads on the new build.

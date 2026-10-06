@@ -69168,7 +69168,7 @@ loc_35C9C:
 
 	dc.w	$0CE4, $0EEE, $0CE4, $08A2, $0680, $08A2
 
-loc_35CB0:
+loc_35CB0:	; critical hit on a party member (Character_DamageAnimation): red
 	move.w	#$E, d0
 	bra.s	loc_35CBA
 
@@ -69188,8 +69188,13 @@ loc_35CCE:
 	subq.b	#1, $2(a4)
 	ble.s	loc_35CF4	; branch if we're done (timer is 0)
 	lea	(Palette_Table_Buffer+2).w, a1
-	btst	#1, $2(a4)
-	beq.s	loc_35CEA
+	; The stock flash strobed palette line 0 (the whole battle background)
+	; to solid d0 every other two frames: three 15 Hz flashes per critical.
+	; CritFlash_Taper (vwf/vwfmenu.asm) fades it instead.  It stands in for
+	; the eight-byte `btst #1,$2(a4) / beq.s loc_35CEA`; the fill below is
+	; no longer reached but keeps its bytes so nothing after it moves.
+	jmp	(CritFlash_Taper).l
+	nop
 loc_35CE2:
 	move.w	d0, (a1)+
 	dbf	d7, loc_35CE2

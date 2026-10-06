@@ -3395,3 +3395,69 @@ VWFMenu_BattleResultCommit:
 	jmp	(PlaneMapToRAM).l
 	endif
 VWFMenu_BattleResultCommit_End:
+
+; Critical-hit flash.  The stock palette object (loc_35CBA) set colours 1-13
+; of line 0 - the whole battle background - to solid white (red for a hit on
+; the party) on alternate two-frame steps of its timer: three hard flashes at
+; 15 Hz per critical.  This fades instead.  Each saved colour moves towards
+; d0 by CritFlash_Table[timer]/8 per channel, peaking at half on the frame
+; the first stock flash showed and stepping back to the saved palette by the
+; end of the same timer.
+;
+; Timer 12 and up restores, as the stock steps did.  The game starts two of
+; these objects a frame apart for a critical on an enemy (the palette-object
+; setup in Enemy_DamageAnimation runs on two consecutive frames - seen in
+; the BlastEm harness), and each saves line 0 on its first update; so the first
+; object must leave the palette clean for two frames or the second saves a
+; tinted copy and "restores" it for good.  Its slot is updated first, so the
+; second object's output is the one shown.
+;
+; Entered by jmp from loc_35CCE in place of `btst #1,$2(a4) / beq.s
+; loc_35CEA`, with a1 = Palette_Table_Buffer+2, d7 = 12, d0 = the flash
+; colour and the timer already decremented.
+CritFlash_Taper:
+	movem.l	d0-d6/a2, -(sp)
+	moveq	#0, d2
+	move.b	$2(a4), d2
+	cmpi.b	#CritFlash_Table_End-CritFlash_Table, d2
+	bcc.s	CritFlash_Taper_Restore
+	move.b	CritFlash_Table(pc,d2.w), d2
+	beq.s	CritFlash_Taper_Restore
+	movea.w	d0, a2
+	lea	($FFFF2C90).l, a0		; the colours loc_35CBA saved
+CritFlash_Taper_Colour:
+	move.w	(a0)+, d1
+	move.w	a2, d0
+	moveq	#0, d4
+	moveq	#2, d5
+CritFlash_Taper_Channel:			; R, G, B from the low nibble up
+	move.w	d1, d3
+	andi.w	#$E, d3
+	move.w	d0, d6
+	andi.w	#$E, d6
+	sub.w	d3, d6
+	muls.w	d2, d6
+	asr.w	#3, d6
+	add.w	d3, d6
+	andi.w	#$E, d6
+	or.w	d6, d4
+	ror.w	#4, d4
+	lsr.w	#4, d1
+	lsr.w	#4, d0
+	dbf	d5, CritFlash_Taper_Channel
+	ror.w	#4, d4				; three channels rotated in; one more puts R back at the bottom
+	move.w	d4, (a1)+
+	dbf	d7, CritFlash_Taper_Colour
+	movem.l	(sp)+, d0-d6/a2
+	rts
+CritFlash_Taper_Restore:
+	movem.l	(sp)+, d0-d6/a2
+	jmp	(loc_35CEA).l
+
+; Strength in eighths by timer value.  The stock flashes showed on 11-10,
+; 7-6 and 3-2; peak on 11 at half, gone by 1.
+CritFlash_Table:
+	dc.b	0, 0, 1, 1, 1, 2, 2, 3, 3, 3, 4, 4
+CritFlash_Table_End:
+
+	even
