@@ -3706,3 +3706,14 @@ way to red and restores.  The six variants compared (strobe, one white
 flash, half blend, blend once, taper from white, taper from half) and their
 capture/GIF scripts are in `work/critflash/`.  13/13 tests pass; the slot 0
 state still loads on the new build.
+
+## 2026-10-05: v1.03 packaged
+
+Built immediately before packaging from a clean tree: SHA-256
+`FC109BC5CE08E2EE078E9CEB7566C6857A6373AE22BC509CD25EAE835D66EA9A`,
+CRC32 `F88E2342`; the tag reproduces it.  Changelog: "Critical hits no
+longer strobe the screen; the flash fades out instead. Script revisions,
+including the spellings LaShiec and Ashleigh."  The dialogue block ends at
+`$219F77`, 137 bytes under the anchor.  The v1.03 changelog entry's
+continuation lines are indented to the text column (27); v1.02's rendered
+readme had them two columns right.  `release/PS4_Retranslation_v1.03.zip`.

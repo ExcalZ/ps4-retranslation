@@ -275,9 +275,12 @@ supply your own copy of the game.
   10. CHANGELOG
 --------------------------------------------------------------------------------
 
-  v@VERSION@  -  @DATE@  -  Chests which contain meseta use a consistent
-                             numeric font. Status ailments are no longer
-                             abbreviated on the Party screen.
+  v@VERSION@  -  @DATE@  -  Critical hits no longer strobe the screen;
+                           the flash fades out instead. Script revisions,
+                           including the spellings LaShiec and Ashleigh.
+  v1.02  -  18.09.2026  -  Chests which contain meseta use a consistent
+                           numeric font. Status ailments are no longer
+                           abbreviated on the Party screen.
   v1.01  -  18.09.2026  -  Fixed an instance of tile recycling for enemies
                            that summon, combine, or split.
   v1.0   -  18.09.2026  -  Initial release
