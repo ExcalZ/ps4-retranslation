@@ -275,7 +275,9 @@ supply your own copy of the game.
   10. CHANGELOG
 --------------------------------------------------------------------------------
 
-  v@VERSION@  -  @DATE@  -  Critical hits no longer strobe the screen;
+  v@VERSION@  -  @DATE@  -  Laila is now spelled Lyla. Grammar and typo
+                           fixes throughout the script.
+  v1.03  -  05.10.2026  -  Critical hits no longer strobe the screen;
                            the flash fades out instead. Script revisions,
                            including the spellings LaShiec and Ashleigh.
   v1.02  -  18.09.2026  -  Chests which contain meseta use a consistent

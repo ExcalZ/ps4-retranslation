@@ -3717,3 +3717,16 @@ including the spellings LaShiec and Ashleigh."  The dialogue block ends at
 `$219F77`, 137 bytes under the anchor.  The v1.03 changelog entry's
 continuation lines are indented to the text column (27); v1.02's rendered
 readme had them two columns right.  `release/PS4_Retranslation_v1.03.zip`.
+
+## 2026-10-07: v1.04 packaged
+
+Built immediately before packaging from a clean tree: SHA-256
+`55FE4D0E5FD67811F92F6E90A80B78CEDEDBC505544E4300016D087FD100E1FE`,
+CRC32 `79633270`.  Changelog: "Laila is now spelled Lyla. Grammar and typo
+fixes throughout the script."  The script commit (026ec84) also makes the
+Ice Decker scene, `lz1DDD96#0008`, the third sanctioned treeport deviation
+(JP controls; the US dropped Rudy's last portrait), so its translation
+reaches the ROM for the first time.  The dialogue block ends at `$219F15`,
+235 bytes under the anchor.  The two shop "any more" fixes move the shop
+messages, both description tables and SoundTestData by 2 bytes; no code
+moved and the pinned anchors hold.  `release/PS4_Retranslation_v1.04.zip`.
