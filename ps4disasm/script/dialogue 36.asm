@@ -40,7 +40,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"......Laila......!"
+	dc.b	"......Lyla......!"
 	dc.b	$F7
 	dc.b	$F4
 	dc.b	$07

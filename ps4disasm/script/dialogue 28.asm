@@ -693,7 +693,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
-	dc.b	" Rudyyy!!!"
+	dc.b	"Rudyyy!!!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
@@ -708,7 +708,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$06
-	dc.b	" Rudyyy!!!"
+	dc.b	"Rudyyy!!!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01

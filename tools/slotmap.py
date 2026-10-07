@@ -41,7 +41,7 @@ LIG = {p: 0x1C + i for i, p in enumerate(TECH_LIGS)}
 
 # creep glyphs for the party-name field, after the ligatures.
 PARTY_KEYS = ('Fa Fo Fr Ha La Py Ra Ru Sh Si Th am dy en es hn il ja ke ra rr '
-              'a l s y').split()
+              'a l s y Ly la').split()
 _base = max(LIG.values()) + 1
 PARTY = {k: _base + i for i, k in enumerate(PARTY_KEYS)}
 

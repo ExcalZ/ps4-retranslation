@@ -351,7 +351,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
-	dc.b	"Laila Brangwen"
+	dc.b	"Lyla Brangwen"
 	dc.b	$FC
 	dc.b	"and company."
 	dc.b	$FD
@@ -594,7 +594,7 @@
 	dc.b	$13
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila!?"
+	dc.b	"Lyla!?"
 	dc.b	$F9
 	dc.b	$31
 	dc.b	$FD
@@ -628,11 +628,11 @@
 	dc.b	$06
 	dc.b	"Rudy! It's no use!! Even Resta"
 	dc.b	$FC
-	dc.b	"will not close Laila's wound!"
+	dc.b	"will not close Lyla's wound!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"No! Laila!!"
+	dc.b	"No! Lyla!!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$03

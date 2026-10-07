@@ -297,7 +297,7 @@
 	dc.b	"wielder's power many times over...!"
 	dc.b	$FF
 ; $20
-	dc.b	"Oh, so that is the one they speak of"
+	dc.b	"Oh, so that is the one they speak of!"
 	dc.b	$FC
 	dc.b	"To think it would be in this mansion..."
 	dc.b	$FF

@@ -183,7 +183,7 @@
 	dc.b	$03
 	dc.b	"These are the hunters helping me"
 	dc.b	$FC
-	dc.b	"with my work, Laila and Rudy."
+	dc.b	"with my work, Lyla and Rudy."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$0C
@@ -191,7 +191,7 @@
 	dc.b	$FC
 	dc.b	"...It's difficult work, isn't it, Hahn?"
 	dc.b	$FD
-	dc.b	"Miss Laila, Mister Rudy, please look"
+	dc.b	"Miss Lyla, Mister Rudy, please look"
 	dc.b	$FC
 	dc.b	"after Hahn for me."
 	dc.b	$FD
@@ -227,7 +227,7 @@
 	dc.b	$63, $01
 	dc.b	$F4
 	dc.b	$0C
-	dc.b	"Miss Laila, Mister Rudy, please look"
+	dc.b	"Miss Lyla, Mister Rudy, please look"
 	dc.b	$FC
 	dc.b	"after Hahn for me."
 	dc.b	$FF
@@ -236,7 +236,7 @@
 	dc.b	$0C
 	dc.b	"That such a thing should happen"
 	dc.b	$FC
-	dc.b	"to Miss Laila......"
+	dc.b	"to Miss Lyla......"
 	dc.b	$FD
 	dc.b	"Mister Rudy, don't let it break you."
 	dc.b	$FC
@@ -421,7 +421,7 @@
 	dc.b	$63, $02
 	dc.b	$FA
 	dc.b	$42, $01
-	dc.b	"Hahn! It's good to have you......"
+	dc.b	"Hahn! It's good to have you back......"
 	dc.b	$FD
 	dc.b	"Your father talks that way, but the"
 	dc.b	$FC
@@ -457,7 +457,7 @@
 ; $29
 	dc.b	$F4
 	dc.b	$03
-	dc.b	"Laila! Please, hold on!!"
+	dc.b	"Lyla! Please, hold on!!"
 	dc.b	$FF
 ; $2A
 	dc.b	$F4
@@ -479,7 +479,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila... hold on...!"
+	dc.b	"Lyla... hold on...!"
 	dc.b	$FF
 ; $2C
 	dc.b	$FF

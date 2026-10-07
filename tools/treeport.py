@@ -143,6 +143,17 @@ OVERRIDES = {
     # reads with no speaker; write the Japanese controls instead - the single
     # deviation is the portrait the neighbours already show.
     (30, 0x4E): ('lz1DB036#0078', 'jp'),
+
+    # Tree 35 $8, the Ice Decker scene on Zelan (`lz1DDD96#0008`): the same
+    # shape as $4E above. After Forren's "I shall load it aboard the Landeel",
+    # the JP gives Rudy his own page under {ctl.F4:01} ("All right! Then we'll
+    # leave as soon as we're ready!") before Thray closes the scene; the US
+    # build dropped that portrait and goes straight to Thray. Under the US
+    # controls the row never ported (33 tokens against 32), and the hand port
+    # it left behind put Rudy's line on his earlier page and showed an empty
+    # box after Forren's. The other 32 controls, operands included, match the
+    # US exactly; the single deviation is Rudy's portrait.
+    (35, 0x08): ('lz1DDD96#0008', 'jp'),
 }
 
 

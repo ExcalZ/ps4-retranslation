@@ -297,7 +297,7 @@ EDITS = [
         "\tdc.b\t\"Seth\", $FF\n"), b(
         "CharNameData:\n"
         "\tdc.b\t\"Rudy\", $FF\n"
-        "\tdc.b\t\"Laila\", $FF\n"
+        "\tdc.b\t\"Lyla\", $FF\n"
         "\tdc.b\t\"Hahn\", $FF\n"
         "\tdc.b\t\"Thray\", $FF\n"
         "\tdc.b\t\"Pyke\", $FF\n"

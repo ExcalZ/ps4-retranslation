@@ -155,7 +155,7 @@
 	dc.b	$03
 	dc.b	"Saya, greetings can wait!"
 	dc.b	$FC
-	dc.b	"Right now, Laila...!"
+	dc.b	"Right now, Lyla...!"
 	dc.b	$F7
 	dc.b	$F4
 	dc.b	$0C
@@ -164,7 +164,7 @@
 ; $2D
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila..."
+	dc.b	"Lyla..."
 	dc.b	$F7
 	dc.b	$F2
 	dc.b	$00, $00, $4B
@@ -230,7 +230,7 @@
 	dc.b	$F7
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila! You shouldn't be"
+	dc.b	"Lyla! You shouldn't be"
 	dc.b	$FC
 	dc.b	"talking!"
 	dc.b	$FD
@@ -242,7 +242,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$06
-	dc.b	"Laila, we'll handle Zio"
+	dc.b	"Lyla, we'll handle Zio"
 	dc.b	$FC
 	dc.b	"ourselves... it's all right!"
 	dc.b	$FD
@@ -280,7 +280,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$06
-	dc.b	"Laila!"
+	dc.b	"Lyla!"
 	dc.b	$FC
 	dc.b	"Rudy, who is this Thray?"
 	dc.b	$F7
@@ -408,7 +408,7 @@
 	dc.b	$01
 	dc.b	"Stay, and watch over"
 	dc.b	$FC
-	dc.b	"Laila for me."
+	dc.b	"Lyla for me."
 	dc.b	$FD
 	dc.b	"Besides, you have that"
 	dc.b	$FC
@@ -420,7 +420,7 @@
 	dc.b	$F7
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila, I'll find Thray,"
+	dc.b	"Lyla, I'll find Thray,"
 	dc.b	$FC
 	dc.b	"and bring him back, I swear it!!"
 	dc.b	$FD
@@ -430,18 +430,18 @@
 	dc.b	$F7
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Hahn... look after Laila!"
+	dc.b	"Hahn... look after Lyla!"
 	dc.b	$FF
 ; $2E
 	dc.b	$F4
 	dc.b	$03
 	dc.b	"Rudy!"
 	dc.b	$FC
-	dc.b	"Laila has taken a turn for the worse!!"
+	dc.b	"Lyla has taken a turn for the worse!!"
 	dc.b	$F7
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila!!"
+	dc.b	"Lyla!!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$22
@@ -451,7 +451,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila! Laila!"
+	dc.b	"Lyla! Lyla!"
 	dc.b	$FD
 	dc.b	"Thray! Can't you do something"
 	dc.b	$FC
@@ -479,7 +479,7 @@
 	dc.b	$04
 	dc.b	"Yes, I am here..."
 	dc.b	$FC
-	dc.b	"I am right here... Laila..."
+	dc.b	"I am right here... Lyla..."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$22
@@ -497,7 +497,7 @@
 	dc.b	$01
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila..."
+	dc.b	"Lyla..."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$22
@@ -513,7 +513,7 @@
 	dc.b	$F9
 	dc.b	$59
 	dc.b	$FD
-	dc.b	"Before I realized it... you became"
+	dc.b	"Before I realized it... you'd become"
 	dc.b	$FC
 	dc.b	"a capable young man......"
 	dc.b	$FD
@@ -523,9 +523,9 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila! Don't say that...!"
+	dc.b	"Lyla! Don't say that...!"
 	dc.b	$FC
-	dc.b	"Lailaaa!!"
+	dc.b	"Lylaaa!!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$22
@@ -563,19 +563,19 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Alone in the world... before Laila"
+	dc.b	"Alone in the world... before Lyla"
 	dc.b	$FC
 	dc.b	"took me in, I did plenty of bad things..."
 	dc.b	$FD
-	dc.b	"As a hunter... teaming up with Laila..."
+	dc.b	"As a hunter... teaming up with Lyla..."
 	dc.b	$FC
 	dc.b	"I earned all the money I could..."
 	dc.b	$FD
-	dc.b	"With Laila... life was comfortable"
+	dc.b	"With Lyla... life was comfortable"
 	dc.b	$FC
 	dc.b	"enough... and I thought that was fine."
 	dc.b	$FD
-	dc.b	"But... now Laila is gone too..."
+	dc.b	"But... now Lyla is gone too..."
 	dc.b	$FC
 	dc.b	"I want to avenge her, of course..."
 	dc.b	$FD
@@ -589,7 +589,7 @@
 	dc.b	$FD
 	dc.b	"Do you really believe that is all"
 	dc.b	$FC
-	dc.b	"Laila was fighting for?"
+	dc.b	"Lyla was fighting for?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01

@@ -15,7 +15,7 @@ of the same Japanese words, not localization inventions.
 | JP | English | cells | note |
 |---|---|---|---|
 | ルディ | Rudy | 4 | protagonist |
-| ライラ・ブラングウェン | Laila Brangwen | 5 | mentor; needs `il` |
+| ライラ・ブラングウェン | Lyla Brangwen | 4 | mentor |
 | ハーン | Hahn | 4 | academy scholar |
 | ルツ | Lutz | 4 | legendary esper, addressed as ルツさま |
 | ジオ | Zio | 3 | black-robed antagonist |
@@ -30,7 +30,7 @@ of the same Japanese words, not localization inventions.
 | ミャウ | Myau | 4 | |
 | アリサ | Alis | 4 | PS1 heroine, referenced only |
 | サーヤ | Saya | 4 | Hahn's fiancee, Krupp |
-| 八ッ裂きのライラ | Laila the Dismemberer | - | her hunter epithet; 八つ裂き is dismemberment, and she finds the name tasteless |
+| 八ッ裂きのライラ | Lyla the Dismemberer | - | her hunter epithet; 八つ裂き is dismemberment, and she finds the name tasteless |
 | ドクタールベノ | Doctor Luveno | - | ancient scholar, "god of learning" |
 
 ## Technique names: what the project is actually doing
@@ -371,7 +371,7 @@ itself does for the epitaph and Laila's grave marker.
 
 ## Voice notes
 
-- **Laila** — brash, teasing, older-sister register. Contractions, sentence
+- **Lyla** — brash, teasing, older-sister register. Contractions, sentence
   fragments, light sarcasm. Her Japanese is blunt (`〜しな`, `あたし`).
 - **Rudy** — young, earnest, uses `オレ`. Plain and direct.
 - **Hahn** — fussy, over-explains, deferential.
@@ -392,8 +392,7 @@ in `ps4.tbl` needs no code change. Dropping kana frees 134 codes.
 
 | name | cells | ligature |
 |---|---|---|
-| Rudy, Hahn, Lutz, Raja, Pyke, Siam, Myau, Zio, Fal | <=4 | none |
-| Laila | `L a il a` | `il` |
+| Rudy, Lyla, Hahn, Lutz, Raja, Pyke, Siam, Myau, Zio, Fal | <=4 | none |
 | Forren | `F o(r) re n` | `or`, `re` |
 | Frena | `F r en a` | `en` |
 | Thray | `T h ra y` | `ra` |

@@ -567,7 +567,7 @@
 	dc.b	$FD
 	dc.b	"I am High Priest of the Gungbius Grand"
 	dc.b	$FC
-	dc.b	"Temple, aged of two thousand years..."
+	dc.b	"Temple, two thousand years of age..."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$04

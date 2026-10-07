@@ -367,7 +367,7 @@
 ; $29
 	dc.b	"I wonder if the sacred flame"
 	dc.b	$FC
-	dc.b	"remained safe...?"
+	dc.b	"is safe...?"
 	dc.b	$FF
 ; $2A
 	dc.b	$FA

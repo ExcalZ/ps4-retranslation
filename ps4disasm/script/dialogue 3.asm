@@ -756,7 +756,7 @@
 	dc.b	$00, $00, $2C
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Phew... how was it this time, Laila?"
+	dc.b	"Phew... how was it this time, Lyla?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
@@ -786,7 +786,7 @@
 	dc.b	$FD
 	dc.b	".........."
 	dc.b	$FD
-	dc.b	"Um...... Miss Laila?"
+	dc.b	"Um...... Miss Lyla?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02

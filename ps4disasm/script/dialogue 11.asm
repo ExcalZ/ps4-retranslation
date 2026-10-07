@@ -7,7 +7,7 @@
 	dc.b	$FC
 	dc.b	"from all over, and move on again."
 	dc.b	$FD
-	dc.b	"Why, if it isn't Laila."
+	dc.b	"Why, if it isn't Lyla."
 	dc.b	$FC
 	dc.b	"Welcome home!"
 	dc.b	$FF
@@ -20,7 +20,7 @@
 	dc.b	$FD
 	dc.b	"Why, if it isn't Rudy."
 	dc.b	$FC
-	dc.b	"Hey, where's Laila gone to?"
+	dc.b	"Hey, where's Lyla gone to?"
 	dc.b	$FF
 ; $2
 	dc.b	"I came from Zema to peddle my"
@@ -41,7 +41,7 @@
 	dc.b	"The most skilled around here would be"
 	dc.b	$FC
 	dc.b	$3D
-	dc.b	"Laila the Dismemberer'', I would say."
+	dc.b	"Lyla the Dismemberer'', I would say."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
@@ -53,7 +53,7 @@
 	dc.b	$03
 	dc.b	"Mm, true enough. ...Ow!"
 	dc.b	$FD
-	dc.b	"Laila, what did you hit me for?"
+	dc.b	"Lyla, what did you hit me for?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
@@ -63,7 +63,7 @@
 	dc.b	"The most skilled around here would be"
 	dc.b	$FC
 	dc.b	$3D
-	dc.b	"Laila the Dismemberer'', I would say."
+	dc.b	"Lyla the Dismemberer'', I would say."
 	dc.b	$FD
 	dc.b	"Come to think of it, I haven't seen"
 	dc.b	$FC
@@ -82,7 +82,7 @@
 	dc.b	$FD
 	dc.b	"Oh... no sense telling you any of that,"
 	dc.b	$FC
-	dc.b	"is there, Laila?"
+	dc.b	"is there, Lyla?"
 	dc.b	$FF
 ; $6
 	dc.b	"There are two weapon and armor"
@@ -101,12 +101,12 @@
 	dc.b	$FF
 
 ; $8
-	dc.b	"Hello, Rudy. Laila not with"
+	dc.b	"Hello, Rudy. Lyla not with"
 	dc.b	$FC
 	dc.b	"you today?"
 	dc.b	$FF
 ; $9
-	dc.b	"The market's the middle of town."
+	dc.b	"The market's in the middle of town."
 	dc.b	$FC
 	dc.b	"The Hunters Guild is behind it."
 	dc.b	$FD
@@ -128,9 +128,9 @@
 	dc.b	$FD
 	dc.b	"That's because some woman called"
 	dc.b	$FC
-	dc.b	"Laila snaps up every single gig."
+	dc.b	"Lyla snaps up every single gig."
 	dc.b	$FD
-	dc.b	"Why, if it isn't Laila herself."
+	dc.b	"Why, if it isn't Lyla herself."
 	dc.b	$FC
 	dc.b	"Send a job my way every now and then!"
 	dc.b	$FD
@@ -149,7 +149,7 @@
 	dc.b	$FD
 	dc.b	"That's because some woman called"
 	dc.b	$FC
-	dc.b	"Laila snaps up every single gig."
+	dc.b	"Lyla snaps up every single gig."
 	dc.b	$FF
 ; $D
 	dc.b	$FA
@@ -158,7 +158,7 @@
 	dc.b	$FC
 	dc.b	"walk along without so much as a word?"
 	dc.b	$FD
-	dc.b	"Ah! It's Laila!"
+	dc.b	"Ah! It's Lyla!"
 	dc.b	$FC
 	dc.b	"My apologies... terribly sorry... heh..."
 	dc.b	$FF
@@ -169,7 +169,7 @@
 	dc.b	$FD
 	dc.b	"Oh, it's Rudy."
 	dc.b	$FC
-	dc.b	"Give my regards to Laila, won't you?"
+	dc.b	"Give my regards to Lyla, won't you?"
 	dc.b	$FF
 ; $F
 	dc.b	"This town's crawling with hunters,"
@@ -454,7 +454,7 @@
 	dc.b	"D-don't be absurd! How rude!"
 	dc.b	$FF
 ; $3C
-	dc.b	"Ah, Laila!"
+	dc.b	"Ah, Lyla!"
 	dc.b	$FC
 	dc.b	"Looking lovely again today."
 	dc.b	$FD
@@ -757,7 +757,7 @@
 ; $56
 	dc.b	$FA
 	dc.b	$42, $01
-	dc.b	"Ah, curse you, Laila!"
+	dc.b	"Ah, curse you, Lyla!"
 	dc.b	$FD
 	dc.b	"It's your fault I'm stuck in here!"
 	dc.b	$FF

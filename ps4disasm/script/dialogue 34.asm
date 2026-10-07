@@ -550,7 +550,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$04
-	dc.b	"Hm? ...Where's Laila?"
+	dc.b	"Hm? ...Where's Lyla?"
 	dc.b	$FC
 	dc.b	"Has something happened?"
 	dc.b	$FD
@@ -564,7 +564,7 @@
 	dc.b	$04
 	dc.b	"I see... so that's what happened..."
 	dc.b	$FC
-	dc.b	"Laila..."
+	dc.b	"Lyla..."
 	dc.b	$FD
 	dc.b	"Well, that simplifies things. So long"
 	dc.b	$FC
@@ -594,7 +594,7 @@
 	dc.b	$FD
 	dc.b	"so I don't actually have it yet."
 	dc.b	$FD
-	dc.b	"I'm on my way go to get it now."
+	dc.b	"I'm on my way to get it now."
 	dc.b	$FC
 	dc.b	"Want to come along?"
 	dc.b	$FD
@@ -659,7 +659,7 @@
 	dc.b	$FC
 	dc.b	"housed here, you know."
 	dc.b	$FD
-	dc.b	"Though they've gone unused for so long,"
+	dc.b	"Since they've gone unused for so long,"
 	dc.b	$FC
 	dc.b	"they may require maintenance..."
 	dc.b	$FD

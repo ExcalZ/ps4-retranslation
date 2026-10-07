@@ -202,7 +202,7 @@
 	dc.b	$FC
 	dc.b	"Guardians."
 	dc.b	$FD
-	dc.b	"Now I acknowledge you as such, and"
+	dc.b	"Now I acknowledge you as such, and shall"
 	dc.b	$FC
 	dc.b	"reveal the secret of Algol's creation."
 	dc.b	$FD
@@ -276,11 +276,11 @@
 	dc.b	$FC
 	dc.b	"it weakens greatly."
 	dc.b	$FD
-	dc.b	"To serve as a warning of this, Ryucross,"
+	dc.b	"The Great Light left a warning: Ryucross,"
 	dc.b	$FC
 	dc.b	"the world that returns to Algol"
 	dc.b	$FD
-	dc.b	"once per millennium, and I, Le Roof."
+	dc.b	"once per millennium, and me, Le Roof."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
@@ -506,7 +506,7 @@
 	dc.b	$00
 	dc.b	"Rudy Ashleigh..."
 	dc.b	$FC
-	dc.b	"you who have tread upon Ryucross..."
+	dc.b	"you who have trodden upon Ryucross..."
 	dc.b	$FD
 	dc.b	"Make haste..."
 	dc.b	$FC
@@ -543,7 +543,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"When Laila died... you spoke to me,"
+	dc.b	"When Lyla died... you spoke to me,"
 	dc.b	$FC
 	dc.b	"and Fal encouraged me..."
 	dc.b	$FD
@@ -553,7 +553,7 @@
 	dc.b	$FD
 	dc.b	"At first I meant for my fighting to be"
 	dc.b	$FC
-	dc.b	"a method of mourning for Laila..."
+	dc.b	"a method of mourning for Lyla..."
 	dc.b	$FD
 	dc.b	"Then, I realized that there were people"
 	dc.b	$FC

@@ -486,7 +486,7 @@
 	dc.b	$3D
 	dc.b	"Most jobs completed, first place:"
 	dc.b	$FC
-	dc.b	"    Laila Brangwen''"
+	dc.b	"    Lyla Brangwen''"
 	dc.b	$FF
 ; $8F
 	dc.b	$F4
@@ -582,7 +582,7 @@
 ; $9C
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"The shelf where Laila keeps"
+	dc.b	"The shelf where Lyla keeps"
 	dc.b	$FC
 	dc.b	"her best liquor..."
 	dc.b	$FF
@@ -627,14 +627,14 @@
 	dc.b	$01
 	dc.b	"It's the special training routine that"
 	dc.b	$FC
-	dc.b	"Laila drew up for me. It's brutal."
+	dc.b	"Lyla drew up for me. It's brutal."
 	dc.b	$FF
 ; $A2
 	dc.b	$F4
 	dc.b	$01
 	dc.b	"It's the special training routine that"
 	dc.b	$FC
-	dc.b	"Laila drew up for me........."
+	dc.b	"Lyla drew up for me........."
 	dc.b	$FF
 ; $A3
 	dc.b	$F4
@@ -661,7 +661,7 @@
 ; $A5
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila's full-length mirror......"
+	dc.b	"Lyla's full-length mirror......"
 	dc.b	$FF
 ; $A6
 	dc.b	$FA
@@ -672,7 +672,7 @@
 	dc.b	$FD
 	dc.b	"L-l-l-l-"
 	dc.b	$FD
-	dc.b	"Laila's dresser!"
+	dc.b	"Lyla's dresser!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02

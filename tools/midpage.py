@@ -4,7 +4,7 @@ A `{ctl.F4}` that lands after text with no `{ctl.FD}` / `{ctl.F5}` / `{ctl.F7}` 
 `{ctl.FC}` since swaps the portrait while the current line is still on screen.
 Sometimes that is the point -- a reaction shot, or an unattended scene. Sometimes
 it just makes the speaker unreadable, which is what happens when the Academy
-Principal is still talking under Laila's face.
+Principal is still talking under Lyla's face.
 
 `{ctl.FD}` is a LAYOUT token, so its placement is ours: every one of these can be
 turned into a clean page break by putting `{ctl.FD}` before the `{ctl.F4}`, and
@@ -26,13 +26,13 @@ import trpatch
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PORTRAITS = {
-    "00": "the Elsydeon voices", "01": "Rudy", "02": "Laila", "03": "Hahn",
+    "00": "the Elsydeon voices", "01": "Rudy", "02": "Lyla", "03": "Hahn",
     "04": "Thray", "05": "Pyke", "06": "Fal", "07": "Frena", "08": "Forren",
     "09": "Raja", "0A": "Shess", "0B": "Siam", "0C": "Saya",
     "0D": "the academy elder", "0E": "the Principal", "0F": "Dorin",
     "10": "Pana", "11": "the Guild clerk", "17": "the esper gatekeeper",
     "19": "the esper elder", "1A": "a Gungbius priest", "21": "a Gallberg envoy",
-    "22": "Laila (stricken)", "23": "the Anger Tower voice", "24": "the lost Piata girl",
+    "22": "Lyla (stricken)", "23": "the Anger Tower voice", "24": "the lost Piata girl",
     "25": "Tallas", "26": "the sick boy of Torinco", "27": "Sekreas",
 }
 

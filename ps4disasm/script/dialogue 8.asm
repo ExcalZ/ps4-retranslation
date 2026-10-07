@@ -33,7 +33,7 @@
 	dc.b	$FC
 	dc.b	"the middle of that giant crater?"
 	dc.b	$FD
-	dc.b	"It kind of intriguing, but no one"
+	dc.b	"It's kind of intriguing, but no one"
 	dc.b	$FC
 	dc.b	"dares go near it."
 	dc.b	$FF
@@ -88,7 +88,7 @@
 ; $D
 	dc.b	"Why is it that my house collapsed and"
 	dc.b	$FC
-	dc.b	"the one opposite me still standing?!"
+	dc.b	"the one opposite mine is still standing?!"
 	dc.b	$FD
 	dc.b	"It isn't fair!"
 	dc.b	$FC

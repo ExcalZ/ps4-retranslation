@@ -78,29 +78,29 @@
 ; $7
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"It can't be... Laila is..."
+	dc.b	"It can't be... Lyla is..."
 	dc.b	$FC
 	dc.b	"inside Elcidion..."
 	dc.b	$FD
-	dc.b	"Laila...? Laila...!?"
+	dc.b	"Lyla...? Lyla...!?"
 	dc.b	$FD
 	dc.b	"Please answer me,"
 	dc.b	$FC
-	dc.b	"Laila!!"
+	dc.b	"Lyla!!"
 	dc.b	$FF
 ; $8
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Agh! Laila!?"
+	dc.b	"Agh! Lyla!?"
 	dc.b	$FF
 ; $9
 	dc.b	$F4
 	dc.b	$01
 	dc.b	"Ngh...... n-nngh..."
 	dc.b	$FC
-	dc.b	"Laila......"
+	dc.b	"Lyla......"
 	dc.b	$FD
-	dc.b	"Lailaaa!!"
+	dc.b	"Lylaaa!!"
 	dc.b	$FC
 	dc.b	"Aaaaaaaaaaah!!"
 	dc.b	$FD
@@ -146,7 +146,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$23
-	dc.b	"I speak of an technique that turns anger"
+	dc.b	"I speak of a technique that turns anger"
 	dc.b	$FC
 	dc.b	"and hatred into a force of destruction."
 	dc.b	$FD

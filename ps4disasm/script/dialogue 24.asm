@@ -248,7 +248,7 @@
 	dc.b	$AA, $01
 	dc.b	"The son of that family over there has"
 	dc.b	$FC
-	dc.b	"been stricken with illness a while now..."
+	dc.b	"been stricken with illness for a while..."
 	dc.b	$FD
 	dc.b	"Poor thing..."
 	dc.b	$FF

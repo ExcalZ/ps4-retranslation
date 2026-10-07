@@ -656,7 +656,7 @@
 	dc.b	$01
 	dc.b	"Still, quakes this often really"
 	dc.b	$FC
-	dc.b	"poses a serious problem..."
+	dc.b	"pose a serious problem..."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$07

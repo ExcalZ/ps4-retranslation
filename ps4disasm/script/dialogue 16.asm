@@ -141,7 +141,7 @@
 	dc.b	$FC
 	dc.b	"and passes it on down the line..."
 	dc.b	$FD
-	dc.b	"This is where folk's thoughts"
+	dc.b	"This is where folks' thoughts"
 	dc.b	$FC
 	dc.b	"gather, and where they set out from."
 	dc.b	$FF
@@ -173,7 +173,7 @@
 ; $2E
 	dc.b	"Whoa! What's all this, then?"
 	dc.b	$FC
-	dc.b	"A shady-looking bunch if ever I saw."
+	dc.b	"A shady-looking bunch if ever I saw one."
 	dc.b	$FD
 	dc.b	"You're spoiling my drink."
 	dc.b	$FC

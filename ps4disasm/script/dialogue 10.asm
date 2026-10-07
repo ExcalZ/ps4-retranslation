@@ -83,7 +83,7 @@
 ; $16
 	dc.b	$FA
 	dc.b	$42, $01
-	dc.b	"Ah, Laila, thanks again for sharing that"
+	dc.b	"Ah, Lyla, thanks again for sharing that"
 	dc.b	$FC
 	dc.b	"food with me the other day."
 	dc.b	$FD
@@ -93,7 +93,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$03
-	dc.b	"W-wait, Laila cooks?"
+	dc.b	"W-wait, Lyla cooks?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$05
@@ -106,7 +106,7 @@
 	dc.b	"is it of yours!!"
 	dc.b	$FF
 ; $17
-	dc.b	"That Laila who lives out back,"
+	dc.b	"That Lyla who lives out back,"
 	dc.b	$FC
 	dc.b	"now there's a sweetheart!"
 	dc.b	$FD
@@ -164,7 +164,7 @@
 	dc.b	$20
 	dc.b	$F2
 	dc.b	$0B, $45
-	dc.b	"Oh, it's Laila. Thanks for your help"
+	dc.b	"Oh, it's Lyla. Thanks for your help"
 	dc.b	$FC
 	dc.b	"the other day."
 	dc.b	$FD
@@ -188,7 +188,7 @@
 ; $1F
 	dc.b	$F4
 	dc.b	$20
-	dc.b	"So... Laila is..."
+	dc.b	"So... Lyla is..."
 	dc.b	$FD
 	dc.b	"I should have held her back that"
 	dc.b	$FC
@@ -280,7 +280,7 @@
 ; $2B
 	dc.b	$FA
 	dc.b	$42, $01
-	dc.b	"Ah, Laila. Here of all places,"
+	dc.b	"Ah, Lyla. Here of all places,"
 	dc.b	$FC
 	dc.b	"what a rare treat."
 	dc.b	$FD
@@ -322,22 +322,22 @@
 ; $2F
 	dc.b	$FA
 	dc.b	$42, $01
-	dc.b	"If it isn't Laila. Finally decided"
+	dc.b	"If it isn't Lyla. Finally decided"
 	dc.b	$FC
 	dc.b	"to buy a burial plot in this town?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
-	dc.b	"Like I would! I have no intention to lay my"
+	dc.b	"Like I would! I don't intend to lay my"
 	dc.b	$FC
 	dc.b	"bones to rest in this cramped place!"
 	dc.b	$FD
-	dc.b	"When I get old, I'll live somewhere much"
+	dc.b	"When I get old, I'll move to somewhere"
 	dc.b	$FC
-	dc.b	"quieter, and live a leisurely life!!"
+	dc.b	"much quieter, and live a leisurely life!!"
 	dc.b	$FF
 ; $30
-	dc.b	"...True enough, not many chose to"
+	dc.b	"...True enough, not many choose to"
 	dc.b	$FC
 	dc.b	"lay their bones to rest in this town."
 	dc.b	$FD
@@ -375,7 +375,7 @@
 ; $35
 	dc.b	$FA
 	dc.b	$42, $01
-	dc.b	"My, such an honor to have Miss Laila visit"
+	dc.b	"My, such an honor to have Miss Lyla visit"
 	dc.b	$FC
 	dc.b	"us. I'm so excited!"
 	dc.b	$FF

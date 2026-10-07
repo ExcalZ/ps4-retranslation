@@ -271944,9 +271944,9 @@ loc_1FE9B4:
 
 loc_1FEA4A:
 	dc.w	$F401
-	dc.b	"'Laila Brangwen rests here'..."
+	dc.b	"'Lyla Brangwen rests here'..."
 	dc.b	$FD
-	dc.b	"Laila......!"
+	dc.b	"Lyla......!"
 	dc.b	$FF
 
 	; (even dropped: RunText reads this byte-wise; see loc_1FE7E6)
@@ -312454,7 +312454,7 @@ EnemyNames:
 	dc.b	"Ze-A-Thuul", $FF
 	dc.b	"Le-Fau-Gan", $FF
 	dc.b	"Gi-Le-Farg", $FF
-	dc.b	"Laila", $FF
+	dc.b	"Lyla", $FF
 	dc.b	"Re-Phase", $FF
 	dc.b	"LaShiec", $FF
 	dc.b	"Forest of Devils", $FF	; Carnivorous Tree
@@ -332429,7 +332429,7 @@ Char_Seth:
 
 CharNameData:
 	dc.b	"Rudy", $FF
-	dc.b	"Laila", $FF
+	dc.b	"Lyla", $FF
 	dc.b	"Hahn", $FF
 	dc.b	"Thray", $FF
 	dc.b	"Pyke", $FF
@@ -336647,7 +336647,7 @@ loc_2AC2F0:
 loc_2AC30C:
 	dc.b	"Thank... oh dear. It seems"
 	dc.b	$FC
-	dc.b	"you cannot carry anymore."
+	dc.b	"you cannot carry any more."
 	dc.b	$FF
 
 	even
@@ -336776,7 +336776,7 @@ loc_2AC51A:
 loc_2AC538:
 	dc.b	"Much obliged... hold on,"
 	dc.b	$FC
-	dc.b	"you can't carry anymore!"
+	dc.b	"you can't carry any more!"
 	dc.b	$FF
 
 	even

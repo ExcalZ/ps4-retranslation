@@ -687,7 +687,7 @@
 	dc.b	$FC
 	dc.b	"Those mechanical humans -- they fly!"
 	dc.b	$FD
-	dc.b	"...They came from away to the"
+	dc.b	"...They came from off to the"
 	dc.b	$FC
 	dc.b	"northeast! It's true, I tell you!!"
 	dc.b	$FF

@@ -76,7 +76,7 @@
 ; $7
 	dc.b	$FA
 	dc.b	$42, $01
-	dc.b	"Hey, Laila! Fine-looking woman as"
+	dc.b	"Hey, Lyla! Fine-looking woman as"
 	dc.b	$FC
 	dc.b	"ever. How about a drink sometime?"
 	dc.b	$FD
@@ -87,7 +87,7 @@
 	dc.b	"and I'll think about it."
 	dc.b	$FF
 ; $8
-	dc.b	"Laila's a fine woman, but she"
+	dc.b	"Lyla's a fine woman, but she"
 	dc.b	$FC
 	dc.b	"won't be wooed, not even a little."
 	dc.b	$FD
@@ -112,7 +112,7 @@
 	dc.b	"safe to use again now."
 	dc.b	$FF
 ; $B
-	dc.b	"Oh ho? Laila's fine, but this"
+	dc.b	"Oh ho? Lyla's fine, but this"
 	dc.b	$FC
 	dc.b	"young lady's a pretty one too, eh?"
 	dc.b	$FD
@@ -127,7 +127,7 @@
 ; $C
 	dc.b	$FA
 	dc.b	$42, $01
-	dc.b	"Hey, Laila!"
+	dc.b	"Hey, Lyla!"
 	dc.b	$FC
 	dc.b	"The usual?"
 	dc.b	$FD
@@ -138,7 +138,7 @@
 	dc.b	"today. Another time."
 	dc.b	$FF
 ; $D
-	dc.b	"Laila hasn't come in of late."
+	dc.b	"Lyla hasn't come in of late."
 	dc.b	$FD
 	dc.b	"A long job, maybe. It's a duller"
 	dc.b	$FC

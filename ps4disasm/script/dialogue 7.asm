@@ -28,13 +28,13 @@
 	dc.b	$00, $00, $11
 	dc.b	$F4
 	dc.b	$04
-	dc.b	"Hey, Laila!"
+	dc.b	"Hey, Lyla!"
 	dc.b	$FC
 	dc.b	"It's been a while...!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"You know him, Laila?"
+	dc.b	"You know him, Lyla?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
@@ -130,7 +130,7 @@
 	dc.b	$03
 	dc.b	"A-anyway, let's head for Tonoe!"
 	dc.b	$FC
-	dc.b	"All right, Laila?"
+	dc.b	"All right, Lyla?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
@@ -158,7 +158,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila!"
+	dc.b	"Lyla!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$04
@@ -359,10 +359,10 @@
 	dc.b	$FC
 	dc.b	"renowned beauty and hunter,"
 	dc.b	$FD
-	dc.b	"Laila Brangwen, also known as"
+	dc.b	"Lyla Brangwen, also known as"
 	dc.b	$FC
 	dc.b	$3D
-	dc.b	"Laila the Dismemberer''?"
+	dc.b	"Lyla the Dismemberer''?"
 	dc.b	$F5
 	dc.b	$00, $01
 	dc.b	"Ahem. From the top, eighty-eight, sixty..."
@@ -381,7 +381,7 @@
 	dc.b	$0F
 	dc.b	"Huh? Whoa!"
 	dc.b	$FC
-	dc.b	"Laila Brangwen!"
+	dc.b	"Lyla Brangwen!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
@@ -528,7 +528,7 @@
 	dc.b	$00, $00, $16
 	dc.b	$F4
 	dc.b	$04
-	dc.b	"Come now, Laila. Can't you let it go?"
+	dc.b	"Come now, Lyla. Can't you let it go?"
 	dc.b	$FD
 	dc.b	"The old man meant no harm by it."
 	dc.b	$FD
@@ -562,7 +562,7 @@
 	dc.b	$03
 	dc.b	"Th-thank you very much!"
 	dc.b	$FC
-	dc.b	"Laila, let's go right away!"
+	dc.b	"Lyla, let's go right away!"
 	dc.b	$FD
 	dc.b	$F2
 	dc.b	$00, $00, $17
@@ -626,7 +626,7 @@
 	dc.b	$FC
 	dc.b	"we'll meet again."
 	dc.b	$FD
-	dc.b	"Laila......"
+	dc.b	"Lyla......"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02

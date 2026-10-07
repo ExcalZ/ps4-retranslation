@@ -45,7 +45,7 @@ Japanese-side material), that spelling is used; otherwise the katakana is
 transliterated directly, with the word's origin settling any ambiguous
 letters. Some of the changes players will notice first:
 
-  Party:       Chaz -> Rudy          Alys -> Laila Brangwen
+  Party:       Chaz -> Rudy          Alys -> Lyla Brangwen
                Rika -> Fal           Wren -> Forren
                Demi -> Frena         Gryz -> Pyke
                Kyra -> Shess         Seth -> Siam

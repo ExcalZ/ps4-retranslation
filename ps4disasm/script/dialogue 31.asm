@@ -1,7 +1,7 @@
 ; 0
 	dc.b	$F4
 	dc.b	$01, $00
-	dc.b	"I wonder where Laila is?"
+	dc.b	"I wonder where Lyla is?"
 	dc.b	$FF
 ; $1
 	dc.b	$F4
@@ -213,11 +213,11 @@
 ; $C
 	dc.b	$F4
 	dc.b	$01, $00
-	dc.b	"No... Laila...!"
+	dc.b	"No... Lyla...!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$06, $01
-	dc.b	"Rudy, let's do as Laila said"
+	dc.b	"Rudy, let's do as Lyla said"
 	dc.b	$FC
 	dc.b	"and find this Thray."
 	dc.b	$FD
@@ -280,7 +280,7 @@
 	dc.b	$FC
 	dc.b	"for good!"
 	dc.b	$FD
-	dc.b	"And Laila... she has to get"
+	dc.b	"And Lyla... she has to get"
 	dc.b	$FC
 	dc.b	"better, and soon."
 	dc.b	$FF
@@ -314,7 +314,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01, $00
-	dc.b	"Damn it... Laila...!!"
+	dc.b	"Damn it... Lyla...!!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$06, $01

@@ -397,7 +397,7 @@
 	dc.b	$FD
 	dc.b	"To you I may safely entrust it."
 	dc.b	$FD
-	dc.b	"A treasure passed down this valley"
+	dc.b	"A treasure passed down in this valley"
 	dc.b	$FC
 	dc.b	"for generations. Take it with you."
 	dc.b	$FD
@@ -405,7 +405,7 @@
 	dc.b	$FD
 	dc.b	"What's this, you can't carry"
 	dc.b	$FC
-	dc.b	"anymore."
+	dc.b	"any more."
 	dc.b	$FD
 	dc.b	"I'll keep it a while."
 	dc.b	$FC
@@ -581,7 +581,7 @@
 	dc.b	$02
 	dc.b	"From today onward, you're the official"
 	dc.b	$FC
-	dc.b	"partner of Laila herself! Well, let's go!!"
+	dc.b	"partner of Lyla herself! Well, let's go!!"
 	dc.b	$FF
 ; $38
 	dc.b	$F4

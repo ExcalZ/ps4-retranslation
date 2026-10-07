@@ -659,7 +659,7 @@
 	dc.b	$08
 	dc.b	"In a pinch, Zelan serves as an"
 	dc.b	$FC
-	dc.b	"all-purpose fortress at need."
+	dc.b	"all-purpose fortress."
 	dc.b	$FD
 	dc.b	"An ice-breaking vehicle is carried"
 	dc.b	$FC
@@ -671,16 +671,17 @@
 	dc.b	$FC
 	dc.b	"you could have said so sooner!"
 	dc.b	$FD
-	dc.b	"Alright! Then we'll leave"
-	dc.b	$FC
-	dc.b	"as soon as we're ready!"
-	dc.b	$FD
 	dc.b	$F4
 	dc.b	$08
 	dc.b	"I shall load it aboard"
 	dc.b	$FC
 	dc.b	"the Landeel, in that case."
 	dc.b	$FD
+	dc.b	$F4
+	dc.b	$01
+	dc.b	"All right! Then we'll leave"
+	dc.b	$FC
+	dc.b	"as soon as we're ready!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$04

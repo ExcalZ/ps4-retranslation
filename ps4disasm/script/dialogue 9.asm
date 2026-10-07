@@ -212,12 +212,12 @@
 	dc.b	$65, $02
 	dc.b	"May I trouble you a moment?"
 	dc.b	$FD
-	dc.b	"Are you a believer of Zio?"
+	dc.b	"Are you a believer in Zio?"
 	dc.b	$F5
 	dc.b	$00, $01
 	dc.b	"Ah, a comrade! Glory to"
 	dc.b	$FC
-	dc.b	"Lord Zio! Purging to the fools!"
+	dc.b	"Lord Zio! Purge the fools!"
 	dc.b	$FF
 ; $1C
 	dc.b	"Then become one of us at once."
@@ -227,7 +227,7 @@
 ; $1D
 	dc.b	"May I trouble you a moment?"
 	dc.b	$FD
-	dc.b	"Are you a believer of Zio?"
+	dc.b	"Are you a believer in Zio?"
 	dc.b	$F5
 	dc.b	$00, $01
 	dc.b	"You've quite lost sight of the"
@@ -300,7 +300,7 @@
 	dc.b	$65, $01
 	dc.b	"What the hell is the deal with that crowd"
 	dc.b	$FC
-	dc.b	"obsessed over this Zio nonsense!"
+	dc.b	"obsessed with this Zio nonsense!"
 	dc.b	$FD
 	dc.b	"Gives me the creeps like you wouldn't"
 	dc.b	$FC

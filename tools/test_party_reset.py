@@ -100,15 +100,15 @@ for _ in range(2):
         expected_end += 1
 cells = (m.a[1] - plane) // 2
 checks = [("savestate source is the US name", old == "Alys", old),
-          ("source changed to translated Laila", m.a[0] == expected_end,
+          ("source changed to translated Lyla", m.a[0] == expected_end,
            "$%06X" % m.a[0]),
-          ("Laila VWF occupies three cells", cells == 3, "%d cells" % cells)]
+          ("Lyla VWF occupies three cells", cells == 3, "%d cells" % cells)]
 for label, good, detail in checks:
     ok &= good
     print("  %s %-40s %s" % ("ok  " if good else "FAIL", label, detail))
 
 # The weapon-shop state caught a subtler failure: item strips had reused pool
-# slots whose old compositor keys still spelled party names.  A later Laila /
+# slots whose old compositor keys still spelled party names.  A later Lyla /
 # Rudy / Hahn draw hit those stale keys and displayed fragments of DAGGER and
 # HUNTER KNIFE.  Every party tile returned from that exact state must now be a
 # compositor-owned slots ($FFFE), never item/Technique/Skill strip slots.
@@ -122,7 +122,7 @@ elif os.path.exists(shop_path):
     shop["ram"] = bytearray(shop["ram"])
     tile_slot = open("ps4disasm/vwf/pooltile.bin", "rb").read()
     strip_base = BASE + const_offset("VWFMenu_StripOf")
-    for cid, label in ((1, "Laila"), (0, "Rudy"), (2, "Hahn")):
+    for cid, label in ((1, "Lyla"), (0, "Rudy"), (2, "Hahn")):
         for i in range(0x80):
             shop["ram"][(plane & 0xFFFF) + i] = 0
         source = 0xF500 + cid * 0x80

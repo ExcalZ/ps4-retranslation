@@ -663,7 +663,7 @@
 	dc.b	$FD
 	dc.b	"You dummy! Don't cry..."
 	dc.b	$FD
-	dc.b	"You can live completely self-reliant"
+	dc.b	"You can stand on your own"
 	dc.b	$FC
 	dc.b	"now...And besides..."
 	dc.b	$F7

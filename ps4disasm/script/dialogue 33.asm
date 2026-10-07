@@ -591,7 +591,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$03
-	dc.b	"Um... Miss Laila?"
+	dc.b	"Um... Miss Lyla?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
@@ -637,7 +637,7 @@
 	dc.b	$FC
 	dc.b	"Academy."
 	dc.b	$FD
-	dc.b	"Uhh, you must be Laila, the hunter, and"
+	dc.b	"Uhh, you must be Lyla, the hunter, and"
 	dc.b	$FC
 	dc.b	"Rudy, her assistant?"
 	dc.b	$FD
@@ -673,7 +673,7 @@
 	dc.b	$FD
 	dc.b	"I want this handled discreetly, so I"
 	dc.b	$FC
-	dc.b	"called for the renowned Laila..."
+	dc.b	"called for the renowned Lyla..."
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02

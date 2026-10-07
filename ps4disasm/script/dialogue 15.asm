@@ -482,7 +482,7 @@
 	dc.b	"keep up with Dezolian humor..."
 	dc.b	$FF
 ; $25
-	dc.b	"That such a fine high priest like Master"
+	dc.b	"That such a fine high priest as Master"
 	dc.b	$FC
 	dc.b	"Raja should be driven out to this place..."
 	dc.b	$FD

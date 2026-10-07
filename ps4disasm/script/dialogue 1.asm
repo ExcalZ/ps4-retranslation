@@ -104,7 +104,7 @@
 	dc.b	$01
 	dc.b	"It seems like an interesting place, huh"
 	dc.b	$FC
-	dc.b	"Laila?"
+	dc.b	"Lyla?"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
@@ -404,7 +404,7 @@
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$01
-	dc.b	"Laila!"
+	dc.b	"Lyla!"
 	dc.b	$FD
 	dc.b	$F4
 	dc.b	$02
@@ -719,7 +719,7 @@
 	dc.b	$01
 	dc.b	"Huh? I've been wandering around and"
 	dc.b	$FC
-	dc.b	"got separated from Laila."
+	dc.b	"got separated from Lyla."
 	dc.b	$FD
 	dc.b	"I'd better go and find her..."
 	dc.b	$FF

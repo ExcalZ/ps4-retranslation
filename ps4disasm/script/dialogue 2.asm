@@ -332,7 +332,7 @@
 	dc.b	$FD
 	dc.b	"You people should try letting loose and"
 	dc.b	$FC
-	dc.b	"blow off some steam now and again too."
+	dc.b	"blowing off some steam now and again too."
 	dc.b	$FF
 ; $52
 	dc.b	"A-a-aaaah!"
