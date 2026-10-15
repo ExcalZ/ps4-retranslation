@@ -81,7 +81,8 @@ SIZES = {"VWF_Scratch": 84, "VWF_Tiles": 32,
          "VWFMenu_GlueCandidate": 1, "VWFMenu_GlueActive": 1,
          "VWFMenu_GlueDeref": 1, "VWFMenu_GlueFailed": 1,
          "VWFMenu_GlueOwned": 1, "VWFMenu_LayoutMagic": 4,
-         "VWFMenu_BattleMacroMark": 2, "VWFMenu_BattleOptionsMark": 2}
+         "VWFMenu_BattleMacroMark": 2, "VWFMenu_BattleOptionsMark": 2,
+         "VWFMenu_BattlePackMark": 2, "VWFMenu_BattlePackPageTop": 2}
 if STRIPS:
     SIZES["VWFMenu_StripOf"] = SLOTS * 2
 else:

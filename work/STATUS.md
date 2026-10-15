@@ -3730,3 +3730,33 @@ reaches the ROM for the first time.  The dialogue block ends at `$219F15`,
 235 bytes under the anchor.  The two shop "any more" fixes move the shop
 messages, both description tables and SoundTestData by 2 bytes; no code
 moved and the pinned anchors hold.  `release/PS4_Retranslation_v1.04.zip`.
+
+## 2026-10-15: full-pack drop list composes only its visible page
+
+Reported: an item dropped with the pack full, then "Want to discard?" drew
+as "rc", the Yes/No window blank, and the closing panel read "Cure
+Paralysis / Moon Atomizer" with both tails missing.  The pack is 40 slots;
+`loc_3BEC`/`loc_3C5C`/`loc_3C9E` pre-render all ten pages into
+`$FFFF3600..` and paging only copies a buffer, so every name composed at
+once and the 88-slot battle pool was full before the list finished opening.
+Now, as in the battle Item command: the pages render blank (`SkipNames`),
+`VWFMenu_BattlePackMark` is taken after the "found!" panel and the dropped
+item's window, and only the visible page composes above it - again on every
+page turn, after the outgoing page is blanked (buffer and plane) and a sweep
+frees its slots (rewinding alone leaked the free slots below the mark that a
+page had taken).  Back at the list from a prompt rewinds to
+`VWFMenu_BattlePackPageTop` and sweeps; once the list closes
+(`loc_35F6`/`loc_3688`, and `loc_3282` before an item is used) a sweep frees
+the page for the result.  All hooks are same-size jsr replacements in
+ps4.asm; the code is appended to vwfmenu.asm.  Peak pool on the worst page
+went from 88 (cap, cells refused) to 68.  `test_packfull` runs the drop
+routines in emu68k (and fails on the old ROM); emu68k gained `st`/`sf`,
+`addq.w An`, `lea (An)` and N on `cmpi Dn`.  BlastEm-verified from
+`work/pd-slot7.state` by writing `Battle_Routine_2 = $20` at the main menu:
+paging, Abandon/Discard prompts, Use/Drop cancel, discard result.  The Use
+branch's item action crashes BlastEm from that forced entry on the old ROM
+too, so its last step is unverified live.
+
+Also: the battle "DSC" label is "Drop" (3 cells, the slot's width) and
+"Want to give up?" is "Abandon this item?"; two `even` pads in the
+byte-read result text pay for them, so nothing after the block moves.

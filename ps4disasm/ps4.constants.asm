@@ -2766,6 +2766,10 @@ VWFMenu_BattleMacroMark = VWF_RAM_Base+$BA0 ; word
 ; opens, before its labels compose; the close rewinds to it so the
 ; command menu's base does not carry eleven dead label slots.
 VWFMenu_BattleOptionsMark = VWF_RAM_Base+$BA2 ; word
+; Full-pack drop list (see VWFMenu_PackPagesOpen): the pool level under its
+; visible page, and the level after that page composed.
+VWFMenu_BattlePackMark = VWF_RAM_Base+$BA4 ; word
+VWFMenu_BattlePackPageTop = VWF_RAM_Base+$BA6 ; word
 ; Zero-count slots the composer keeps in hand past the frontier before it
 ; skips a pressure sweep (see VWFMenu_DrawString_NoSweep).
 VWFMENU_SWEEP_RESERVE = 4

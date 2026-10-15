@@ -4963,7 +4963,12 @@ loc_3282:
 	bsr.s	loc_32D8
 	move.w	#$10, $2(a0)
 	move.w	(a0), ($FFFF4142).l
+	if vwf_menu=1
+	jsr	(VWFMenu_PackClosedUse).l	; list and prompt closed before the item is used
+	nop
+	else
 	move.w	#$1E, ($FFFF4190).l
+	endif
 	rts
 loc_32D8:
 	lea	(Obj_Fighters).l, a0
@@ -5025,7 +5030,12 @@ loc_3376:
 	jsr	loc_FF8(pc)
 	rts
 
+	if vwf_menu=1
+	jsr	(VWFMenu_PackBackToList).l	; Use/Discard window closed
+	nop
+	else
 	move.w	#6, ($FFFF4190).l
+	endif
 	rts
 
 loc_338A:
@@ -5099,7 +5109,12 @@ loc_346A:
 	bsr.w	loc_37EC
 	jsr	loc_FF8(pc)
 	rts
+	if vwf_menu=1
+	jsr	(VWFMenu_PackBackToList).l	; Use/Discard window closed
+	nop
+	else
 	move.w	#6, ($FFFF4190).l
+	endif
 	rts
 
 loc_347E:
@@ -5202,7 +5217,12 @@ loc_3580:
 ; -------------
 
 loc_35F6:
+	if vwf_menu=1
+	jsr	(VWFMenu_PackClosed).l	; the list's tiles are free again
+	nop
+	else
 	move.w	#2, ($FFFF4190).l
+	endif
 	jsr	loc_4624(pc)
 	move.w	(Battle_Item_Index).l, d1
 	lea	(Inventory).w, a2
@@ -5238,7 +5258,12 @@ loc_35F6:
 ; -------------
 
 loc_3688:
+	if vwf_menu=1
+	jsr	(VWFMenu_PackClosed).l	; the list's tiles are free again
+	nop
+	else
 	move.w	#2, ($FFFF4190).l
+	endif
 	jsr	loc_4624(pc)
 	moveq	#0, d0
 	move.b	(Dropped_Item).l, d0
@@ -5308,7 +5333,12 @@ loc_3762:
 	bsr.s	loc_3774
 	jsr	loc_FF8(pc)
 	rts
+	if vwf_menu=1
+	jsr	(VWFMenu_PackBackToList).l	; prompt and Yes/No closed
+	nop
+	else
 	move.w	#6, ($FFFF4190).l
+	endif
 	rts
 loc_3774:
 	lea	($FFFF8624).w, a1
@@ -5577,14 +5607,23 @@ loc_3B02:
 loc_3B04:
 	andi.w	#$FFFC, (Battle_Item_Index).l
 	addq.w	#4, (Battle_Item_Index).l
+	if vwf_menu=1
+	jsr	(VWFMenu_PackFlipRight).l	; only the visible page owns tiles
+	else
 	clr.w	($FFFF418C).l
+	endif
 	move.b	#SFXID_MovingCursor, (Sound_Index&$FFFFFF).l
 	move.w	#7, ($FFFF4190).l
 	rts
 loc_3B2A:
 	andi.w	#$FFFC, (Battle_Item_Index).l
 	subq.w	#4, (Battle_Item_Index).l
+	if vwf_menu=1
+	jsr	(VWFMenu_PackFlipLeft).l	; only the visible page owns tiles
+	nop
+	else
 	move.w	#$E, ($FFFF418C).l
+	endif
 	move.b	#SFXID_MovingCursor, (Sound_Index&$FFFFFF).l
 	move.w	#8, ($FFFF4190).l
 	rts
@@ -5647,7 +5686,11 @@ loc_3BEC:
 	andi.b	#ButtonCancel_Mask|ButtonSpeak_Mask|ButtonCamp_Mask, d5
 	beq.w	loc_3C5A
 	move.b	#SFXID_Selection, (Sound_Index&$FFFFFF).l
+	if vwf_menu=1
+	jsr	(VWFMenu_PackPagesOpen).l	; ten pages: compose them blank
+	else
 	clr.w	($FFFF418C).l
+	endif
 	clr.w	(Battle_Item_Index).l
 	lea	(Battle_Item_List).l, a2
 	movea.l	a2, a0
@@ -5716,7 +5759,11 @@ loc_3CD6:
 	moveq	#$E, d1
 	moveq	#3, d2
 	lea	(Map_Layout_FG).w, a0
+	if vwf_menu=1
+	jsr	(VWFMenu_PackTopOpen).l	; the dropped item's name is drawn
+	else
 	jsr	(Battle_SetupWindow).l
+	endif
 	lea	($FFFF04A4).l, a1
 	jsr	(PlaneMapToRAM).l
 	moveq	#0, d0
@@ -5733,7 +5780,12 @@ loc_3CD6:
 	lea	($FFFF04A4).l, a0
 	lea	(Map_Layout_FG).w, a1
 	jsr	(loc_27DD04).l
+	if vwf_menu=1
+	jsr	(VWFMenu_PackPagesReady).l	; page one composes above the pack mark
+	nop
+	else
 	move.w	#5, ($FFFF4190).l
+	endif
 	rts
 loc_3D32:
 	movem.l	d7-a0/a2/a5, -(sp)
@@ -309678,8 +309730,6 @@ loc_27E776:
 	dc.b	" received!"
 	dc.b	$FF
 
-	even
-
 loc_27E77C:
 	dc.b	" found!"
 	dc.b	$FF
@@ -309693,14 +309743,13 @@ loc_27E784:	; VWFMENU_RESULT_HI: the tails above compose, the prompts stay fixed
 	even
 
 loc_27E798:
-	dc.b	"Want to give up?"
+	dc.b	"Abandon this item?"
 	dc.b	$FF
 
 	even
 
 loc_27E7AA:
 	dc.b	"Want to discard?", $FF
-	dc.b	"?", $FF
 
 	even
 
@@ -309712,9 +309761,7 @@ loc_27E7BE:
 
 loc_27E7C2:
 	dc.b	"No"
-	dc.b	$FF
-
-	even
+	dc.b	$FF	; byte-read text: unpadded, so Drop and Abandon fit
 
 loc_27E7C6:
 	dc.b	" was"
@@ -309745,7 +309792,7 @@ loc_27E7E6:
 	dc.b	$FF
 
 loc_27E7EA:
-	dc.b	"DSC"
+	dc.b	"Drop"
 	dc.b	$FF
 
 	even

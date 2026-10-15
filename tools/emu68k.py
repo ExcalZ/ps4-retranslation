@@ -473,6 +473,7 @@ class CPU:
             dst = self.d[op & 7] & 0xFF
             self.C = dst < imm
             self.Z = dst == imm
+            self.N = bool((dst - imm) & 0x80)
             return False
 
         # cmpi.w #imm,Dn
@@ -481,6 +482,7 @@ class CPU:
             dst = self.d[op & 7] & 0xFFFF
             self.C = dst < imm
             self.Z = dst == imm
+            self.N = bool((dst - imm) & 0x8000)
             return False
 
         # andi.w #imm,Dn
@@ -495,6 +497,11 @@ class CPU:
         # lea (abs).l,An
         if (op & 0xF1FF) == 0x41F9:
             self.a[(op >> 9) & 7] = (self.fetch() << 16) | self.fetch()
+            return False
+
+        # lea (An),Am
+        if (op & 0xF1F8) == 0x41D0:
+            self.a[(op >> 9) & 7] = self.a[op & 7] & 0xFFFFFF
             return False
 
         # lea (d16,An),Am
@@ -844,6 +851,11 @@ class CPU:
             self.C = False
             return False
 
+        # st / sf <ea>, data register or memory (other conditions trap)
+        if (op & 0xFEC0) == 0x50C0 and ((op >> 3) & 7) != 1:
+            self._ea_write((op >> 3) & 7, op & 7, 1, 0 if op & 0x100 else 0xFF, pc0)
+            return False
+
         # dbf Dn,disp
         if (op & 0xFFF8) == 0x51C8:
             d = self._s16(self.fetch())
@@ -896,8 +908,8 @@ class CPU:
                 self.pc = base + d
             return False
 
-        # addq.l / subq.l #n,An   (full 32-bit, no flags either way)
-        if (op & 0xF1F8) in (0x5088, 0x5188):
+        # addq / subq #n,An, .w or .l   (full 32-bit, no flags either way)
+        if (op & 0xF1F8) in (0x5048, 0x5148, 0x5088, 0x5188):
             n = (op >> 9) & 7 or 8
             r = op & 7
             d = n if (op & 0x0100) == 0 else -n

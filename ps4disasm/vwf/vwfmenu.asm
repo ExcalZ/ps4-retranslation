@@ -3461,3 +3461,123 @@ CritFlash_Table:
 CritFlash_Table_End:
 
 	even
+
+; Full-pack drop list.  When an item drops with the pack full, loc_3BEC,
+; loc_3C5C and loc_3C9E pre-render all ten pages of the 40-slot pack into
+; $FFFF3600.. and paging only copies a buffer to the plane - so every name
+; in the pack composed at once, ~240 cells against the 88-slot battle pool.
+; The cap was reached on page three; the "Want to discard?" prompt, its
+; Yes/No and the closing "discarded."/"received!" tails then drew blank.
+; As in the battle Item command (Battle_ItemPageRender): the pages compose
+; blank, and only the visible one owns tiles - composed above
+; VWFMenu_BattlePackMark, taken once the "found!" panel and the dropped
+; item's window are drawn, and recomposed on every page turn.  The prompts
+; compose above the page; returning to the list rewinds to the page's level,
+; and once the list has closed a sweep frees its tiles for the result.
+; Every entry is a jsr standing in for an instruction of the same size.
+VWFMenu_PackPagesOpen:
+	clr.w	($FFFF418C).l
+	st	(VWFMenu_SkipNames).l
+	rts
+
+VWFMenu_PackTopOpen:
+	clr.b	(VWFMenu_SkipNames).l
+	jmp	(Battle_SetupWindow).l
+
+VWFMenu_PackPagesReady:
+	move.w	#5, ($FFFF4190).l
+	move.w	(VWFMenu_PoolTop).l, (VWFMenu_BattlePackMark).l
+	move.l	d0, -(sp)
+	moveq	#0, d0
+	bsr.s	VWFMenu_PackShowPage
+	move.l	(sp)+, d0
+	rts
+
+; Page turns.  Battle_Item_Index already holds the page being entered.  The
+; page being left is redrawn blank, in its buffer and on the plane: its slots
+; are about to hold the new page's names, and the wipe shows it for seven
+; frames (loc_3B7C shrinks that buffer out; loc_36E0 and loc_32F8 close the
+; list from the page-one buffer whatever page is showing).  Then a sweep: a
+; page composes into free slots below the mark before it grows past it, and
+; rewinding alone would never give those back, so every page turn would
+; leak them.
+VWFMenu_PackFlipRight:
+	clr.w	($FFFF418C).l
+	movem.l	d0-d7/a0-a6, -(sp)
+	moveq	#-4, d1
+	bra.s	VWFMenu_PackFlip
+VWFMenu_PackFlipLeft:
+	move.w	#$E, ($FFFF418C).l
+	movem.l	d0-d7/a0-a6, -(sp)
+	moveq	#4, d1
+VWFMenu_PackFlip:
+	move.w	(Battle_Item_Index).l, d3
+	andi.w	#$7FFC, d3		; the page being entered
+	move.w	d3, d0
+	add.w	d1, d0			; the page being left
+	st	(VWFMenu_SkipNames).l
+	bsr.s	VWFMenu_PackRenderPage
+	lsl.w	#6, d0
+	lea	($FFFF3600).l, a0
+	adda.w	d0, a0
+	lea	($FFFF8624).w, a1
+	moveq	#$E, d1
+	moveq	#9, d2
+	jsr	(PlaneMapToRAM).l
+	jsr	(VWFMenu_Sweep).l	; free its slots, below the mark as well as above
+	move.w	(VWFMenu_BattlePackMark).l, (VWFMenu_PoolTop).l
+	move.w	d3, d0
+	bsr.s	VWFMenu_PackShowPage
+	movem.l	(sp)+, d0-d7/a0-a6
+	rts
+
+; d0 = item offset of a page (a multiple of 4): compose it for real.
+VWFMenu_PackShowPage:
+	clr.b	(VWFMenu_SkipNames).l
+	bsr.s	VWFMenu_PackRenderPage
+	move.w	(VWFMenu_PoolTop).l, (VWFMenu_BattlePackPageTop).l
+	rts
+
+; d0 = item offset of a page: build its buffer with loc_3D32, as the stock
+; pre-render did, and put back the arrows the stock loops set (their low
+; bytes gate paging in loc_3982).  Composes or blanks per SkipNames.
+VWFMenu_PackRenderPage:
+	movem.l	d0-d7/a0-a6, -(sp)
+	andi.w	#$7FFC, d0
+	lea	(Battle_Item_List).l, a2
+	adda.w	d0, a2
+	lsl.w	#6, d0
+	lea	($FFFF3600).l, a0
+	adda.w	d0, a0
+	lea	($FFFF0624).l, a1
+	jsr	(loc_3D32).l
+	cmpa.l	#Battle_Item_List, a2
+	beq.s	VWFMenu_PackRenderPage_First
+	move.w	#$66E6, (a0)
+VWFMenu_PackRenderPage_First:
+	tst.b	$4(a2)			; the next page's first item
+	beq.s	VWFMenu_PackRenderPage_Last
+	move.w	#$6EE6, $1A(a0)
+VWFMenu_PackRenderPage_Last:
+	movem.l	(sp)+, d0-d7/a0-a6
+	rts
+
+; Back at the list from a prompt: the prompt panel and Yes/No above the
+; page have closed, so their slots go back (a later prompt for another item
+; would otherwise stack on top of them) - by rewind for those above the
+; page, by sweep for any free slots below it that they took.
+VWFMenu_PackBackToList:			; (the level is always set: the list opens through PackPagesReady)
+	move.w	#6, ($FFFF4190).l
+	move.w	(VWFMenu_BattlePackPageTop).l, (VWFMenu_PoolTop).l
+	jmp	(VWFMenu_Sweep).l
+
+; The list has closed (loc_36E0 / loc_32F8): only the panel and the HUD are
+; on the plane, so a sweep frees the page's tiles for the result message and,
+; on the Use branch, for the item's own action windows.
+VWFMenu_PackClosed:
+	move.w	#2, ($FFFF4190).l
+	jmp	(VWFMenu_Sweep).l
+
+VWFMenu_PackClosedUse:
+	move.w	#$1E, ($FFFF4190).l
+	jmp	(VWFMenu_Sweep).l
