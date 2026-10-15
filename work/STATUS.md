@@ -3760,3 +3760,13 @@ too, so its last step is unverified live.
 Also: the battle "DSC" label is "Drop" (3 cells, the slot's width) and
 "Want to give up?" is "Abandon this item?"; two `even` pads in the
 byte-read result text pay for them, so nothing after the block moves.
+
+## 2026-10-15: v1.05 packaged
+
+Built immediately before packaging from a clean tree: SHA-256
+`5C022D5891E258EB12DECB9D9997AAC5070D6D76F94FDA16025BED35C0560DB1`,
+CRC32 `403491A9`.  Changelog: "Fixed missing text when picking up an item
+in battle with a full pack. The battle item option "DSC" is now "Drop".
+Script revisions."  The script commit (2196a96) changes three lines
+(lz1D38E6#0017, lz1D4FB6#0036/#0037); the dialogue block ends at
+`$219F13`, 237 bytes under the anchor.  `release/PS4_Retranslation_v1.05.zip`.

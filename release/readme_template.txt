@@ -275,7 +275,10 @@ supply your own copy of the game.
   10. CHANGELOG
 --------------------------------------------------------------------------------
 
-  v@VERSION@  -  @DATE@  -  Laila is now spelled Lyla. Grammar and typo
+  v@VERSION@  -  @DATE@  -  Fixed missing text when picking up an item
+                           in battle with a full pack. The battle item
+                           option "DSC" is now "Drop". Script revisions.
+  v1.04  -  07.10.2026  -  Laila is now spelled Lyla. Grammar and typo
                            fixes throughout the script.
   v1.03  -  05.10.2026  -  Critical hits no longer strobe the screen;
                            the flash fades out instead. Script revisions,
