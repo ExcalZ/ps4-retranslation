@@ -6564,7 +6564,7 @@
       "raw_len": 57,
       "hex": "0934b1e18fe209197e6cb21322044209fce00445716271620c1324383413abfde3a62816e06208e00a19e10916fc153413202b34132e42ab",
       "jp": "けっ。女房のヤツ、てめえだけ{BR}家でヌクヌクしてやがって！{ctl.FD}狩りに行く方の身に{BR}なってみろってんだ！",
-      "en": "Feh. My wife gets to sit at home all warm{BR}and cozy!{ctl.FD}Let her see  what it's like going out to{BR}hunt in this weather!",
+      "en": "Feh. My dang wife gets to sit at home all{BR}warm and cozy!{ctl.FD}Let her see what it's like going out to{BR}hunt in this weather!",
       "note": "",
       "us": "Hmmph, my wife, she gets to stay home nice and warm! She should see what it's like to have to go out hunting in this weather!"
     },
@@ -7863,7 +7863,7 @@
       "raw_len": 27,
       "hex": "e073e074380a0a16e01c34130829141afc223f270c027a8f5db1",
       "jp": "人間がここに入ってくるとは{BR}めずらしいミャウ。",
-      "en": "It is rare for humans to come{BR}in here, meow.",
+      "en": "It is rare for humans to come in here,{BR}meow.",
       "note": "",
       "us": "Very seldom do humans enter this place, meow."
     },
@@ -7874,7 +7874,7 @@
       "raw_len": 32,
       "hex": "988f645d726423e02b24000a0a160229fc4209161534130c1f34107a8f5db1",
       "jp": "ジャコウネコも今や ここにいる{BR}だけになってしまったミャウ。",
-      "en": "All the musk cats there are left{BR}are here now, meow.",
+      "en": "All the remaining musk cats are here now,{BR}meow.",
       "note": "",
       "us": "All that is left of the musk cats are here, meow."
     },

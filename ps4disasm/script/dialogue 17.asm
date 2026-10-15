@@ -312,14 +312,14 @@
 	dc.b	"even on Dezolis, meow."
 	dc.b	$FF
 ; $24
-	dc.b	"It is rare for humans to come"
+	dc.b	"It is rare for humans to come in here,"
 	dc.b	$FC
-	dc.b	"in here, meow."
+	dc.b	"meow."
 	dc.b	$FF
 ; $25
-	dc.b	"All the musk cats there are left"
+	dc.b	"All the remaining musk cats are here now,"
 	dc.b	$FC
-	dc.b	"are here now, meow."
+	dc.b	"meow."
 	dc.b	$FF
 ; $26
 	dc.b	$FA

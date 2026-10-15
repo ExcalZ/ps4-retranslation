@@ -442,11 +442,11 @@
 	dc.b	"going on!"
 	dc.b	$FF
 ; $11
-	dc.b	"Feh. My wife gets to sit at home all warm"
+	dc.b	"Feh. My dang wife gets to sit at home all"
 	dc.b	$FC
-	dc.b	"and cozy!"
+	dc.b	"warm and cozy!"
 	dc.b	$FD
-	dc.b	"Let her see  what it's like going out to"
+	dc.b	"Let her see what it's like going out to"
 	dc.b	$FC
 	dc.b	"hunt in this weather!"
 	dc.b	$FF
