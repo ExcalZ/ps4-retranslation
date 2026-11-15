@@ -16883,7 +16883,7 @@
       "raw_len": 56,
       "hex": "f41a5c6282a8676eb06b2dfc05e2bf0c0c10e00ae0af3e3515b1fd260841e08613082a10b5b1fce027e398e218e2ed3805e260113e35b1",
       "jp": "{ctl.F4:1A}イクリプストーチを{BR}お貸しした方々じゃな。{ctl.FD}よくぞ来てくれた…。{BR}大僧正様がお待ちじゃ。",
-      "en": "{ctl.F4:1A}You are the ones who lent us{BR}the Eclipse Torch.{ctl.FD}It is good that you came...{BR}The High Priest is waiting.",
+      "en": "{ctl.F4:1A}You are the ones to whom we lent{BR}the Eclipse Torch.{ctl.FD}It is good that you came...{BR}The High Priest is waiting.",
       "note": ""
     },
     {

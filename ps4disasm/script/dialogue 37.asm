@@ -345,7 +345,7 @@
 ; $30
 	dc.b	$F4
 	dc.b	$1A
-	dc.b	"You are the ones who lent us"
+	dc.b	"You are the ones to whom we lent"
 	dc.b	$FC
 	dc.b	"the Eclipse Torch."
 	dc.b	$FD

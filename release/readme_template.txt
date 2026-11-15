@@ -275,7 +275,9 @@ supply your own copy of the game.
   10. CHANGELOG
 --------------------------------------------------------------------------------
 
-  v@VERSION@  -  @DATE@  -  Fixed missing text when picking up an item
+  v@VERSION@  -  @DATE@  -  Corrected the dialogue about who lent the
+                           Eclipse Torch to the party.
+  v1.05  -  15.10.2026  -  Fixed missing text when picking up an item
                            in battle with a full pack. The battle item
                            option "DSC" is now "Drop". Script revisions.
   v1.04  -  07.10.2026  -  Laila is now spelled Lyla. Grammar and typo

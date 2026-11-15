@@ -3770,3 +3770,15 @@ in battle with a full pack. The battle item option "DSC" is now "Drop".
 Script revisions."  The script commit (2196a96) changes three lines
 (lz1D38E6#0017, lz1D4FB6#0036/#0037); the dialogue block ends at
 `$219F13`, 237 bytes under the anchor.  `release/PS4_Retranslation_v1.05.zip`.
+
+## 2026-11-15: v1.06 packaged
+
+Corrected the Eclipse Torch dialogue (`lz1DEC96#0048`) to say that the
+speakers lent the torch to the party. The revised line adds four bytes.
+The dialogue block now ends at `$219F17`, 233 bytes below the anchor.
+The ROM comparison against v1.05 confirmed the revised line, the adjusted
+dialogue addresses, and the updated checksum.
+
+SHA-256 `B3D40DEC3294E0881AFD27506AFB5FEF340F4F9DFB094AFDB55701B2967DA7BA`,
+CRC32 `7E8A18B5`. The BPS in `release/PS4_Retranslation_v1.06.zip` applies
+to the stock US ROM and reproduces the build byte for byte.
